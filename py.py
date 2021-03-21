@@ -11,22 +11,31 @@ def draw_window(tractor1_rectangle):
     definitions.WIN.blit(definitions.TRACTOR, (tractor1_rectangle.x, tractor1_rectangle.y))
     pygame.display.update()
 def is_move_allowed(move, tractor1_rectangle):
-    return True
+    if ((move == 1) and (tractor1_rectangle.y + definitions.VEL + definitions.TRACTOR_HEIGHT <= definitions.HEIGHT)):
+        return True
+    elif ((move == 2) and (tractor1_rectangle.x - definitions.VEL >= 0)):
+        return True
+    elif ((move == 3) and (tractor1_rectangle.x + definitions.VEL + definitions.TRACTOR_WIDTH <= definitions.WIDTH)):
+        return True
+    elif ((move == 4) and (tractor1_rectangle.y - definitions.VEL >= 0)):
+        return True
+    else:
+        return False
 def tractor1_handle_movement(tractor1, tractor1_rectangle):
     random1 = random.randint(1, 4)
-    if (random == 1 and is_move_allowed(1, tractor1_rectangle) == True):
+    if ((random1 == 1) and (is_move_allowed(1, tractor1_rectangle) == True)):
         tractor1.move_down()
         tractor1_rectangle.x = tractor1.get_x()
         tractor1_rectangle.y = tractor1.get_y()
-    elif (random == 2 and is_move_allowed(2, tractor1_rectangle) == True):
+    elif ((random1 == 2) and (is_move_allowed(2, tractor1_rectangle) == True)):
         tractor1.move_left()
         tractor1_rectangle.x = tractor1.get_x()
         tractor1_rectangle.y = tractor1.get_y()
-    elif (random == 3 and is_move_allowed(3, tractor1_rectangle) == True):
+    elif ((random1 == 3) and (is_move_allowed(3, tractor1_rectangle) == True)):
         tractor1.move_right()
         tractor1_rectangle.x = tractor1.get_x()
         tractor1_rectangle.y = tractor1.get_y()
-    elif (random == 4 and is_move_allowed(4, tractor1_rectangle) == True):
+    elif ((random1 == 4) and (is_move_allowed(4, tractor1_rectangle) == True)):
         tractor1.move_up()
         tractor1_rectangle.x = tractor1.get_x()
         tractor1_rectangle.y = tractor1.get_y()
