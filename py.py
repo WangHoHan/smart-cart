@@ -6,8 +6,23 @@ import random
 import soil
 import tractor
 pygame.display.set_caption("Smart Tractor")
+map_field = []
+map_field_type = []
+def create_base_map():
+    for i in range(10):
+        temp_map_field = []
+        temp_map_field_type = []
+        map_field.append(temp_map_field)
+        map_field_type.append(temp_map_field_type)
+        for j in range(10):
+            temp_map_field.append(pygame.Rect(i * definitions.BLOCK_SIZE, j * definitions.BLOCK_SIZE, definitions.BLOCK_SIZE, definitions.BLOCK_SIZE))
+            temp_map_field_type.append(definitions.DIRT)
+def fill_map():
+    for i in range(10):
+        for j in range(10):
+            definitions.WIN.blit(map_field_type[i][j], (map_field[i][j].x, map_field[i][j].y))
 def draw_window(tractor1_rectangle):
-    definitions.WIN.fill(definitions.WHITE)
+    fill_map()
     definitions.WIN.blit(definitions.TRACTOR, (tractor1_rectangle.x, tractor1_rectangle.y))
     pygame.display.update()
 def is_move_allowed(move, tractor1_rectangle):
@@ -40,18 +55,19 @@ def tractor1_handle_movement(tractor1, tractor1_rectangle):
         tractor1_rectangle.x = tractor1.get_x()
         tractor1_rectangle.y = tractor1.get_y()
 def main():
-    fields = []
-    a = 0
-    b = 0
-    for i in range(100):
-        plant1 = plant.Plant(1, definitions.WHEAT_MAXIMUM_STATE, "Wheat", "None", definitions.WHEAT_REQUIRED_WATER_LEVEL)
-        soil1 = soil.Soil(True, definitions.MAXIMUM_WATER_LEVEL)
-        if (a > definitions.WIDTH - definitions.VEL):
-            a = 0
-            b = b + definitions.VEL
-        field1 = field.Field(a, b, plant1, soil1)
-        a = a + definitions.VEL;
-        fields.append(field1)
+    # fields = []
+    # a = 0
+    # b = 0
+    # for i in range(100):
+    #     plant1 = plant.Plant(1, definitions.WHEAT_MAXIMUM_STATE, "Wheat", "None", definitions.WHEAT_REQUIRED_WATER_LEVEL)
+    #     soil1 = soil.Soil(True, definitions.MAXIMUM_WATER_LEVEL)
+    #     if (a > definitions.WIDTH - definitions.VEL):
+    #         a = 0
+    #         b = b + definitions.VEL
+    #     field1 = field.Field(a, b, plant1, soil1)
+    #     a = a + definitions.VEL;
+    #     fields.append(field1)
+    create_base_map()
     tractor1 = tractor.Tractor(400, 400)
     tractor1_rectangle = pygame.Rect(tractor1.get_x(), tractor1.get_y(), definitions.TRACTOR_WIDTH, definitions.TRACTOR_HEIGHT)
     clock = pygame.time.Clock()
