@@ -6,31 +6,35 @@ import random
 import soil
 import tractor
 pygame.display.set_caption("Smart Tractor")
-map_field = []
-map_field_type = []
+fields = []
 def create_base_map():
     for i in range(10):
         temp_map_field = []
-        temp_map_field_type = []
-        map_field.append(temp_map_field)
-        map_field_type.append(temp_map_field_type)
         for j in range(10):
-            temp_map_field.append(pygame.Rect(i * definitions.BLOCK_SIZE, j * definitions.BLOCK_SIZE, definitions.BLOCK_SIZE, definitions.BLOCK_SIZE))
-            temp_map_field_type.append(definitions.DIRT)
+            temp_rect = pygame.Rect(i * definitions.BLOCK_SIZE, j * definitions.BLOCK_SIZE, definitions.BLOCK_SIZE, definitions.BLOCK_SIZE)
+            temp_soil = soil.Soil(False, False)
+            temp_plant = plant.Plant(0, definitions.WHEAT_MAXIMUM_STATE)
+            temp_field = field.Field(temp_plant, temp_rect, temp_soil)
+            temp_map_field.append(temp_field)
+        fields.append(temp_map_field)
 def fill_map():
     for i in range(10):
         for j in range(10):
-            definitions.WIN.blit(map_field_type[i][j], (map_field[i][j].x, map_field[i][j].y))
+            field = fields[i][j]
+            rect = field.get_rect()
+            if field.get_soil().get_state() == False:
+                block = definitions.DIRT
+            definitions.WIN.blit(block, (rect.x, rect.y))
 def draw_window(tractor1_rectangle):
     fill_map()
     definitions.WIN.blit(definitions.TRACTOR, (tractor1_rectangle.x, tractor1_rectangle.y))
     pygame.display.update()
 def is_move_allowed(move, tractor1_rectangle):
-    if ((move == 1) and (tractor1_rectangle.y + definitions.VEL + definitions.TRACTOR_HEIGHT <= definitions.HEIGHT)):
+    if ((move == 1) and (tractor1_rectangle.y + definitions.VEL + definitions.BLOCK_SIZE <= definitions.HEIGHT)):
         return True
     elif ((move == 2) and (tractor1_rectangle.x - definitions.VEL >= 0)):
         return True
-    elif ((move == 3) and (tractor1_rectangle.x + definitions.VEL + definitions.TRACTOR_WIDTH <= definitions.WIDTH)):
+    elif ((move == 3) and (tractor1_rectangle.x + definitions.VEL + definitions.BLOCK_SIZE <= definitions.WIDTH)):
         return True
     elif ((move == 4) and (tractor1_rectangle.y - definitions.VEL >= 0)):
         return True
@@ -55,21 +59,9 @@ def tractor1_handle_movement(tractor1, tractor1_rectangle):
         tractor1_rectangle.x = tractor1.get_x()
         tractor1_rectangle.y = tractor1.get_y()
 def main():
-    # fields = []
-    # a = 0
-    # b = 0
-    # for i in range(100):
-    #     plant1 = plant.Plant(1, definitions.WHEAT_MAXIMUM_STATE, "Wheat", "None", definitions.WHEAT_REQUIRED_WATER_LEVEL)
-    #     soil1 = soil.Soil(True, definitions.MAXIMUM_WATER_LEVEL)
-    #     if (a > definitions.WIDTH - definitions.VEL):
-    #         a = 0
-    #         b = b + definitions.VEL
-    #     field1 = field.Field(a, b, plant1, soil1)
-    #     a = a + definitions.VEL;
-    #     fields.append(field1)
     create_base_map()
     tractor1 = tractor.Tractor(400, 400)
-    tractor1_rectangle = pygame.Rect(tractor1.get_x(), tractor1.get_y(), definitions.TRACTOR_WIDTH, definitions.TRACTOR_HEIGHT)
+    tractor1_rectangle = pygame.Rect(tractor1.get_x(), tractor1.get_y(), definitions.BLOCK_SIZE, definitions.BLOCK_SIZE)
     clock = pygame.time.Clock()
     run = True
     while run:
