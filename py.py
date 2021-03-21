@@ -40,7 +40,19 @@ def tractor1_handle_movement(tractor1, tractor1_rectangle):
         tractor1_rectangle.x = tractor1.get_x()
         tractor1_rectangle.y = tractor1.get_y()
 def main():
-    tractor1 = tractor.Tractor(0, 0)
+    fields = []
+    a = 0
+    b = 0
+    for i in range(100):
+        plant1 = plant.Plant(1, definitions.WHEAT_MAXIMUM_STATE, "Wheat", "None", definitions.WHEAT_REQUIRED_WATER_LEVEL)
+        soil1 = soil.Soil(True, definitions.MAXIMUM_WATER_LEVEL)
+        if (a > definitions.WIDTH - definitions.VEL):
+            a = 0
+            b = b + definitions.VEL
+        field1 = field.Field(a, b, plant1, soil1)
+        a = a + definitions.VEL;
+        fields.append(field1)
+    tractor1 = tractor.Tractor(400, 400)
     tractor1_rectangle = pygame.Rect(tractor1.get_x(), tractor1.get_y(), definitions.TRACTOR_WIDTH, definitions.TRACTOR_HEIGHT)
     clock = pygame.time.Clock()
     run = True

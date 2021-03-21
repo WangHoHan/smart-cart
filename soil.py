@@ -1,12 +1,7 @@
 class Soil:
-    def __init__(self, name, state, water_level):
-        self.name = name
+    def __init__(self, state, water_level):
         self.state = state
         self.water_level = water_level
-    def get_name(self):
-        return self.name
-    def set_name(self, name):
-        self.name = name
     def get_state(self):
         return self.state
     def set_state(self, state):

@@ -1,8 +1,8 @@
 import definitions
 class Tractor:
     def __init__(self, x, y):
-        self.x = x = 0
-        self.y = y = 0
+        self.x = x
+        self.y = y
     def get_x(self):
         return self.x
     def set_x(self, x):
