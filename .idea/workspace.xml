@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="56453584-72bd-49f4-a39c-fccf91ab20c6" name="Default Changelist" comment="" />
+    <list default="true" id="56453584-72bd-49f4-a39c-fccf91ab20c6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py.py" beforeDir="false" afterPath="$PROJECT_DIR$/py.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1pifVLVEDyFxW85jvOgQt0TyQ4g" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -16,6 +30,12 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RunManager">
     <configuration name="py" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -57,6 +77,8 @@
       <option name="presentableId" value="Default" />
       <updated>1615670853142</updated>
       <workItem from="1615670854240" duration="68000" />
+      <workItem from="1616276134469" duration="1463000" />
+      <workItem from="1616322081205" duration="4362000" />
     </task>
     <servers />
   </component>
@@ -64,24 +86,44 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1879" height="295" key="GridCell.Tab.0.bottom" timestamp="1615670921889">
+    <state width="1879" height="364" key="GridCell.Tab.0.bottom" timestamp="1616326478875">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1879" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1615670921889" />
-    <state width="1879" height="295" key="GridCell.Tab.0.center" timestamp="1615670921889">
+    <state width="1879" height="364" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1616326478875" />
+    <state width="1879" height="364" key="GridCell.Tab.0.center" timestamp="1616326478875">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1879" height="295" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1615670921889" />
-    <state width="1879" height="295" key="GridCell.Tab.0.left" timestamp="1615670921889">
+    <state width="1879" height="364" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1616326478875" />
+    <state width="1879" height="364" key="GridCell.Tab.0.left" timestamp="1616326478875">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1879" height="295" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1615670921889" />
-    <state width="1879" height="295" key="GridCell.Tab.0.right" timestamp="1615670921889">
+    <state width="1879" height="364" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1616326478875" />
+    <state width="1879" height="364" key="GridCell.Tab.0.right" timestamp="1616326478875">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1879" height="295" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1615670921889" />
+    <state width="1879" height="364" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1616326478875" />
+    <state width="1879" height="364" key="GridCell.Tab.1.bottom" timestamp="1616326478876">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1879" height="364" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1616326478876" />
+    <state width="1879" height="364" key="GridCell.Tab.1.center" timestamp="1616326478875">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1879" height="364" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1616326478875" />
+    <state width="1879" height="364" key="GridCell.Tab.1.left" timestamp="1616326478875">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1879" height="364" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1616326478875" />
+    <state width="1879" height="364" key="GridCell.Tab.1.right" timestamp="1616326478875">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1879" height="364" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1616326478875" />
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1616322080552">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1616322080552" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SmartTractor$py.coverage" NAME="py Coverage Results" MODIFIED="1615670883139" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SmartTractor$py.coverage" NAME="py Coverage Results" MODIFIED="1616326392782" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

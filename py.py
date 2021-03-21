@@ -1,39 +1,47 @@
-import os
+import definitions
+import field
+import plant
 import pygame
-WIDTH, HEIGHT = 1000, 1000
-WIN = pygame.display.set_mode((WIDTH, HEIGHT))
+import random
+import soil
+import tractor
 pygame.display.set_caption("Smart Tractor")
-WHITE = ((255, 255, 255))
-FPS = 13
-TRACTOR_WIDTH, TRACTOR_HEIGHT = 100, 100
-TRACTOR = pygame.image.load(os.path.join('resources', 'tractor.png'))
-TRACTOR = pygame.transform.scale(TRACTOR, (TRACTOR_WIDTH, TRACTOR_HEIGHT))
-VEL = 100
-def draw_window(tractor_rectangle):
-    WIN.fill(WHITE)
-    WIN.blit(TRACTOR, (tractor_rectangle.x, tractor_rectangle.y))
+def draw_window(tractor1_rectangle):
+    definitions.WIN.fill(definitions.WHITE)
+    definitions.WIN.blit(definitions.TRACTOR, (tractor1_rectangle.x, tractor1_rectangle.y))
     pygame.display.update()
-def tractor_handle_movement(keys_pressed, tractor_rectangle):
-    if keys_pressed[pygame.K_DOWN] and tractor_rectangle.y + VEL + TRACTOR_HEIGHT <= HEIGHT:
-        tractor_rectangle.y += VEL
-    if keys_pressed[pygame.K_LEFT] and tractor_rectangle.x - VEL >= 0:
-        tractor_rectangle.x -= VEL
-    if keys_pressed[pygame.K_RIGHT] and tractor_rectangle.x + VEL + TRACTOR_WIDTH <= WIDTH:
-        tractor_rectangle.x += VEL
-    if keys_pressed[pygame.K_UP] and tractor_rectangle.y - VEL >= 0:
-        tractor_rectangle.y -= VEL
+def is_move_allowed(move, tractor1_rectangle):
+    return True
+def tractor1_handle_movement(tractor1, tractor1_rectangle):
+    random1 = random.randint(1, 4)
+    if (random == 1 and is_move_allowed(1, tractor1_rectangle) == True):
+        tractor1.move_down()
+        tractor1_rectangle.x = tractor1.get_x()
+        tractor1_rectangle.y = tractor1.get_y()
+    elif (random == 2 and is_move_allowed(2, tractor1_rectangle) == True):
+        tractor1.move_left()
+        tractor1_rectangle.x = tractor1.get_x()
+        tractor1_rectangle.y = tractor1.get_y()
+    elif (random == 3 and is_move_allowed(3, tractor1_rectangle) == True):
+        tractor1.move_right()
+        tractor1_rectangle.x = tractor1.get_x()
+        tractor1_rectangle.y = tractor1.get_y()
+    elif (random == 4 and is_move_allowed(4, tractor1_rectangle) == True):
+        tractor1.move_up()
+        tractor1_rectangle.x = tractor1.get_x()
+        tractor1_rectangle.y = tractor1.get_y()
 def main():
-    tractor_rectangle = pygame.Rect(0, 0, TRACTOR_WIDTH, TRACTOR_HEIGHT)
+    tractor1 = tractor.Tractor(0, 0)
+    tractor1_rectangle = pygame.Rect(tractor1.get_x(), tractor1.get_y(), definitions.TRACTOR_WIDTH, definitions.TRACTOR_HEIGHT)
     clock = pygame.time.Clock()
     run = True
     while run:
-        clock.tick(FPS)
+        clock.tick(definitions.FPS)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
-        keys_pressed = pygame.key.get_pressed()
-        tractor_handle_movement(keys_pressed, tractor_rectangle)
-        draw_window(tractor_rectangle)
+        tractor1_handle_movement(tractor1, tractor1_rectangle)
+        draw_window(tractor1_rectangle)
     pygame.quit()
 if __name__ == "__main__":
     main()
