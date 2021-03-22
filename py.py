@@ -22,9 +22,26 @@ def fill_map():
         for j in range(10):
             field = fields[i][j]
             rect = field.get_rect()
-            if field.get_soil().get_state() == False:
+            state = field.get_soil().get_state()
+            water_level = field.get_soil().get_water_level()
+            if state == False:
                 block = definitions.DIRT
+            elif water_level == False:
+                block = definitions.FARMLAND
+            else:
+                block = definitions.FARMLANDMOIST
             definitions.WIN.blit(block, (rect.x, rect.y))
+def do_work(tractor1_rectangle):
+    x = int(tractor1_rectangle.x/100)
+    y = int(tractor1_rectangle.y/100)
+    field = fields[x][y]
+    soil = field.get_soil()
+    state = soil.get_state()
+    water_level = soil.get_water_level()
+    if state == False:
+        field.get_soil().set_state(True)
+    elif water_level == False:
+        field.get_soil().set_water_level(True)
 def draw_window(tractor1_rectangle):
     fill_map()
     definitions.WIN.blit(definitions.TRACTOR, (tractor1_rectangle.x, tractor1_rectangle.y))
@@ -42,6 +59,7 @@ def is_move_allowed(move, tractor1_rectangle):
         return False
 def tractor1_handle_movement(tractor1, tractor1_rectangle):
     random1 = random.randint(1, 4)
+    do_work(tractor1_rectangle)
     if ((random1 == 1) and (is_move_allowed(1, tractor1_rectangle) == True)):
         tractor1.move_down()
         tractor1_rectangle.x = tractor1.get_x()

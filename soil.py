@@ -8,5 +8,5 @@ class Soil:
         self.state = state
     def get_water_level(self):
         return self.water_level
-    def set_required_water_level(self, water_level):
+    def set_water_level(self, water_level):
         self.water_level = water_level
