@@ -12,10 +12,10 @@ class Tractor:
     def set_y(self, y):
         self.y = y
     def move_down(self):
-        self.y = self.y + definitions.VEL
+        self.y = self.y + definitions.BLOCK_SIZE
     def move_left(self):
-        self.x = self.x - definitions.VEL
+        self.x = self.x - definitions.BLOCK_SIZE
     def move_right(self):
-        self.x = self.x + definitions.VEL
+        self.x = self.x + definitions.BLOCK_SIZE
     def move_up(self):
-        self.y = self.y - definitions.VEL
+        self.y = self.y - definitions.BLOCK_SIZE
