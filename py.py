@@ -22,15 +22,15 @@ def fill_map():
         for j in range(10):
             field = fields[i][j]
             rect = field.get_rect()
-            if field.get_plant().get_state() > 0 and field.get_plant().get_state() <= 1 * definitions.WHEAT_GROW_TIME + 1:
+            if field.get_plant().get_state() > 0 and field.get_plant().get_state() <= 1 * definitions.WHEAT_GROW_TIME:
                 block = definitions.WHEATSTAGE1
-            elif field.get_plant().get_state() > 1 * definitions.WHEAT_GROW_TIME + 1 and field.get_plant().get_state() <= 2 * definitions.WHEAT_GROW_TIME + 1:
+            elif field.get_plant().get_state() > 1 * definitions.WHEAT_GROW_TIME and field.get_plant().get_state() <= 2 * definitions.WHEAT_GROW_TIME:
                 block = definitions.WHEATSTAGE2
-            elif field.get_plant().get_state() > 2 * definitions.WHEAT_GROW_TIME + 1 and field.get_plant().get_state() <= 3 * definitions.WHEAT_GROW_TIME + 1:
+            elif field.get_plant().get_state() > 2 * definitions.WHEAT_GROW_TIME and field.get_plant().get_state() <= 3 * definitions.WHEAT_GROW_TIME:
                 block = definitions.WHEATSTAGE3
-            elif field.get_plant().get_state() > 3 * definitions.WHEAT_GROW_TIME + 1 and field.get_plant().get_state() <= 4 * definitions.WHEAT_GROW_TIME + 1:
+            elif field.get_plant().get_state() > 3 * definitions.WHEAT_GROW_TIME and field.get_plant().get_state() <= 4 * definitions.WHEAT_GROW_TIME:
                 block = definitions.WHEATSTAGE4
-            elif field.get_plant().get_state() == 4 *definitions.WHEAT_GROW_TIME + 2:
+            elif field.get_plant().get_state() == 4 *definitions.WHEAT_GROW_TIME + 1:
                 block = definitions.WHEATSTAGE5
             elif field.get_soil().get_state() is False:
                 block = definitions.DIRT
@@ -102,7 +102,6 @@ def main():
     create_base_map()
     tractor1 = tractor.Tractor(0, 0)
     tractor1_rect = pygame.Rect(tractor1.get_x(), tractor1.get_y(), definitions.BLOCK_SIZE, definitions.BLOCK_SIZE)
-    draw_window(tractor1_rect)
     clock = pygame.time.Clock()
     run = True
     while run:
@@ -110,10 +109,10 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
+        draw_window(tractor1_rect)
+        grow_plants()
         tractor1_handle_movement(tractor1, tractor1_rect)
         do_work(tractor1_rect)
-        grow_plants()
-        draw_window(tractor1_rect)
     pygame.quit()
 if __name__ == "__main__":
     main()
