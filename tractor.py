@@ -1,8 +1,13 @@
 import definitions
 class Tractor:
-    def __init__(self, x, y):
+    def __init__(self, fertilizer, x, y):
+        self.fertilizer = fertilizer
         self.x = x
         self.y = y
+    def get_fertilizer(self):
+        return self.fertilizer
+    def set_fertilizer(self, fertilizer):
+        self.fertilizer = fertilizer
     def get_x(self):
         return self.x
     def set_x(self, x):

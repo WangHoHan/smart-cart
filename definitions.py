@@ -12,6 +12,7 @@ WIDTH, HEIGHT = 1000, 1000
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 TRACTOR = pygame.image.load(os.path.join('resources', 'tractor.png'))
 TRACTOR = pygame.transform.scale(TRACTOR, (BLOCK_SIZE, BLOCK_SIZE))
+TRACTOR_FERTILIZER = 2
 WHEAT_GROW_TIME = 5
 WHEAT_MAXIMUM_STATE = 21
 WHEATSTAGE1 = pygame.image.load(os.path.join('resources', 'wheat_stage1.png'))
