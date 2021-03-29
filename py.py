@@ -39,17 +39,21 @@ def fill_map():
             elif field.get_soil().get_state() is True and field.get_soil().get_water_level() is True:
                 block = definitions.FARMLANDMOIST
             definitions.WIN.blit(block, (rect.x, rect.y))
-def do_work(tractor1_rect):
+def do_work(tractor1, tractor1_rect):
     x = int(tractor1_rect.x/100)
     y = int(tractor1_rect.y/100)
     field = fields[x][y]
     if field.get_soil().get_state() is False:
         field.get_soil().set_state(True)
-    elif field.get_soil().get_state() is True and field.get_soil().get_water_level() is False:
+    elif field.get_soil().get_state() is True and field.get_soil().get_water_level() is False and tractor1.get_water_level() > 0:
+        tractor1.set_water_level(tractor1.get_water_level() - 1)
         field.get_soil().set_water_level(True)
-    elif field.get_plant().get_state() == 0:
+    elif field.get_soil().get_state() is True and field.get_soil().get_water_level() is True and field.get_plant().get_state() == 0:
         field.get_plant().set_name("wheat")
         field.get_plant().set_state(1)
+    elif field.get_plant().get_name() == "wheat" and field.get_plant().get_state() > 0 and field.get_plant().get_state() < definitions.WHEAT_MAXIMUM_STATE - definitions.WHEAT_GROW_TIME and tractor1.get_fertilizer("wheat") > 0:
+        tractor1.set_fertilizer("wheat", (tractor1.get_fertilizer("wheat") - 1))
+        field.get_plant().set_state(field.get_plant().get_state() + definitions.WHEAT_GROW_TIME)
     elif field.get_plant().get_name() == "wheat" and field.get_plant().get_state() == definitions.WHEAT_MAXIMUM_STATE:
         field.get_plant().set_state(0)
         field.get_soil().set_water_level(False)
@@ -77,7 +81,7 @@ def is_move_allowed(move, tractor1_rect):
         return False
 def tractor1_handle_movement(tractor1, tractor1_rect):
     loop = True
-    while loop:
+    while loop and tractor1.get_fuel() > 0:
         random1 = random.randint(1, 4)
         if ((random1 == 1) and (is_move_allowed(1, tractor1_rect) is True)):
             tractor1.move_down()
@@ -99,10 +103,14 @@ def tractor1_handle_movement(tractor1, tractor1_rect):
             tractor1_rect.x = tractor1.get_x()
             tractor1_rect.y = tractor1.get_y()
             loop = False
+    tractor1.set_fuel(tractor1.get_fuel() - 1)
+    if tractor1_rect.x == 0 and tractor1_rect.y == 0:
+        tractor1.set_fuel(definitions.TRACTOR_FUEL)
+        tractor1.set_water_level(definitions.TRACTOR_WATER_LEVEL)
 def main():
     create_base_map()
     fertilizer_dict = {"beetroot": definitions.TRACTOR_FERTILIZER, "carrot": definitions.TRACTOR_FERTILIZER, "potato": definitions.TRACTOR_FERTILIZER, "wheat": definitions.TRACTOR_FERTILIZER}
-    tractor1 = tractor.Tractor(fertilizer_dict, 0, 0)
+    tractor1 = tractor.Tractor(fertilizer_dict, definitions.TRACTOR_FUEL, definitions.TRACTOR_WATER_LEVEL ,0, 0)
     tractor1_rect = pygame.Rect(tractor1.get_x(), tractor1.get_y(), definitions.BLOCK_SIZE, definitions.BLOCK_SIZE)
     clock = pygame.time.Clock()
     run = True
@@ -114,7 +122,7 @@ def main():
         draw_window(tractor1_rect)
         grow_plants()
         tractor1_handle_movement(tractor1, tractor1_rect)
-        do_work(tractor1_rect)
+        do_work(tractor1, tractor1_rect)
     pygame.quit()
 if __name__ == "__main__":
     main()

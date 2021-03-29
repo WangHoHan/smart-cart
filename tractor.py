@@ -1,13 +1,23 @@
 import definitions
 class Tractor:
-    def __init__(self, fertilizer, x, y):
+    def __init__(self, fertilizer, fuel, water_level, x, y):
         self.fertilizer = fertilizer
+        self.fuel = fuel
+        self.water_level = water_level
         self.x = x
         self.y = y
-    def get_fertilizer(self):
-        return self.fertilizer
-    def set_fertilizer(self, fertilizer):
-        self.fertilizer = fertilizer
+    def get_fertilizer(self, name):
+        return self.fertilizer[name]
+    def set_fertilizer(self, name, value):
+        self.fertilizer[name] = value
+    def get_fuel(self):
+        return self.fuel
+    def set_fuel(self, fuel):
+        self.fuel = fuel
+    def get_water_level(self):
+        return self.water_level
+    def set_water_level(self, water_level):
+        self.water_level = water_level
     def get_x(self):
         return self.x
     def set_x(self, x):
