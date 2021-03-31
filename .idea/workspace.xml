@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="56453584-72bd-49f4-a39c-fccf91ab20c6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/definitions.py" beforeDir="false" afterPath="$PROJECT_DIR$/definitions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fertilizer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/py.py" beforeDir="false" afterPath="$PROJECT_DIR$/py.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/tractor.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,6 +86,7 @@
       <workItem from="1616517732434" duration="704000" />
       <workItem from="1616874983490" duration="2052000" />
       <workItem from="1617029025208" duration="4359000" />
+      <workItem from="1617101776539" duration="127000" />
     </task>
     <servers />
   </component>
@@ -129,10 +126,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1879" height="364" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1616326478875" />
-    <state x="0" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1617029024880">
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1617101776536">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="0" y="0" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1617029024880" />
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1617101776536" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/SmartTractor$py.coverage" NAME="py Coverage Results" MODIFIED="1617033003775" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
