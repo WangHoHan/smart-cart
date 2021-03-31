@@ -1,11 +1,23 @@
 import definitions
 class Tractor:
-    def __init__(self, fertilizer, fuel, water_level, x, y):
+    def __init__(self, amount_of_seeds, collected_plants, fertilizer, fuel, water_level, x, y):
+        self.amount_of_seeds = amount_of_seeds
+        self.collected_plants = collected_plants
         self.fertilizer = fertilizer
         self.fuel = fuel
         self.water_level = water_level
         self.x = x
         self.y = y
+    def get_amount_of_seeds(self, name):
+        return self.amount_of_seeds[name]
+    def set_amount_of_seeds(self, name, value):
+        self.amount_of_seeds[name] = value
+    def get_all_collected_plants(self):
+        return self.collected_plants["beetroot"] + self.collected_plants["carrot"] + self.collected_plants["potato"] + self.collected_plants["wheat"]
+    def get_collected_plants(self, name):
+        return self.collected_plants[name]
+    def set_collected_plants(self, name, value):
+        self.collected_plants[name] = value
     def get_fertilizer(self, name):
         return self.fertilizer[name]
     def set_fertilizer(self, name, value):

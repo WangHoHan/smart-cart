@@ -1,12 +1,12 @@
 class Soil:
-    def __init__(self, fertilizer, state, water_level):
-        self.fertilizer = fertilizer
+    def __init__(self, is_fertilized, state, water_level):
+        self.is_fertilized = is_fertilized
         self.state = state
         self.water_level = water_level
-    def get_fertilizer(self):
-        return self.fertilizer
-    def set_fertilizer(self, fertilizer):
-        self.fertilizer = fertilizer
+    def get_is_fertilized(self):
+        return self.is_fertilized
+    def set_is_fertilized(self, is_fertilized):
+        self.is_fertilized = is_fertilized
     def get_state(self):
         return self.state
     def set_state(self, state):
