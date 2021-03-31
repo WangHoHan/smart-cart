@@ -1,6 +1,8 @@
 import os
 import pygame
 BLOCK_SIZE = 100
+BEETROOTS_GROW_TIME = 5
+BEETROOTS_MAXIMUM_STATE = 16
 BEETROOTSTAGE1 = pygame.image.load(os.path.join('resources', 'beetroots_stage1.png'))
 BEETROOTSTAGE1 = pygame.transform.scale(BEETROOTSTAGE1, (BLOCK_SIZE, BLOCK_SIZE))
 BEETROOTSTAGE2 = pygame.image.load(os.path.join('resources', 'beetroots_stage2.png'))
@@ -9,6 +11,8 @@ BEETROOTSTAGE3 = pygame.image.load(os.path.join('resources', 'beetroots_stage3.p
 BEETROOTSTAGE3 = pygame.transform.scale(BEETROOTSTAGE3, (BLOCK_SIZE, BLOCK_SIZE))
 BEETROOTSTAGE4 = pygame.image.load(os.path.join('resources', 'beetroots_stage4.png'))
 BEETROOTSTAGE4 = pygame.transform.scale(BEETROOTSTAGE4, (BLOCK_SIZE, BLOCK_SIZE))
+CARROTS_GROW_TIME = 5
+CARROTS_MAXIMUM_STATE = 16
 CARROTSTAGE1 = pygame.image.load(os.path.join('resources', 'carrots_stage1.png'))
 CARROTSTAGE1 = pygame.transform.scale(CARROTSTAGE1, (BLOCK_SIZE, BLOCK_SIZE))
 CARROTSTAGE2 = pygame.image.load(os.path.join('resources', 'carrots_stage2.png'))
@@ -24,12 +28,16 @@ FARMLAND = pygame.transform.scale(FARMLAND, (BLOCK_SIZE, BLOCK_SIZE))
 FARMLANDMOIST = pygame.image.load(os.path.join('resources', 'farmland_moist.png'))
 FARMLANDMOIST = pygame.transform.scale(FARMLANDMOIST, (BLOCK_SIZE, BLOCK_SIZE))
 FPS = 1
+POTATOES_GROW_TIME = 5
+POTATOES_MAXIMUM_STATE = 16
 POTATOSTAGE1 = pygame.image.load(os.path.join('resources', 'potatoes_stage1.png'))
 POTATOSTAGE1 = pygame.transform.scale(POTATOSTAGE1, (BLOCK_SIZE, BLOCK_SIZE))
 POTATOSTAGE2 = pygame.image.load(os.path.join('resources', 'potatoes_stage2.png'))
 POTATOSTAGE2 = pygame.transform.scale(POTATOSTAGE2, (BLOCK_SIZE, BLOCK_SIZE))
 POTATOSTAGE3 = pygame.image.load(os.path.join('resources', 'potatoes_stage3.png'))
 POTATOSTAGE3 = pygame.transform.scale(POTATOSTAGE3, (BLOCK_SIZE, BLOCK_SIZE))
+POTATOSTAGE4 = pygame.image.load(os.path.join('resources', 'potatoes_stage4.png'))
+POTATOSTAGE4 = pygame.transform.scale(POTATOSTAGE4, (BLOCK_SIZE, BLOCK_SIZE))
 WIDTH, HEIGHT = 1000, 1000
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 TRACTOR = pygame.image.load(os.path.join('resources', 'tractor.png'))

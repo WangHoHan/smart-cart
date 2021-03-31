@@ -8,6 +8,8 @@ class Tractor:
         self.water_level = water_level
         self.x = x
         self.y = y
+    def get_all_amount_of_seeds(self):
+        return self.amount_of_seeds["beetroot"] + self.amount_of_seeds["carrot"] + self.amount_of_seeds["potato"] + self.amount_of_seeds["wheat"]
     def get_amount_of_seeds(self, name):
         return self.amount_of_seeds[name]
     def set_amount_of_seeds(self, name, value):
