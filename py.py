@@ -23,52 +23,60 @@ def fill_map():
             field = fields[i][j]
             rect = field.get_rect()
             if field.get_plant().get_name() == "beetroot" and field.get_plant().get_state() > 0 and field.get_plant().get_state() <= 1 * definitions.BEETROOTS_GROW_TIME:
-                block = definitions.BEETROOTSTAGE1
+                block = definitions.BEETROOTS_STAGE_0
             elif field.get_plant().get_name() == "beetroot" and field.get_plant().get_state() > 1 * definitions.BEETROOTS_GROW_TIME and field.get_plant().get_state() <= 2 * definitions.BEETROOTS_GROW_TIME:
-                block = definitions.BEETROOTSTAGE2
+                block = definitions.BEETROOTS_STAGE_1
             elif field.get_plant().get_name() == "beetroot" and field.get_plant().get_state() > 2 * definitions.BEETROOTS_GROW_TIME and field.get_plant().get_state() <= 3 * definitions.BEETROOTS_GROW_TIME:
-                block = definitions.BEETROOTSTAGE3
-            elif field.get_plant().get_name() == "beetroot" and field.get_plant().get_state() == 3 *definitions.BEETROOTS_GROW_TIME + 1:
-                block = definitions.BEETROOTSTAGE4
+                block = definitions.BEETROOTS_STAGE_2
+            elif field.get_plant().get_name() == "beetroot" and field.get_plant().get_state() == definitions.BEETROOTS_MAXIMUM_STATE:
+                block = definitions.BEETROOTS_STAGE_3
             elif field.get_plant().get_name() == "carrot" and field.get_plant().get_state() > 0 and field.get_plant().get_state() <= 1 * definitions.CARROTS_GROW_TIME:
-                block = definitions.CARROTSTAGE1
+                block = definitions.CARROTS_STAGE_0
             elif field.get_plant().get_name() == "carrot" and field.get_plant().get_state() > 1 * definitions.CARROTS_GROW_TIME and field.get_plant().get_state() <= 2 * definitions.CARROTS_GROW_TIME:
-                block = definitions.CARROTSTAGE2
+                block = definitions.CARROTS_STAGE_1
             elif field.get_plant().get_name() == "carrot" and field.get_plant().get_state() > 2 * definitions.CARROTS_GROW_TIME and field.get_plant().get_state() <= 3 * definitions.CARROTS_GROW_TIME:
-                block = definitions.CARROTSTAGE3
-            elif field.get_plant().get_name() == "carrot" and field.get_plant().get_state() == 3 *definitions.CARROTS_GROW_TIME + 1:
-                block = definitions.CARROTSTAGE4
+                block = definitions.CARROTS_STAGE_2
+            elif field.get_plant().get_name() == "carrot" and field.get_plant().get_state() == definitions.CARROTS_MAXIMUM_STATE:
+                block = definitions.CARROTS_STAGE_3
             elif field.get_plant().get_name() == "potato" and field.get_plant().get_state() > 0 and field.get_plant().get_state() <= 1 * definitions.POTATOES_GROW_TIME:
-                block = definitions.POTATOSTAGE1
+                block = definitions.POTATOES_STAGE_0
             elif field.get_plant().get_name() == "potato" and field.get_plant().get_state() > 1 * definitions.POTATOES_GROW_TIME and field.get_plant().get_state() <= 2 * definitions.POTATOES_GROW_TIME:
-                block = definitions.POTATOSTAGE2
+                block = definitions.POTATOES_STAGE_1
             elif field.get_plant().get_name() == "potato" and field.get_plant().get_state() > 2 * definitions.POTATOES_GROW_TIME and field.get_plant().get_state() <= 3 * definitions.POTATOES_GROW_TIME:
-                block = definitions.POTATOSTAGE3
-            elif field.get_plant().get_name() == "potato" and field.get_plant().get_state() == 3 *definitions.POTATOES_GROW_TIME + 1:
-                block = definitions.POTATOSTAGE4
+                block = definitions.POTATOES_STAGE_2
+            elif field.get_plant().get_name() == "potato" and field.get_plant().get_state() == definitions.POTATOES_MAXIMUM_STATE:
+                block = definitions.POTATOES_STAGE_3
             elif field.get_plant().get_name() == "wheat" and field.get_plant().get_state() > 0 and field.get_plant().get_state() <= 1 * definitions.WHEAT_GROW_TIME:
-                block = definitions.WHEATSTAGE1
+                block = definitions.WHEAT_STAGE_0
             elif field.get_plant().get_name() == "wheat" and field.get_plant().get_state() > 1 * definitions.WHEAT_GROW_TIME and field.get_plant().get_state() <= 2 * definitions.WHEAT_GROW_TIME:
-                block = definitions.WHEATSTAGE2
+                block = definitions.WHEAT_STAGE_1
             elif field.get_plant().get_name() == "wheat" and field.get_plant().get_state() > 2 * definitions.WHEAT_GROW_TIME and field.get_plant().get_state() <= 3 * definitions.WHEAT_GROW_TIME:
-                block = definitions.WHEATSTAGE3
+                block = definitions.WHEAT_STAGE_2
             elif field.get_plant().get_name() == "wheat" and field.get_plant().get_state() > 3 * definitions.WHEAT_GROW_TIME and field.get_plant().get_state() <= 4 * definitions.WHEAT_GROW_TIME:
-                block = definitions.WHEATSTAGE4
-            elif field.get_plant().get_name() == "wheat" and field.get_plant().get_state() == 4 *definitions.WHEAT_GROW_TIME + 1:
-                block = definitions.WHEATSTAGE5
+                block = definitions.WHEAT_STAGE_3
+            elif field.get_plant().get_name() == "wheat" and field.get_plant().get_state() > 4 * definitions.WHEAT_GROW_TIME and field.get_plant().get_state() <= 5 * definitions.WHEAT_GROW_TIME:
+                block = definitions.WHEAT_STAGE_4
+            elif field.get_plant().get_name() == "wheat" and field.get_plant().get_state() > 5 * definitions.WHEAT_GROW_TIME and field.get_plant().get_state() <= 6 * definitions.WHEAT_GROW_TIME:
+                block = definitions.WHEAT_STAGE_5
+            elif field.get_plant().get_name() == "wheat" and field.get_plant().get_state() > 6 * definitions.WHEAT_GROW_TIME and field.get_plant().get_state() <= 7 * definitions.WHEAT_GROW_TIME:
+                block = definitions.WHEAT_STAGE_6
+            elif field.get_plant().get_name() == "wheat" and field.get_plant().get_state() == definitions.WHEAT_MAXIMUM_STATE:
+                block = definitions.WHEAT_STAGE_7
             elif field.get_soil().get_state() is False:
                 block = definitions.DIRT
             elif field.get_soil().get_state() is True and field.get_soil().get_water_level() is False:
-                block = definitions.FARMLAND
+                block = definitions.FARMLAND_DRY
             elif field.get_soil().get_state() is True and field.get_soil().get_water_level() is True:
-                block = definitions.FARMLANDMOIST
-            definitions.WIN.blit(block, (rect.x, rect.y))
+                block = definitions.FARMLAND_WET
+            if (block != definitions.DIRT or block != definitions.FARMLAND_DRY or block != definitions.FARMLAND_WET):
+                definitions.WINDOW.blit(definitions.FARMLAND_WET, (rect.x, rect.y))
+            definitions.WINDOW.blit(block, (rect.x, rect.y))
 def do_work(tractor1, tractor1_rect):
     loop = True
     if tractor1.get_all_amount_of_seeds() == 0:
         loop = False
-    x = int(tractor1_rect.x/100)
-    y = int(tractor1_rect.y/100)
+    x = int(tractor1_rect.x / 100)
+    y = int(tractor1_rect.y / 100)
     field = fields[x][y]
     if field.get_soil().get_state() is False:
         field.get_soil().set_state(True)
@@ -140,7 +148,7 @@ def do_work(tractor1, tractor1_rect):
         tractor1.set_collected_plants("wheat", tractor1.get_collected_plants("wheat") + 1)
 def draw_window(tractor1_rect):
     fill_map()
-    definitions.WIN.blit(definitions.TRACTOR, (tractor1_rect.x, tractor1_rect.y))
+    definitions.WINDOW.blit(definitions.TRACTOR, (tractor1_rect.x, tractor1_rect.y))
     pygame.display.update()
 def grow_plants():
     for i in range(10):
@@ -198,7 +206,7 @@ def main():
     amount_of_seeds_dict = {"beetroot": definitions.TRACTOR_AMOUNT_OF_SEEDS_EACH_TYPE, "carrot": definitions.TRACTOR_AMOUNT_OF_SEEDS_EACH_TYPE, "potato": definitions.TRACTOR_AMOUNT_OF_SEEDS_EACH_TYPE, "wheat": definitions.TRACTOR_AMOUNT_OF_SEEDS_EACH_TYPE}
     collected_plants_dict = {"beetroot": 0, "carrot": 0, "potato": 0, "wheat": 0}
     fertilizer_dict = {"beetroot": definitions.TRACTOR_FERTILIZER, "carrot": definitions.TRACTOR_FERTILIZER, "potato": definitions.TRACTOR_FERTILIZER, "wheat": definitions.TRACTOR_FERTILIZER}
-    tractor1 = tractor.Tractor(amount_of_seeds_dict, collected_plants_dict, fertilizer_dict, definitions.TRACTOR_FUEL, definitions.TRACTOR_WATER_LEVEL ,0, 0)
+    tractor1 = tractor.Tractor(amount_of_seeds_dict, collected_plants_dict, fertilizer_dict, definitions.TRACTOR_FUEL, definitions.TRACTOR_WATER_LEVEL, 0, 0)
     tractor1_rect = pygame.Rect(tractor1.get_x(), tractor1.get_y(), definitions.BLOCK_SIZE, definitions.BLOCK_SIZE)
     clock = pygame.time.Clock()
     run = True
@@ -208,9 +216,9 @@ def main():
             if event.type == pygame.QUIT:
                 run = False
         draw_window(tractor1_rect)
-        grow_plants()
         tractor1_handle_movement(tractor1, tractor1_rect)
         do_work(tractor1, tractor1_rect)
+        grow_plants()
     pygame.quit()
 if __name__ == "__main__":
     main()
