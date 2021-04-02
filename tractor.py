@@ -49,6 +49,29 @@ class Tractor:
         self.x = self.x + definitions.BLOCK_SIZE
     def move_up(self):
         self.y = self.y - definitions.BLOCK_SIZE
+    def station_restore(self, station1):
+        station1.set_collected_plants("beetroot",
+                                      station1.get_collected_plants("beetroot") + self.get_collected_plants("beetroot"))
+        self.set_collected_plants("beetroot", 0)
+        station1.set_collected_plants("carrot",
+                                      station1.get_collected_plants("carrot") + self.get_collected_plants("carrot"))
+        self.set_collected_plants("carrot", 0)
+        station1.set_collected_plants("potato",
+                                      station1.get_collected_plants("potato") + self.get_collected_plants("potato"))
+        self.set_collected_plants("potato", 0)
+        station1.set_collected_plants("wheat",
+                                      station1.get_collected_plants("wheat") + self.get_collected_plants("wheat"))
+        self.set_collected_plants("wheat", 0)
+        self.set_amount_of_seeds("beetroot", definitions.TRACTOR_AMOUNT_OF_SEEDS_EACH_TYPE)
+        self.set_amount_of_seeds("carrot", definitions.TRACTOR_AMOUNT_OF_SEEDS_EACH_TYPE)
+        self.set_amount_of_seeds("potato", definitions.TRACTOR_AMOUNT_OF_SEEDS_EACH_TYPE)
+        self.set_amount_of_seeds("wheat", definitions.TRACTOR_AMOUNT_OF_SEEDS_EACH_TYPE)
+        self.set_fertilizer("beetroot", definitions.TRACTOR_FERTILIZER)
+        self.set_fertilizer("carrot", definitions.TRACTOR_FERTILIZER)
+        self.set_fertilizer("potato", definitions.TRACTOR_FERTILIZER)
+        self.set_fertilizer("wheat", definitions.TRACTOR_FERTILIZER)
+        self.set_fuel(definitions.TRACTOR_FUEL)
+        self.set_water_level(definitions.TRACTOR_WATER_LEVEL)
     def do_work(self, map1, station1, tractor1_rect):
         loop = True
         if self.get_all_amount_of_seeds() == 0:
@@ -57,24 +80,7 @@ class Tractor:
         y = int(tractor1_rect.y / definitions.BLOCK_SIZE)
         field = map1.get_fields()[x][y]
         if x == 0 and y == 0:
-            station1.set_collected_plants("beetroot", station1.get_collected_plants("beetroot") + self.get_collected_plants("beetroot"))
-            self.set_collected_plants("beetroot", 0)
-            station1.set_collected_plants("carrot", station1.get_collected_plants("carrot") + self.get_collected_plants("carrot"))
-            self.set_collected_plants("carrot", 0)
-            station1.set_collected_plants("potato", station1.get_collected_plants("potato") + self.get_collected_plants("potato"))
-            self.set_collected_plants("potato", 0)
-            station1.set_collected_plants("wheat", station1.get_collected_plants("wheat") + self.get_collected_plants("wheat"))
-            self.set_collected_plants("wheat", 0)
-            self.set_amount_of_seeds("beetroot", definitions.TRACTOR_AMOUNT_OF_SEEDS_EACH_TYPE)
-            self.set_amount_of_seeds("carrot", definitions.TRACTOR_AMOUNT_OF_SEEDS_EACH_TYPE)
-            self.set_amount_of_seeds("potato", definitions.TRACTOR_AMOUNT_OF_SEEDS_EACH_TYPE)
-            self.set_amount_of_seeds("wheat", definitions.TRACTOR_AMOUNT_OF_SEEDS_EACH_TYPE)
-            self.set_fertilizer("beetroot", definitions.TRACTOR_FERTILIZER)
-            self.set_fertilizer("carrot", definitions.TRACTOR_FERTILIZER)
-            self.set_fertilizer("potato", definitions.TRACTOR_FERTILIZER)
-            self.set_fertilizer("wheat", definitions.TRACTOR_FERTILIZER)
-            self.set_fuel(definitions.TRACTOR_FUEL)
-            self.set_water_level(definitions.TRACTOR_WATER_LEVEL)
+            self.station_restore(station1)
         elif field.get_soil().get_state() is False:
             field.get_soil().set_state(True)
         elif field.get_soil().get_state() is True and field.get_soil().get_water_level() is False and self.get_water_level() > 0:
