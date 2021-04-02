@@ -4,7 +4,10 @@
     <list default="true" id="56453584-72bd-49f4-a39c-fccf91ab20c6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/definitions.py" beforeDir="false" afterPath="$PROJECT_DIR$/definitions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plant.py" beforeDir="false" afterPath="$PROJECT_DIR$/plant.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/py.py" beforeDir="false" afterPath="$PROJECT_DIR$/py.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/rail_detector_powered.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/tractor.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,6 +99,8 @@
       <workItem from="1617370723478" duration="1838000" />
       <workItem from="1617372800679" duration="949000" />
       <workItem from="1617383739568" duration="1714000" />
+      <workItem from="1617396071094" duration="3170000" />
+      <workItem from="1617399305318" duration="2444000" />
     </task>
     <servers />
   </component>
@@ -103,22 +108,22 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1879" height="364" key="GridCell.Tab.0.bottom" timestamp="1617385468328">
+    <state width="1879" height="295" key="GridCell.Tab.0.bottom" timestamp="1617401771495">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1879" height="364" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1617385468328" />
-    <state width="1879" height="364" key="GridCell.Tab.0.center" timestamp="1617385468327">
+    <state width="1879" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1617401771495" />
+    <state width="1879" height="295" key="GridCell.Tab.0.center" timestamp="1617401771495">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1879" height="364" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1617385468327" />
-    <state width="1879" height="364" key="GridCell.Tab.0.left" timestamp="1617385468327">
+    <state width="1879" height="295" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1617401771495" />
+    <state width="1879" height="295" key="GridCell.Tab.0.left" timestamp="1617401771494">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1879" height="364" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1617385468327" />
-    <state width="1879" height="364" key="GridCell.Tab.0.right" timestamp="1617385468327">
+    <state width="1879" height="295" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1617401771494" />
+    <state width="1879" height="295" key="GridCell.Tab.0.right" timestamp="1617401771495">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1879" height="364" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1617385468327" />
+    <state width="1879" height="295" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1617401771495" />
     <state width="1879" height="364" key="GridCell.Tab.1.bottom" timestamp="1617385468328">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -135,12 +140,12 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1879" height="364" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1617385468328" />
-    <state x="0" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1617383739858">
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1617396163208">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="0" y="0" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1617383739858" />
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1617396163208" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SmartTractor$py.coverage" NAME="py Coverage Results" MODIFIED="1617385384539" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SmartTractor$py.coverage" NAME="py Coverage Results" MODIFIED="1617401748390" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

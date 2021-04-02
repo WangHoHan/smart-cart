@@ -1,3 +1,4 @@
+import definitions
 class Plant:
     def __init__(self, name, state):
         self.name = name
@@ -10,3 +11,16 @@ class Plant:
         return self.state
     def set_state(self, state):
         self.state = state
+    @staticmethod
+    def grow_plants(map1):
+        for i in range(definitions.WIDTH_AMOUNT):
+            for j in range(definitions.HEIGHT_AMOUNT):
+                field = map1.get_fields()[i][j]
+                if field.get_plant().get_name() == "beetroot" and field.get_plant().get_state() > 0 and field.get_plant().get_state() < definitions.BEETROOTS_MAXIMUM_STATE:
+                    field.get_plant().set_state(field.get_plant().get_state() + 1)
+                elif field.get_plant().get_name() == "carrot" and field.get_plant().get_state() > 0 and field.get_plant().get_state() < definitions.CARROTS_MAXIMUM_STATE:
+                    field.get_plant().set_state(field.get_plant().get_state() + 1)
+                elif field.get_plant().get_name() == "potato" and field.get_plant().get_state() > 0 and field.get_plant().get_state() < definitions.POTATOES_MAXIMUM_STATE:
+                    field.get_plant().set_state(field.get_plant().get_state() + 1)
+                elif field.get_plant().get_name() == "wheat" and field.get_plant().get_state() > 0 and field.get_plant().get_state() < definitions.WHEAT_MAXIMUM_STATE:
+                    field.get_plant().set_state(field.get_plant().get_state() + 1)
