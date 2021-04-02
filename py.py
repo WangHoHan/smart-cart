@@ -8,9 +8,9 @@ import tractor
 pygame.display.set_caption("Smart Tractor")
 fields = []
 def create_base_map():
-    for i in range(10):
+    for i in range(definitions.WIDTH_AMOUNT):
         temp_map_field = []
-        for j in range(10):
+        for j in range(definitions.HEIGHT_AMOUNT):
             temp_rect = pygame.Rect(i * definitions.BLOCK_SIZE, j * definitions.BLOCK_SIZE, definitions.BLOCK_SIZE, definitions.BLOCK_SIZE)
             temp_soil = soil.Soil(False, False, False)
             temp_plant = plant.Plant("none", 0)
@@ -18,8 +18,8 @@ def create_base_map():
             temp_map_field.append(temp_field)
         fields.append(temp_map_field)
 def fill_map():
-    for i in range(10):
-        for j in range(10):
+    for i in range(definitions.WIDTH_AMOUNT):
+        for j in range(definitions.HEIGHT_AMOUNT):
             field = fields[i][j]
             rect = field.get_rect()
             if field.get_plant().get_name() == "beetroot" and field.get_plant().get_state() > 0 and field.get_plant().get_state() <= 1 * definitions.BEETROOTS_GROW_TIME:
@@ -75,8 +75,8 @@ def do_work(tractor1, tractor1_rect):
     loop = True
     if tractor1.get_all_amount_of_seeds() == 0:
         loop = False
-    x = int(tractor1_rect.x / 100)
-    y = int(tractor1_rect.y / 100)
+    x = int(tractor1_rect.x / definitions.BLOCK_SIZE)
+    y = int(tractor1_rect.y / definitions.BLOCK_SIZE)
     field = fields[x][y]
     if field.get_soil().get_state() is False:
         field.get_soil().set_state(True)
@@ -151,8 +151,8 @@ def draw_window(tractor1_rect):
     definitions.WINDOW.blit(definitions.TRACTOR, (tractor1_rect.x, tractor1_rect.y))
     pygame.display.update()
 def grow_plants():
-    for i in range(10):
-        for j in range(10):
+    for i in range(definitions.WIDTH_AMOUNT):
+        for j in range(definitions.HEIGHT_AMOUNT):
             field = fields[i][j]
             if field.get_plant().get_name() == "beetroot" and field.get_plant().get_state() > 0 and field.get_plant().get_state() < definitions.BEETROOTS_MAXIMUM_STATE:
                 field.get_plant().set_state(field.get_plant().get_state() + 1)

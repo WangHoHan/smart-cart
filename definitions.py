@@ -1,6 +1,6 @@
 import os
 import pygame
-BLOCK_SIZE = 100
+BLOCK_SIZE = 60
 BEETROOTS_GROW_TIME = 5
 BEETROOTS_MAXIMUM_STATE = BEETROOTS_GROW_TIME * 3 + 1
 BEETROOTS_STAGE_0 = pygame.image.load(os.path.join('resources', 'beetroots_stage_0.png'))
@@ -23,6 +23,8 @@ CARROTS_STAGE_3 = pygame.image.load(os.path.join('resources', 'carrots_stage_3.p
 CARROTS_STAGE_3 = pygame.transform.scale(CARROTS_STAGE_3, (BLOCK_SIZE, BLOCK_SIZE))
 DIRT = pygame.image.load(os.path.join('resources', 'dirt.png'))
 DIRT = pygame.transform.scale(DIRT, (BLOCK_SIZE, BLOCK_SIZE))
+HEIGHT_AMOUNT, WIDTH_AMOUNT = 10, 10
+HEIGHT,  WIDTH = BLOCK_SIZE * HEIGHT_AMOUNT, BLOCK_SIZE * WIDTH_AMOUNT
 FARMLAND_DRY = pygame.image.load(os.path.join('resources', 'farmland_dry.png'))
 FARMLAND_DRY = pygame.transform.scale(FARMLAND_DRY, (BLOCK_SIZE, BLOCK_SIZE))
 FARMLAND_WET = pygame.image.load(os.path.join('resources', 'farmland_wet.png'))
@@ -38,7 +40,6 @@ POTATOES_STAGE_2 = pygame.image.load(os.path.join('resources', 'potatoes_stage_2
 POTATOES_STAGE_2 = pygame.transform.scale(POTATOES_STAGE_2, (BLOCK_SIZE, BLOCK_SIZE))
 POTATOES_STAGE_3 = pygame.image.load(os.path.join('resources', 'potatoes_stage_3.png'))
 POTATOES_STAGE_3 = pygame.transform.scale(POTATOES_STAGE_3, (BLOCK_SIZE, BLOCK_SIZE))
-WIDTH, HEIGHT = 1000, 1000
 WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
 TRACTOR = pygame.image.load(os.path.join('resources', 'minecart_command_block.png'))
 TRACTOR = pygame.transform.scale(TRACTOR, (BLOCK_SIZE, BLOCK_SIZE))
