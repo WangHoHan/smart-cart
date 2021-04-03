@@ -1,8 +1,8 @@
 import definitions
 class Plant:
     def __init__(self, name, state):
-        self.name = name
-        self.state = state
+        self.name = name #nazwa rośliny np. "wheat"
+        self.state = state #etap rozwoju rośliny
     def get_name(self):
         return self.name
     def set_name(self, name):
@@ -12,7 +12,7 @@ class Plant:
     def set_state(self, state):
         self.state = state
     @staticmethod
-    def grow_plants(map1):
+    def grow_plants(map1): #metoda statyczna, która zwiększa pole state (etap rozwoju rośliny) dla danej rośliny na danym polu o 1
         for i in range(definitions.WIDTH_AMOUNT):
             for j in range(definitions.HEIGHT_AMOUNT):
                 field = map1.get_fields()[i][j]

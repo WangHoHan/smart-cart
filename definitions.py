@@ -1,3 +1,4 @@
+#definicje
 import os
 import pygame
 BLOCK_SIZE = 60

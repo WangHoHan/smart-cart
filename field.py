@@ -1,5 +1,5 @@
 class Field:
-    def __init__(self, plant, rect, soil):
+    def __init__(self, plant, rect, soil): #składa się z rośliny oraz gleby, plus koordynaty danego pola
         self.plant = plant
         self.rect = rect
         self.soil = soil

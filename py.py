@@ -6,6 +6,7 @@ import station
 import tractor
 pygame.display.set_caption("Smart Tractor")
 def main():
+    #tworzenie podstawowych obiektów
     map1 = map.Map([])
     map1.create_base_map()
     amount_of_seeds_dict = {"beetroot": definitions.TRACTOR_AMOUNT_OF_SEEDS_EACH_TYPE, "carrot": definitions.TRACTOR_AMOUNT_OF_SEEDS_EACH_TYPE, "potato": definitions.TRACTOR_AMOUNT_OF_SEEDS_EACH_TYPE, "wheat": definitions.TRACTOR_AMOUNT_OF_SEEDS_EACH_TYPE}
@@ -16,7 +17,7 @@ def main():
     tractor1_rect = pygame.Rect(tractor1.get_x(), tractor1.get_y(), definitions.BLOCK_SIZE, definitions.BLOCK_SIZE)
     clock = pygame.time.Clock()
     run = True
-    while run:
+    while run: #pętla główna programu
         clock.tick(definitions.FPS)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:

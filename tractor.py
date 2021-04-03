@@ -2,28 +2,28 @@ import definitions
 import random
 class Tractor:
     def __init__(self, amount_of_seeds, collected_plants, fertilizer, fuel, water_level, x, y):
-        self.amount_of_seeds = amount_of_seeds
-        self.collected_plants = collected_plants
-        self.fertilizer = fertilizer
-        self.fuel = fuel
-        self.water_level = water_level
+        self.amount_of_seeds = amount_of_seeds #amount_of_seeds to słownik, przechowuje informacje o posiadanej ilości ziaren dla danej rośliny
+        self.collected_plants = collected_plants #collected_plants to słownik, przechowuje informacje o zebranych plonach
+        self.fertilizer = fertilizer #fertilizer to słownik, przechowuje informacje o ilości posiadanego nawozu dla konkretnej rośliny
+        self.fuel = fuel #aktualna ilość paliwa
+        self.water_level = water_level #aktualna ilość wody do podlewania
         self.x = x
         self.y = y
-    def get_all_amount_of_seeds(self):
+    def get_all_amount_of_seeds(self): #zwraca łączną ilość ziaren (suma ziaren dla wszystkich roślin)
         return self.amount_of_seeds["beetroot"] + self.amount_of_seeds["carrot"] + self.amount_of_seeds["potato"] + self.amount_of_seeds["wheat"]
-    def get_amount_of_seeds(self, name):
+    def get_amount_of_seeds(self, name): #zwraca łączną ilość ziaren dla podanej rośliny (name)
         return self.amount_of_seeds[name]
-    def set_amount_of_seeds(self, name, value):
+    def set_amount_of_seeds(self, name, value): #dla podanej rośliny (name) ustawia łączną ilość ziaren (value)
         self.amount_of_seeds[name] = value
-    def get_all_collected_plants(self):
+    def get_all_collected_plants(self): #zwraca łączną ilość zebranych plonów (suma plonów wszystkich roślin)
         return self.collected_plants["beetroot"] + self.collected_plants["carrot"] + self.collected_plants["potato"] + self.collected_plants["wheat"]
-    def get_collected_plants(self, name):
+    def get_collected_plants(self, name): #zwraca łączną ilość zebranych plonów dla podanej rośliny (name)
         return self.collected_plants[name]
-    def set_collected_plants(self, name, value):
+    def set_collected_plants(self, name, value): #dla podanej rośliny (name) ustawia łączną ilość zebranych plonów (value)
         self.collected_plants[name] = value
-    def get_fertilizer(self, name):
+    def get_fertilizer(self, name): #zwraca łączną ilość posiadanego nawozu dla podanej rośliny (name)
         return self.fertilizer[name]
-    def set_fertilizer(self, name, value):
+    def set_fertilizer(self, name, value): #dla podanej rośliny (name) ustawia ilość posiadanego nawozu (value)
         self.fertilizer[name] = value
     def get_fuel(self):
         return self.fuel
@@ -49,18 +49,14 @@ class Tractor:
         self.x = self.x + definitions.BLOCK_SIZE
     def move_up(self):
         self.y = self.y - definitions.BLOCK_SIZE
-    def station_restore(self, station1):
-        station1.set_collected_plants("beetroot",
-                                      station1.get_collected_plants("beetroot") + self.get_collected_plants("beetroot"))
+    def station_restore(self, station1): #aktualizuje stan stacji pod względem oddanych plonów oraz uzupełnia zapasy traktora
+        station1.set_collected_plants("beetroot", station1.get_collected_plants("beetroot") + self.get_collected_plants("beetroot"))
         self.set_collected_plants("beetroot", 0)
-        station1.set_collected_plants("carrot",
-                                      station1.get_collected_plants("carrot") + self.get_collected_plants("carrot"))
+        station1.set_collected_plants("carrot", station1.get_collected_plants("carrot") + self.get_collected_plants("carrot"))
         self.set_collected_plants("carrot", 0)
-        station1.set_collected_plants("potato",
-                                      station1.get_collected_plants("potato") + self.get_collected_plants("potato"))
+        station1.set_collected_plants("potato", station1.get_collected_plants("potato") + self.get_collected_plants("potato"))
         self.set_collected_plants("potato", 0)
-        station1.set_collected_plants("wheat",
-                                      station1.get_collected_plants("wheat") + self.get_collected_plants("wheat"))
+        station1.set_collected_plants("wheat", station1.get_collected_plants("wheat") + self.get_collected_plants("wheat"))
         self.set_collected_plants("wheat", 0)
         self.set_amount_of_seeds("beetroot", definitions.TRACTOR_AMOUNT_OF_SEEDS_EACH_TYPE)
         self.set_amount_of_seeds("carrot", definitions.TRACTOR_AMOUNT_OF_SEEDS_EACH_TYPE)
@@ -72,7 +68,7 @@ class Tractor:
         self.set_fertilizer("wheat", definitions.TRACTOR_FERTILIZER)
         self.set_fuel(definitions.TRACTOR_FUEL)
         self.set_water_level(definitions.TRACTOR_WATER_LEVEL)
-    def do_work(self, map1, station1, tractor1_rect):
+    def do_work(self, map1, station1, tractor1_rect): #jaką pracę traktor ma wykonać na danym polu, na którym aktualnie przebywa (zmienia stan logiczny danego pola)
         loop = True
         if self.get_all_amount_of_seeds() == 0:
             loop = False
@@ -149,7 +145,7 @@ class Tractor:
             field.get_soil().set_water_level(False)
             field.get_soil().set_state(False)
             self.set_collected_plants("wheat", self.get_collected_plants("wheat") + 1)
-    def is_move_allowed(self, move, tractor1_rect):
+    def is_move_allowed(self, move, tractor1_rect): #sprawdza czy dany ruch, który chce wykonać traktor jest możliwy, zwraca prawdę lub fałsz
         if move == 1 and tractor1_rect.y + definitions.BLOCK_SIZE + definitions.BLOCK_SIZE <= definitions.HEIGHT:
             return True
         elif move == 2 and tractor1_rect.x - definitions.BLOCK_SIZE >= 0:
@@ -160,7 +156,7 @@ class Tractor:
             return True
         else:
             return False
-    def tractor1_handle_movement(self, tractor1_rect):
+    def tractor1_handle_movement(self, tractor1_rect): #odpowiada za poruszanie się traktora po mapie
         loop = True
         while loop and self.get_fuel() > 0:
             random1 = random.randint(1, 4)

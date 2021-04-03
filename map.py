@@ -5,12 +5,12 @@ import pygame
 import soil
 class Map:
     def __init__(self, fields):
-        self.fields = fields
+        self.fields = fields #przechowuje wszystkie pola (Field)
     def get_fields(self):
         return self.fields
     def set_fields(self, fields):
         self.fields = fields
-    def create_base_map(self):
+    def create_base_map(self): #wypełnia mapę polami z bazowymi logicznymi wartościami
         for i in range(definitions.WIDTH_AMOUNT):
             temp_map_field = []
             for j in range(definitions.HEIGHT_AMOUNT):
@@ -23,7 +23,7 @@ class Map:
                 temp_field = field.Field(temp_plant, temp_rect, temp_soil)
                 temp_map_field.append(temp_field)
             self.fields.append(temp_map_field)
-    def fill_map(self):
+    def fill_map(self): #wypełnia mapę teksturami na podstawie logicznego stanu pól
         for i in range(definitions.WIDTH_AMOUNT):
             for j in range(definitions.HEIGHT_AMOUNT):
                 field = self.fields[i][j]
@@ -81,7 +81,7 @@ class Map:
                 elif block != definitions.DIRT or block != definitions.FARMLAND_DRY or block != definitions.FARMLAND_WET:
                     definitions.WINDOW.blit(definitions.FARMLAND_WET, (rect.x, rect.y))
                 definitions.WINDOW.blit(block, (rect.x, rect.y))
-    def draw_window(self, tractor1_rect):
+    def draw_window(self, tractor1_rect): #rysuje mapę
         self.fill_map()
         definitions.WINDOW.blit(definitions.TRACTOR, (tractor1_rect.x, tractor1_rect.y))
         pygame.display.update()
