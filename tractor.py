@@ -1,9 +1,10 @@
 import definitions
 import random
 class Tractor:
-    def __init__(self, amount_of_seeds, collected_plants, fertilizer, fuel, water_level, x, y):
+    def __init__(self, amount_of_seeds, collected_plants, direction, fertilizer, fuel, water_level, x, y):
         self.amount_of_seeds = amount_of_seeds #amount_of_seeds to słownik, przechowuje informacje o posiadanej ilości ziaren dla danej rośliny
         self.collected_plants = collected_plants #collected_plants to słownik, przechowuje informacje o zebranych plonach
+        self.direction = direction #w którą stronę patrzy, zgodnie ze wskazówkami zegara (1 -: godzina 12, 2 : godzina 3, 3 : godzina 6, 4 : godzina 9)
         self.fertilizer = fertilizer #fertilizer to słownik, przechowuje informacje o ilości posiadanego nawozu dla konkretnej rośliny
         self.fuel = fuel #aktualna ilość paliwa
         self.water_level = water_level #aktualna ilość wody do podlewania
@@ -21,6 +22,10 @@ class Tractor:
         return self.collected_plants[name]
     def set_collected_plants(self, name, value): #dla podanej rośliny (name) ustawia łączną ilość zebranych plonów (value)
         self.collected_plants[name] = value
+    def get_direction(self):
+        return self.direction
+    def set_direction(self, direction):
+        self.direction = direction
     def get_fertilizer(self, name): #zwraca łączną ilość posiadanego nawozu dla podanej rośliny (name)
         return self.fertilizer[name]
     def set_fertilizer(self, name, value): #dla podanej rośliny (name) ustawia ilość posiadanego nawozu (value)
@@ -41,14 +46,25 @@ class Tractor:
         return self.y
     def set_y(self, y):
         self.y = y
-    def move_down(self):
-        self.y = self.y + definitions.BLOCK_SIZE
-    def move_left(self):
-        self.x = self.x - definitions.BLOCK_SIZE
-    def move_right(self):
-        self.x = self.x + definitions.BLOCK_SIZE
-    def move_up(self):
-        self.y = self.y - definitions.BLOCK_SIZE
+    def move(self):
+        if self.direction == definitions.TRACTOR_DIRECTION_EAST:
+            self.x = self.x + definitions.BLOCK_SIZE
+        elif self.direction == definitions.TRACTOR_DIRECTION_NORTH:
+            self.y = self.y - definitions.BLOCK_SIZE
+        elif self.direction == definitions.TRACTOR_DIRECTION_SOUTH:
+            self.y = self.y + definitions.BLOCK_SIZE
+        elif self.direction == definitions.TRACTOR_DIRECTION_WEST:
+            self.x = self.x - definitions.BLOCK_SIZE
+    def rotate_left(self):
+        if self.direction == 1:
+            self.direction = 4
+        else:
+            self.direction = self.direction - 1
+    def rotate_right(self):
+        if self.direction == 4:
+            self.direction = 1
+        else:
+            self.direction = self.direction + 1
     def station_restore(self, station1): #aktualizuje stan stacji pod względem oddanych plonów oraz uzupełnia zapasy traktora
         station1.set_collected_plants("beetroot", station1.get_collected_plants("beetroot") + self.get_collected_plants("beetroot"))
         self.set_collected_plants("beetroot", 0)
@@ -145,41 +161,27 @@ class Tractor:
             field.get_soil().set_water_level(False)
             field.get_soil().set_state(False)
             self.set_collected_plants("wheat", self.get_collected_plants("wheat") + 1)
-    def is_move_allowed(self, move, tractor1_rect): #sprawdza czy dany ruch, który chce wykonać traktor jest możliwy, zwraca prawdę lub fałsz
-        if move == 1 and tractor1_rect.y + definitions.BLOCK_SIZE + definitions.BLOCK_SIZE <= definitions.HEIGHT:
+    def is_move_allowed(self, tractor1_rect): #sprawdza czy dany ruch, który chce wykonać traktor jest możliwy, zwraca prawdę lub fałsz
+        if self.direction == definitions.TRACTOR_DIRECTION_EAST and tractor1_rect.x + definitions.BLOCK_SIZE < definitions.WIDTH:
             return True
-        elif move == 2 and tractor1_rect.x - definitions.BLOCK_SIZE >= 0:
+        elif self.direction == definitions.TRACTOR_DIRECTION_NORTH and tractor1_rect.y - definitions.BLOCK_SIZE >= 0:
             return True
-        elif move == 3 and tractor1_rect.x + definitions.BLOCK_SIZE + definitions.BLOCK_SIZE <= definitions.WIDTH:
+        elif self.direction == definitions.TRACTOR_DIRECTION_SOUTH and tractor1_rect.y + definitions.BLOCK_SIZE < definitions.HEIGHT:
             return True
-        elif move == 4 and tractor1_rect.y - definitions.BLOCK_SIZE >= 0:
+        elif self.direction == definitions.TRACTOR_DIRECTION_WEST and tractor1_rect.x - definitions.BLOCK_SIZE >= 0:
             return True
         else:
             return False
     def tractor1_handle_movement(self, tractor1_rect): #odpowiada za poruszanie się traktora po mapie
         loop = True
         while loop and self.get_fuel() > 0:
-            random1 = random.randint(1, 4)
-            if random1 == 1 and self.is_move_allowed(1, tractor1_rect) is True:
-                self.move_down()
+            if self.is_move_allowed(tractor1_rect) is True:
+                self.move()
                 tractor1_rect.x = self.get_x()
                 tractor1_rect.y = self.get_y()
                 loop = False
-            elif random1 == 2 and self.is_move_allowed(2, tractor1_rect) is True:
-                self.move_left()
-                tractor1_rect.x = self.get_x()
-                tractor1_rect.y = self.get_y()
-                loop = False
-            elif random1 == 3 and self.is_move_allowed(3, tractor1_rect) is True:
-                self.move_right()
-                tractor1_rect.x = self.get_x()
-                tractor1_rect.y = self.get_y()
-                loop = False
-            elif random1 == 4 and self.is_move_allowed(4, tractor1_rect) is True:
-                self.move_up()
-                tractor1_rect.x = self.get_x()
-                tractor1_rect.y = self.get_y()
-                loop = False
+            else:
+                self.rotate_right()
         self.set_fuel(self.get_fuel() - 1)
         if tractor1_rect.x == 0 and tractor1_rect.y == 0:
             self.set_fuel(definitions.TRACTOR_FUEL)
