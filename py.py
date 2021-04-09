@@ -22,7 +22,7 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
-        map1.draw_window(tractor1_rect)
+        map1.draw_window(tractor1, tractor1_rect)
         tractor1.tractor1_handle_movement(tractor1_rect)
         tractor1.do_work(map1, station1, tractor1_rect)
         plant.Plant.grow_plants(map1)

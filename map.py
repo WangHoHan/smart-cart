@@ -81,7 +81,14 @@ class Map:
                 elif block != definitions.DIRT or block != definitions.FARMLAND_DRY or block != definitions.FARMLAND_WET:
                     definitions.WINDOW.blit(definitions.FARMLAND_WET, (rect.x, rect.y))
                 definitions.WINDOW.blit(block, (rect.x, rect.y))
-    def draw_window(self, tractor1_rect): #rysuje mapę
+    def draw_window(self, tractor1, tractor1_rect): #rysuje mapę
         self.fill_map()
-        definitions.WINDOW.blit(definitions.TRACTOR, (tractor1_rect.x, tractor1_rect.y))
+        if tractor1.get_direction() == definitions.TRACTOR_DIRECTION_EAST:
+            definitions.WINDOW.blit(definitions.TRACTOR_DIRECTION_EAST_TEXTURE, (tractor1_rect.x, tractor1_rect.y))
+        elif tractor1.get_direction() == definitions.TRACTOR_DIRECTION_NORTH:
+            definitions.WINDOW.blit(definitions.TRACTOR_DIRECTION_NORTH_TEXTURE, (tractor1_rect.x, tractor1_rect.y))
+        elif tractor1.get_direction() == definitions.TRACTOR_DIRECTION_SOUTH:
+            definitions.WINDOW.blit(definitions.TRACTOR_DIRECTION_SOUTH_TEXTURE, (tractor1_rect.x, tractor1_rect.y))
+        elif tractor1.get_direction() == definitions.TRACTOR_DIRECTION_WEST:
+            definitions.WINDOW.blit(definitions.TRACTOR_DIRECTION_WEST_TEXTURE, (tractor1_rect.x, tractor1_rect.y))
         pygame.display.update()
