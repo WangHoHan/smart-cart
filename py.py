@@ -1,4 +1,5 @@
 import definitions
+import fringe
 import map
 import plant
 import pygame
@@ -7,6 +8,7 @@ import tractor
 pygame.display.set_caption("Smart Tractor")
 def main():
     #tworzenie podstawowych obiektów
+    fringe1 = fringe.Fringe([])
     map1 = map.Map([])
     map1.create_base_map()
     amount_of_seeds_dict = {"beetroot": definitions.TRACTOR_AMOUNT_OF_SEEDS_EACH_TYPE, "carrot": definitions.TRACTOR_AMOUNT_OF_SEEDS_EACH_TYPE, "potato": definitions.TRACTOR_AMOUNT_OF_SEEDS_EACH_TYPE, "wheat": definitions.TRACTOR_AMOUNT_OF_SEEDS_EACH_TYPE}
