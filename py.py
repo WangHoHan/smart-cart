@@ -14,7 +14,7 @@ def main():
     collected_plants_dict = {"beetroot": 0, "carrot": 0, "potato": 0, "wheat": 0}
     fertilizer_dict = {"beetroot": definitions.TRACTOR_FERTILIZER, "carrot": definitions.TRACTOR_FERTILIZER, "potato": definitions.TRACTOR_FERTILIZER, "wheat": definitions.TRACTOR_FERTILIZER}
     station1 = station.Station(collected_plants_dict)
-    tractor1 = tractor.Tractor(amount_of_seeds_dict, collected_plants_dict, definitions.TRACTOR_DIRECTION_SOUTH, fertilizer_dict, definitions.TRACTOR_FUEL, definitions.TRACTOR_WATER_LEVEL, 0, 0)
+    tractor1 = tractor.Tractor(amount_of_seeds_dict, collected_plants_dict, definitions.TRACTOR_DIRECTION_EAST, fertilizer_dict, definitions.TRACTOR_FUEL, definitions.TRACTOR_WATER_LEVEL, 0, 0)
     tractor1_rect = pygame.Rect(tractor1.get_x(), tractor1.get_y(), definitions.BLOCK_SIZE, definitions.BLOCK_SIZE)
     clock = pygame.time.Clock()
     run = True
@@ -23,7 +23,7 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
-        istate = graph.Istate(definitions.TRACTOR_DIRECTION_SOUTH, 0, 0)
+        istate = graph.Istate(definitions.TRACTOR_DIRECTION_EAST, 0, 0)
         istate1 = graph.Istate(None, 4, 4)
         print(graph.graphsearch([], [], istate, graph.succ, istate1))
         map1.draw_window(tractor1, tractor1_rect)

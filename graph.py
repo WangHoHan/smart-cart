@@ -1,3 +1,4 @@
+import copy
 import tractor
 class Node:
     def __init__(self, action, direction, parent, x, y):
@@ -61,19 +62,29 @@ def goal_test(elem, goaltest):
         return False
 def succ(elem):
     actions_list = []
-    actions_list.append(("rotate_left", (elem.get_x(), elem.get_y())))
-    actions_list.append(("rotate_right", (elem.get_x(), elem.get_y())))
+    temp = copy.copy(elem.get_direction())
+    if temp == 1:
+        temp = 4
+    else:
+        temp = temp - 1
+    actions_list.append(("rotate_left", (temp, elem.get_x(), elem.get_y())))
+    temp = copy.copy(elem.get_direction())
+    if temp == 4:
+        temp = 1
+    else:
+        temp = temp + 1
+    actions_list.append(("rotate_right", (temp, elem.get_x(), elem.get_y())))
     if tractor.Tractor.is_move_allowed_succ(elem) == "x + 1":
-        actions_list.append(("move", (elem.set_x(elem.get_x() + 1), elem.get_y())))
+        actions_list.append(("move", (elem.get_direction(), elem.set_x(elem.get_x() + 1), elem.get_y())))
     elif tractor.Tractor.is_move_allowed_succ(elem) == "y - 1":
-        actions_list.append(("move", (elem.get_x(), elem.set_y(elem.get_y() - 1))))
+        actions_list.append(("move", (elem.get_direction(), elem.get_x(), elem.set_y(elem.get_y() - 1))))
     elif tractor.Tractor.is_move_allowed_succ(elem) == "y + 1":
-        actions_list.append(("move", (elem.set_x(elem.get_x()), elem.set_y(elem.get_y() + 1))))
+        actions_list.append(("move", (elem.get_direction(), elem.get_x(), elem.set_y(elem.get_y() + 1))))
     elif tractor.Tractor.is_move_allowed_succ(elem) == "x - 1":
-        actions_list.append(("move", (elem.set_x(elem.get_x() - 1), elem.get_y())))
+        actions_list.append(("move", (elem.get_direction(), elem.set_x(elem.get_x() - 1), elem.get_y())))
     return actions_list
 def graphsearch(fringe, explored, istate, succ, goaltest):
-    node = Node(None, istate.get_direction(), None, istate.get_x(), istate.get_y())
+    node = Node(None, istate.get_direction(), None, istate.get_x(), istate.get_y()) #może None coś nie gra
     #fringe.add_to_fringe(node)
     fringe.append(node)
     while True:
@@ -81,16 +92,17 @@ def graphsearch(fringe, explored, istate, succ, goaltest):
             return False
         #elem = fringe.get_element_from_fringe_pop()
         elem = fringe.pop(0)
+        temp = copy.copy(elem) #żeby explored w for succ() nie zmieniało
         if goal_test(elem, goaltest) is True:
             return explored
         explored.append(elem)
-        for (action, state) in succ(elem):
+        for (action, state) in succ(temp):
             if state not in fringe and state not in explored:
-                x = Node(action, elem.get_direction(), elem, state[0], state[1])
+                x = Node(action, state[0], elem, state[1], state[2])
                 print(state[0])
                 print(state[1])
+                print(state[2])
                 print(x.get_action())
-                print(x.get_direction())
-                print(x.get_parent())
-
+                #print(x.get_direction())
+                #print(x.get_parent())
                 fringe.append(x)
