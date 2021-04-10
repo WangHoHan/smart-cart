@@ -184,17 +184,30 @@ class Tractor:
             return "x - 1"
         else:
             return False
-    def tractor1_handle_movement(self, tractor1_rect): #odpowiada za poruszanie się traktora po mapie
+    def handle_movement(self, move, tractor1_rect): #odpowiada za poruszanie się traktora po mapie
+        if self.get_fuel() > 0:
+            if move == "move":
+                self.move()
+            elif move == "rotate_left":
+                self.rotate_left()
+            elif move == "rotate_right":
+                self.rotate_right()
+            self.set_fuel(self.get_fuel() - 1)
+            tractor1_rect.x = self.get_x()
+            tractor1_rect.y = self.get_y()
+    def handle_random_movement(self, tractor1_rect): #odpowiada za losowe poruszanie się traktora po mapie
         loop = True
         while loop and self.get_fuel() > 0:
-            if self.is_move_allowed(tractor1_rect) is True:
+            random1 = random.randint(1, 3)
+            if random1 == 1 and self.is_move_allowed(tractor1_rect) is True:
                 self.move()
                 tractor1_rect.x = self.get_x()
                 tractor1_rect.y = self.get_y()
                 loop = False
-            else:
+            elif random1 == 2:
+                self.rotate_left()
+                loop = False
+            elif random1 == 3:
                 self.rotate_right()
+                loop = False
         self.set_fuel(self.get_fuel() - 1)
-        if tractor1_rect.x == 0 and tractor1_rect.y == 0:
-            self.set_fuel(definitions.TRACTOR_FUEL)
-            self.set_water_level(definitions.TRACTOR_WATER_LEVEL)
