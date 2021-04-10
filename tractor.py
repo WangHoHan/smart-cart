@@ -174,13 +174,13 @@ class Tractor:
             return False
     @staticmethod
     def is_move_allowed_succ(node): #sprawdza czy dany ruch, który chce wykonać traktor jest możliwy, zwraca pozycje po wykonaniu ruchu, wersja node
-        if node.get_direction() == definitions.TRACTOR_DIRECTION_EAST and node.get_x() + definitions.BLOCK_SIZE < definitions.WIDTH:
+        if node.get_direction() == definitions.TRACTOR_DIRECTION_EAST and node.get_x() * definitions.BLOCK_SIZE + definitions.BLOCK_SIZE < definitions.WIDTH:
             return "x + 1"
-        elif node.get_direction() == definitions.TRACTOR_DIRECTION_NORTH and node.get_y() - definitions.BLOCK_SIZE >= 0:
+        elif node.get_direction() == definitions.TRACTOR_DIRECTION_NORTH and node.get_y() * definitions.BLOCK_SIZE - definitions.BLOCK_SIZE >= 0:
             return "y - 1"
-        elif node.get_direction() == definitions.TRACTOR_DIRECTION_SOUTH and node.get_y() + definitions.BLOCK_SIZE < definitions.HEIGHT:
+        elif node.get_direction() == definitions.TRACTOR_DIRECTION_SOUTH and node.get_y() * definitions.BLOCK_SIZE + definitions.BLOCK_SIZE < definitions.HEIGHT:
             return "y + 1"
-        elif node.get_direction() == definitions.TRACTOR_DIRECTION_WEST and node.get_x() - definitions.BLOCK_SIZE >= 0:
+        elif node.get_direction() == definitions.TRACTOR_DIRECTION_WEST and node.get_x() * definitions.BLOCK_SIZE - definitions.BLOCK_SIZE >= 0:
             return "x - 1"
         else:
             return False
