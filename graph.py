@@ -60,6 +60,13 @@ def goal_test(elem, goaltest):
         return True
     else:
         return False
+def print_moves(elem, explored):
+    moves_list = []
+    while (elem.get_parent() != None):
+        moves_list.append(elem.get_action())
+        elem = elem.get_parent()
+    moves_list.reverse()
+    return moves_list
 def succ(elem):
     actions_list = []
     temp = copy.copy(elem.get_direction())
@@ -74,14 +81,18 @@ def succ(elem):
     else:
         temp = temp + 1
     actions_list.append(("rotate_right", (temp, elem.get_x(), elem.get_y())))
+    temp_move_south = elem.get_y() + 1
+    temp_move_west = elem.get_x() - 1
+    temp_move_east = elem.get_x() + 1
+    temp_move_north = elem.get_y() - 1
     if tractor.Tractor.is_move_allowed_succ(elem) == "x + 1":
-        actions_list.append(("move", (elem.get_direction(), elem.set_x(elem.get_x() + 1), elem.get_y())))
+        actions_list.append(("move", (elem.get_direction(), temp_move_east, elem.get_y())))
     elif tractor.Tractor.is_move_allowed_succ(elem) == "y - 1":
-        actions_list.append(("move", (elem.get_direction(), elem.get_x(), elem.set_y(elem.get_y() - 1))))
+        actions_list.append(("move", (elem.get_direction(), elem.get_x(), temp_move_north)))
     elif tractor.Tractor.is_move_allowed_succ(elem) == "y + 1":
-        actions_list.append(("move", (elem.get_direction(), elem.get_x(), elem.set_y(elem.get_y() + 1))))
+        actions_list.append(("move", (elem.get_direction(), elem.get_x(), temp_move_south)))
     elif tractor.Tractor.is_move_allowed_succ(elem) == "x - 1":
-        actions_list.append(("move", (elem.get_direction(), elem.set_x(elem.get_x() - 1), elem.get_y())))
+        actions_list.append(("move", (elem.get_direction(), temp_move_west, elem.get_y())))
     return actions_list
 def graphsearch(fringe, explored, istate, succ, goaltest):
     node = Node(None, istate.get_direction(), None, istate.get_x(), istate.get_y()) #może None coś nie gra
@@ -94,15 +105,35 @@ def graphsearch(fringe, explored, istate, succ, goaltest):
         elem = fringe.pop(0)
         temp = copy.copy(elem) #żeby explored w for succ() nie zmieniało
         if goal_test(elem, goaltest) is True:
-            return explored
+            # for x in fringe:
+            #     print("action: " + str(x.get_action()))
+            #     print("direction: " + str(x.get_direction()))
+            #     print("parent: " + str(x.get_parent()))
+            #     print("node: " + str(x))
+            #     print("x: " + str(x.get_x()))
+            #     print("y: " + str(x.get_y()))
+            # for x in explored:
+            #     print("action ex: " + str(x.get_action()))
+            #     print("direction ex: " + str(x.get_direction()))
+            #     print("parent ex: " + str(x.get_parent()))
+            #     print("node ex: " + str(x))
+            #     print("x ex: " + str(x.get_x()))
+            #     print("y ex: " + str(x.get_y()))
+            return print_moves(elem, explored)
         explored.append(elem)
         for (action, state) in succ(temp):
-            if state not in fringe and state not in explored:
+            fringe_tuple = []
+            explored_tuple = []
+            for x in fringe:
+                fringe_tuple.append((x.get_direction(), x.get_x(), x.get_y()))
+            for x in explored:
+                explored_tuple.append((x.get_direction(), x.get_x(), x.get_y()))
+            if state not in fringe_tuple and state not in explored_tuple:
                 x = Node(action, state[0], elem, state[1], state[2])
-                print(state[0])
-                print(state[1])
-                print(state[2])
-                print(x.get_action())
-                #print(x.get_direction())
-                #print(x.get_parent())
+                # print(x.get_action())
+                # print(state[0])
+                # print(state[1])
+                # print(state[2])
+                # print(x.get_direction())
+                # print(x.get_parent())
                 fringe.append(x)
