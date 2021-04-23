@@ -1,3 +1,4 @@
+import astar
 import definitions
 import graph
 import map
@@ -27,7 +28,8 @@ def main():
         map1.draw_window(tractor1, tractor1_rect)
         if not move_list and plant.Plant.if_any_mature_plant(map1) is True: #jeżeli są jakieś ruchy do wykonania w move_list oraz istnieje jakaś dojrzała roślina
             istate = graph.Istate(tractor1.get_direction(), tractor1.get_x() / definitions.BLOCK_SIZE, tractor1.get_y() / definitions.BLOCK_SIZE) #stan początkowy traktora (jego orientacja oraz jego aktualne współrzędne)
-            move_list = (graph.graphsearch([], [], istate, graph.succ, plant.Plant.get_closest_mature_plant(map1, tractor1))) #lista z ruchami, które należy po kolei wykonać
+            #move_list = (graph.graphsearch([], [], istate, graph.succ, plant.Plant.get_closest_mature_plant(map1, tractor1))) #lista z ruchami, które należy po kolei wykonać, graph
+            move_list = (astar.graphsearch([], [], istate, graph.succ, plant.Plant.get_closest_mature_plant(map1, tractor1), astar.f, map1)) #lista z ruchami, które należy po kolei wykonać, astar
         elif move_list: #jeżeli move_list nie jest pusta
             tractor1.handle_movement(move_list.pop(0), tractor1_rect) #wykonaj kolejny ruch oraz zdejmij ten ruch z początku listy
         else:

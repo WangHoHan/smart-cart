@@ -23,6 +23,32 @@ class Map:
                 temp_field = field.Field(temp_plant, temp_rect, temp_soil)
                 temp_map_field.append(temp_field)
             self.fields.append(temp_map_field)
+    def get_field_cost(self, x, y): #zwraca koszt  danego pola
+        field = self.fields[x][y]
+        if field.get_plant().get_name() == "station" and field.get_plant().get_state() == -1:
+            return 5
+        elif field.get_plant().get_name() == "beetroot" and field.get_plant().get_state() > 0 and field.get_plant().get_state() <= 3 * definitions.BEETROOTS_GROW_TIME:
+            return 10
+        elif field.get_plant().get_name() == "beetroot" and field.get_plant().get_state() == definitions.BEETROOTS_MAXIMUM_STATE:
+            return 4
+        elif field.get_plant().get_name() == "carrot" and field.get_plant().get_state() > 0 and field.get_plant().get_state() <= 3 * definitions.CARROTS_GROW_TIME:
+            return 10
+        elif field.get_plant().get_name() == "carrot" and field.get_plant().get_state() == definitions.CARROTS_MAXIMUM_STATE:
+            return 4
+        elif field.get_plant().get_name() == "potato" and field.get_plant().get_state() > 0 and field.get_plant().get_state() <= 3 * definitions.POTATOES_GROW_TIME:
+            return 10
+        elif field.get_plant().get_name() == "potato" and field.get_plant().get_state() == definitions.POTATOES_MAXIMUM_STATE:
+            return 4
+        elif field.get_plant().get_name() == "wheat" and field.get_plant().get_state() > 0 and field.get_plant().get_state() <= 7 * definitions.WHEAT_GROW_TIME:
+            return 10
+        elif field.get_plant().get_name() == "wheat" and field.get_plant().get_state() == definitions.WHEAT_MAXIMUM_STATE:
+            return 4
+        elif field.get_soil().get_state() is False:
+            return 2
+        elif field.get_soil().get_state() is True and field.get_soil().get_water_level() is False:
+            return 3
+        elif field.get_soil().get_state() is True and field.get_soil().get_water_level() is True:
+            return 1
     def fill_map(self): #wypełnia mapę teksturami na podstawie logicznego stanu pól
         for i in range(definitions.WIDTH_AMOUNT):
             for j in range(definitions.HEIGHT_AMOUNT):
