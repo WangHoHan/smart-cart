@@ -46,13 +46,15 @@ class Node: #wierzchołek grafu
     def set_y(self, y):
         self.y = y
 def cost(map, node): #funkcja kosztu : ile kosztuje przejechanie przez dane pole
-    return map.get_field_cost(int(node.get_x()), int(node.get_y()))
+    cost = 0
+    while(node.get_parent() != None):
+        cost = cost + map.get_field_cost(int(node.get_x()), int(node.get_y())) + 1
+        node = node.get_parent()
+    return cost
 def heuristic(node, goaltest): #funkcja heurestyki : oszacowuje koszt osiągnięcia stanu końcowego (droga)
     return abs(node.get_x() - goaltest[0]) + abs(node.get_y() - goaltest[1])
 def f(map, node, goaltest): #funkcja zwracająca sumę funkcji kosztu oraz heurestyki
     return cost(map, node) + heuristic(node, goaltest)
-# def optimal_goal_test():
-    
 def goal_test(elem, goaltest): #funkcja sprawdzająca czy położenie traktora równa się położeniu punktu docelowego, jeśli tak zwraca prawdę, w przeciwnym wypadku fałsz
     if elem.get_x() == goaltest[0] and elem.get_y() == goaltest[1]:
         return True
@@ -60,9 +62,9 @@ def goal_test(elem, goaltest): #funkcja sprawdzająca czy położenie traktora r
         return False
 def print_moves(elem): #zwraca listę ruchów jakie należy wykonać by dotrzeć do punktu docelowego
     moves_list = []
-    while (elem[0].get_parent() != None):
-        moves_list.append(elem[0].get_action())
-        elem = elem[0].get_parent()
+    while (elem.get_parent() != None):
+        moves_list.append(elem.get_action())
+        elem = elem.get_parent()
     moves_list.reverse()
     return moves_list
 def succ(elem): #funkcja następnika, przypisuje jakie akcje są możliwe do wykonania na danym polu oraz jaki będzie stan (kierunek, położenie) po wykonaniu tej akcji
@@ -101,18 +103,18 @@ def graphsearch(fringe, explored, istate, succ, goaltest, f, map): #przeszukiwan
         elem = fringe.pop(0) #zdejmujemy wierzchołek z kolejki fringe i rozpatrujemy go
         temp = copy.copy(elem[0])
         if goal_test(elem[0], goaltest) is True: #jeżeli osiągniemy cel w trakcie przeszukiwania grafu wszerz (wjedziemy na pole docelowe) : zwracamy listę ruchów, po których wykonaniu dotrzemy na miejsce
-            return print_moves(elem)
+            return print_moves(elem[0])
         explored.append(elem) #dodajemy wierzchołek do listy wierzchołków odwiedzonych
         for (action, state) in succ(temp): #iterujemy po wszystkich możliwych akcjach i stanach otrzymanych dla danego wierzchołka grafu
             fringe_tuple = []
             fringe_tuple_prio = []
             explored_tuple = []
-            for (x, y)  in fringe:
+            for (x, y) in fringe:
                 fringe_tuple.append((x.get_direction(), x.get_x(), x.get_y()))
                 fringe_tuple_prio.append(((x.get_direction(), x.get_x(), x.get_y()), y))
             for (x, y) in explored:
                 explored_tuple.append((x.get_direction(), x.get_x(), x.get_y()))
-            x = Node(action, state[0], elem, state[1], state[2])  #stworzenie nowego wierzchołka, którego rodzicem jest elem
+            x = Node(action, state[0], elem[0], state[1], state[2])  #stworzenie nowego wierzchołka, którego rodzicem jest elem
             p = f(map, x, goaltest) #liczy priorytet
             if state not in fringe_tuple and state not in explored_tuple: #jeżeli stan nie znajduje się na fringe oraz nie znajduje się w liście wierzchołków odwiedzonych
                 fringe.append((x, p)) #dodanie wierzchołka na fringe
@@ -123,6 +125,7 @@ def graphsearch(fringe, explored, istate, succ, goaltest, f, map): #przeszukiwan
                     if str(state_prio) == str(state):
                         if r > p:
                             fringe.insert(i, (x, p)) #zamiana state, który należy do fringe z priorytetem r na state z priorytetem p (niższym)
+                            fringe.pop(i + 1)
                             fringe = sorted(fringe, key=itemgetter(1)) #sortowanie fringe'a według priorytetu
                             break
                     i = i + 1

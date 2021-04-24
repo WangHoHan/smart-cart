@@ -23,32 +23,6 @@ class Map:
                 temp_field = field.Field(temp_plant, temp_rect, temp_soil)
                 temp_map_field.append(temp_field)
             self.fields.append(temp_map_field)
-    def get_field_cost(self, x, y): #zwraca koszt  danego pola
-        field = self.fields[x][y]
-        if field.get_plant().get_name() == "station" and field.get_plant().get_state() == -1:
-            return 5
-        elif field.get_plant().get_name() == "beetroot" and field.get_plant().get_state() > 0 and field.get_plant().get_state() <= 3 * definitions.BEETROOTS_GROW_TIME:
-            return 10
-        elif field.get_plant().get_name() == "beetroot" and field.get_plant().get_state() == definitions.BEETROOTS_MAXIMUM_STATE:
-            return 4
-        elif field.get_plant().get_name() == "carrot" and field.get_plant().get_state() > 0 and field.get_plant().get_state() <= 3 * definitions.CARROTS_GROW_TIME:
-            return 10
-        elif field.get_plant().get_name() == "carrot" and field.get_plant().get_state() == definitions.CARROTS_MAXIMUM_STATE:
-            return 4
-        elif field.get_plant().get_name() == "potato" and field.get_plant().get_state() > 0 and field.get_plant().get_state() <= 3 * definitions.POTATOES_GROW_TIME:
-            return 10
-        elif field.get_plant().get_name() == "potato" and field.get_plant().get_state() == definitions.POTATOES_MAXIMUM_STATE:
-            return 4
-        elif field.get_plant().get_name() == "wheat" and field.get_plant().get_state() > 0 and field.get_plant().get_state() <= 7 * definitions.WHEAT_GROW_TIME:
-            return 10
-        elif field.get_plant().get_name() == "wheat" and field.get_plant().get_state() == definitions.WHEAT_MAXIMUM_STATE:
-            return 4
-        elif field.get_soil().get_state() is False:
-            return 2
-        elif field.get_soil().get_state() is True and field.get_soil().get_water_level() is False:
-            return 3
-        elif field.get_soil().get_state() is True and field.get_soil().get_water_level() is True:
-            return 1
     def fill_map(self): #wypełnia mapę teksturami na podstawie logicznego stanu pól
         for i in range(definitions.WIDTH_AMOUNT):
             for j in range(definitions.HEIGHT_AMOUNT):
@@ -107,6 +81,32 @@ class Map:
                 elif block != definitions.DIRT or block != definitions.FARMLAND_DRY or block != definitions.FARMLAND_WET:
                     definitions.WINDOW.blit(definitions.FARMLAND_WET, (rect.x, rect.y))
                 definitions.WINDOW.blit(block, (rect.x, rect.y))
+    def get_field_cost(self, x, y): #zwraca koszt  danego pola
+        field = self.fields[x][y]
+        if field.get_plant().get_name() == "station" and field.get_plant().get_state() == -1:
+            return definitions.STATION_COST
+        elif field.get_plant().get_name() == "beetroot" and field.get_plant().get_state() > 0 and field.get_plant().get_state() <= 3 * definitions.BEETROOTS_GROW_TIME:
+            return definitions.BEETROOTS_GROW_COST
+        elif field.get_plant().get_name() == "beetroot" and field.get_plant().get_state() == definitions.BEETROOTS_MAXIMUM_STATE:
+            return definitions.BEETROOTS_ADULT_COST
+        elif field.get_plant().get_name() == "carrot" and field.get_plant().get_state() > 0 and field.get_plant().get_state() <= 3 * definitions.CARROTS_GROW_TIME:
+            return definitions.CARROTS_GROW_COST
+        elif field.get_plant().get_name() == "carrot" and field.get_plant().get_state() == definitions.CARROTS_MAXIMUM_STATE:
+            return definitions.CARROTS_ADULT_COST
+        elif field.get_plant().get_name() == "potato" and field.get_plant().get_state() > 0 and field.get_plant().get_state() <= 3 * definitions.POTATOES_GROW_TIME:
+            return definitions.POTATOES_GROW_COST
+        elif field.get_plant().get_name() == "potato" and field.get_plant().get_state() == definitions.POTATOES_MAXIMUM_STATE:
+            return definitions.POTATOES_ADULT_COST
+        elif field.get_plant().get_name() == "wheat" and field.get_plant().get_state() > 0 and field.get_plant().get_state() <= 7 * definitions.WHEAT_GROW_TIME:
+            return definitions.WHEAT_GROW_COST
+        elif field.get_plant().get_name() == "wheat" and field.get_plant().get_state() == definitions.WHEAT_MAXIMUM_STATE:
+            return definitions.WHEAT_ADULT_COST
+        elif field.get_soil().get_state() is False:
+            return definitions.DIRT_COST
+        elif field.get_soil().get_state() is True and field.get_soil().get_water_level() is False:
+            return definitions.FARMLAND_DRY_COST
+        elif field.get_soil().get_state() is True and field.get_soil().get_water_level() is True:
+            return definitions.FARMLAND_WET_COST
     def draw_window(self, tractor1, tractor1_rect): #rysuje mapę
         self.fill_map()
         if tractor1.get_direction() == definitions.TRACTOR_DIRECTION_EAST:
