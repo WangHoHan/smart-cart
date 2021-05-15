@@ -26,6 +26,8 @@ class Tractor:
         return self.direction
     def set_direction(self, direction):
         self.direction = direction
+    def get_all_fertilizer(self): #zwraca łączną ilość posiadanego nawozu (suma nawozu dla wszystkich roślin)
+        return self.fertilizer["beetroot"] + self.fertilizer["carrot"] + self.fertilizer["potato"] + self.fertilizer["wheat"]
     def get_fertilizer(self, name): #zwraca łączną ilość posiadanego nawozu dla podanej rośliny (name)
         return self.fertilizer[name]
     def set_fertilizer(self, name, value): #dla podanej rośliny (name) ustawia ilość posiadanego nawozu (value)
