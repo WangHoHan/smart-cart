@@ -5,6 +5,7 @@ import map
 import plant
 import pygame
 import station
+import treelearn
 import tractor
 pygame.display.set_caption("Smart Tractor")
 def main():
@@ -19,6 +20,7 @@ def main():
     tractor1 = tractor.Tractor(amount_of_seeds_dict, collected_plants_dict, definitions.TRACTOR_DIRECTION_NORTH, fertilizer_dict, definitions.TRACTOR_FUEL, definitions.TRACTOR_WATER_LEVEL, 0, 0)
     tractor1_rect = pygame.Rect(tractor1.get_x(), tractor1.get_y(), definitions.BLOCK_SIZE, definitions.BLOCK_SIZE)
     clock = pygame.time.Clock()
+    treelearn.treelearn()
     run = True
     while run: #pętla główna programu
         clock.tick(definitions.FPS)
