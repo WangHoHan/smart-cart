@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="56453584-72bd-49f4-a39c-fccf91ab20c6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mydecisiontree.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/py.py" beforeDir="false" afterPath="$PROJECT_DIR$/py.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/treelearn.py" beforeDir="false" afterPath="$PROJECT_DIR$/treelearn.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -132,6 +132,7 @@
       <workItem from="1621110688412" duration="148000" />
       <workItem from="1621110850717" duration="377000" />
       <workItem from="1621111315400" duration="72000" />
+      <workItem from="1621171225695" duration="880000" />
     </task>
     <servers />
   </component>
@@ -147,22 +148,22 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="690" y="287" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1617994393023" />
-    <state width="1879" height="295" key="GridCell.Tab.0.bottom" timestamp="1621111387013">
+    <state width="1879" height="295" key="GridCell.Tab.0.bottom" timestamp="1621172112876">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1879" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1621111387013" />
-    <state width="1879" height="295" key="GridCell.Tab.0.center" timestamp="1621111387012">
+    <state width="1879" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1621172112876" />
+    <state width="1879" height="295" key="GridCell.Tab.0.center" timestamp="1621172112876">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1879" height="295" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1621111387012" />
-    <state width="1879" height="295" key="GridCell.Tab.0.left" timestamp="1621111387012">
+    <state width="1879" height="295" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1621172112876" />
+    <state width="1879" height="295" key="GridCell.Tab.0.left" timestamp="1621172112876">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1879" height="295" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1621111387012" />
-    <state width="1879" height="295" key="GridCell.Tab.0.right" timestamp="1621111387013">
+    <state width="1879" height="295" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1621172112876" />
+    <state width="1879" height="295" key="GridCell.Tab.0.right" timestamp="1621172112876">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1879" height="295" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1621111387013" />
+    <state width="1879" height="295" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1621172112876" />
     <state width="1879" height="364" key="GridCell.Tab.1.bottom" timestamp="1619289752045">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -179,10 +180,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1879" height="364" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1619289752045" />
-    <state x="0" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1621111315179">
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1621171227060">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="0" y="0" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1621111315179" />
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1621171227060" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -196,6 +197,6 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SmartTractor$py.coverage" NAME="py Coverage Results" MODIFIED="1621111375675" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SmartTractor$py.coverage" NAME="py Coverage Results" MODIFIED="1621172058000" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
