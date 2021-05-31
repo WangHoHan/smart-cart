@@ -34,15 +34,15 @@ def main():
         if not move_list and plant.Plant.if_any_mature_plant(map1) is True: #jeżeli są jakieś ruchy do wykonania w move_list oraz istnieje jakaś dojrzała roślina
             istate = graph.Istate(cart1.get_direction(), cart1.get_x() / definitions.BLOCK_SIZE, cart1.get_y() / definitions.BLOCK_SIZE) #stan początkowy wózka (jego orientacja oraz jego aktualne współrzędne)
             if decision == [0]: #jeżeli decyzja jest 0 (brak powrotu do stacji) to uprawiaj pole
-                move_list = (astar.graphsearch([], [], istate, graph.succ, plant.Plant.get_mature_plant(map1, istate), astar.f, map1))  #lista z ruchami, które należy po kolei wykonać, astar
+                move_list = (astar.graphsearch([], astar.f, [], plant.Plant.get_mature_plant(map1), istate, map1, graph.succ))  #lista z ruchami, które należy po kolei wykonać, astar
             else:  #jeżeli decyzja jest 1 (powrót do stacji) to wróć do stacji uzupełnić zapasy
-                move_list = (graph.graphsearch([], [], istate, graph.succ, (0, 0))) #lista z ruchami, które należy po kolei wykonać, graphsearch
+                move_list = (graph.graphsearch([], [], (0, 0), istate, graph.succ)) #lista z ruchami, które należy po kolei wykonać, graphsearch
         elif move_list: #jeżeli move_list nie jest pusta
-            cart1.handle_movement(move_list.pop(0), cart1_rect) #wykonaj kolejny ruch oraz zdejmij ten ruch z początku listy
+            cart1.handle_movement(cart1_rect, move_list.pop(0)) #wykonaj kolejny ruch oraz zdejmij ten ruch z początku listy
         else:
             cart1.handle_movement_random(cart1_rect) #wykonuj losowe ruchy
-        cart1.do_work(map1, station1, cart1_rect) #wykonaj pracę na danym polu
-        decision = treelearn.make_decision(tree, cart1.get_all_amount_of_seeds(), cart1.get_all_collected_plants(), cart1.get_all_fertilizer(), cart1.get_fuel(), cart1.get_water_level()) #podejmij decyzję czy wracać do stacji (0 : NIE, 1 : TAK)
+        cart1.do_work(cart1_rect, map1, station1) #wykonaj pracę na danym polu
+        decision = treelearn.make_decision(cart1.get_all_amount_of_seeds(), cart1.get_all_collected_plants(), cart1.get_all_fertilizer(), cart1.get_fuel(), tree, cart1.get_water_level()) #podejmij decyzję czy wracać do stacji (0 : NIE, 1 : TAK)
         plant.Plant.grow_plants(map1) #zwiększ poziom dojrzałości roślin
     pygame.quit()
 if __name__ == "__main__":

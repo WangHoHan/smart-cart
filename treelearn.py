@@ -6,7 +6,7 @@ import pickle
 import pydotplus
 from sklearn import tree
 from sklearn.tree import DecisionTreeClassifier
-def make_decision(tree, amount_of_seeds, collected_plants, fertilizer, fuel, water_level): #zwraca decyzję o powrocie do stacji (0 : NIE, 1 : TAK)
+def make_decision(amount_of_seeds, collected_plants, fertilizer, fuel, tree, water_level): #zwraca decyzję o powrocie do stacji (0 : NIE, 1 : TAK)
     decision = tree.predict([[amount_of_seeds, collected_plants, fertilizer, fuel, water_level]]) #podejmij decyzję na podstawie aktualnych parametrów wózka o powrocie do stacji lub nie
     return decision
 def treelearn(): #zwraca utworzone drzewo decyzyjne

@@ -51,14 +51,14 @@ def cost(map, node): #funkcja kosztu : ile kosztuje przejechanie przez dane pole
         cost = cost + map.get_field_cost(int(node.get_x()), int(node.get_y())) + 1
         node = node.get_parent()
     return cost
-def f(map, node, goaltest): #funkcja zwracająca sumę funkcji kosztu oraz heurestyki
-    return cost(map, node) + heuristic(node, goaltest)
+def f(goaltest, map, node): #funkcja zwracająca sumę funkcji kosztu oraz heurestyki
+    return cost(map, node) + heuristic(goaltest, node)
 def goal_test(elem, goaltest): #funkcja sprawdzająca czy położenie wózka równa się położeniu punktu docelowego, jeśli tak zwraca prawdę, w przeciwnym wypadku fałsz
     if elem.get_x() == goaltest[0] and elem.get_y() == goaltest[1]:
         return True
     else:
         return False
-def graphsearch(fringe, explored, istate, succ, goaltest, f, map): #przeszukiwanie grafu wszerz
+def graphsearch(explored, f, fringe, goaltest, istate, map, succ): #przeszukiwanie grafu wszerz
     node = Node(None, istate.get_direction(), None, istate.get_x(), istate.get_y()) #wierzchołek początkowy, stworzony ze stanu początkowego wózka
     fringe.append((node, 0)) #wierzchołki do odwiedzenia z priorytetem
     while True:
@@ -79,7 +79,7 @@ def graphsearch(fringe, explored, istate, succ, goaltest, f, map): #przeszukiwan
             for (x, y) in explored:
                 explored_tuple.append((x.get_direction(), x.get_x(), x.get_y()))
             x = Node(action, state[0], elem[0], state[1], state[2])  #stworzenie nowego wierzchołka, którego rodzicem jest elem
-            p = f(map, x, goaltest) #liczy priorytet
+            p = f(goaltest, map, x) #liczy priorytet
             if state not in fringe_tuple and state not in explored_tuple: #jeżeli stan nie znajduje się na fringe oraz nie znajduje się w liście wierzchołków odwiedzonych
                 fringe.append((x, p)) #dodanie wierzchołka na fringe
                 fringe = sorted(fringe, key=itemgetter(1)) #sortowanie fringe'a według priorytetu
@@ -93,7 +93,7 @@ def graphsearch(fringe, explored, istate, succ, goaltest, f, map): #przeszukiwan
                             fringe = sorted(fringe, key=itemgetter(1)) #sortowanie fringe'a według priorytetu
                             break
                     i = i + 1
-def heuristic(node, goaltest): #funkcja heurestyki : oszacowuje koszt osiągnięcia stanu końcowego (droga)
+def heuristic(goaltest, node): #funkcja heurestyki : oszacowuje koszt osiągnięcia stanu końcowego (droga)
     return abs(node.get_x() - goaltest[0]) + abs(node.get_y() - goaltest[1])
 def print_moves(elem): #zwraca listę ruchów jakie należy wykonać by dotrzeć do punktu docelowego
     moves_list = []

@@ -2,49 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56453584-72bd-49f4-a39c-fccf91ab20c6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/SmartTractor.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SmartCart.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/astar.py" beforeDir="false" afterPath="$PROJECT_DIR$/astar.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/definitions.py" beforeDir="false" afterPath="$PROJECT_DIR$/definitions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart.py" beforeDir="false" afterPath="$PROJECT_DIR$/cart.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/graph.py" beforeDir="false" afterPath="$PROJECT_DIR$/graph.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map.py" beforeDir="false" afterPath="$PROJECT_DIR$/map.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neuralnetwork.py" beforeDir="false" afterPath="$PROJECT_DIR$/neuralnetwork.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/plant.py" beforeDir="false" afterPath="$PROJECT_DIR$/plant.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/py.py" beforeDir="false" afterPath="$PROJECT_DIR$/py.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/beetroots_stage_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/beetroots_stage_0.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/beetroots_stage_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/beetroots_stage_1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/beetroots_stage_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/beetroots_stage_2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/beetroots_stage_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/beetroots_stage_3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/carrots_stage_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/carrots_stage_0.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/carrots_stage_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/carrots_stage_1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/carrots_stage_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/carrots_stage_2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/carrots_stage_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/carrots_stage_3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/resources/decision_tree/data.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/dirt.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/dirt.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/farmland_dry.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/farmland_dry.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/farmland_wet.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/farmland_wet.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/flower_dandelion.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/flower_dandelion.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/minecart_command_block_east.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/minecart_command_block_east.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/minecart_command_block_north.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/minecart_command_block_north.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/minecart_command_block_south.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/minecart_command_block_south.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/minecart_command_block_west.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/minecart_command_block_west.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/mytree.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/decision_tree/mytree.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/potatoes_stage_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/potatoes_stage_0.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/potatoes_stage_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/potatoes_stage_1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/potatoes_stage_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/potatoes_stage_2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/potatoes_stage_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/potatoes_stage_3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/rail_normal.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/rail_normal.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sponge.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/sponge.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/tree.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/resources/decision_tree/tree.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/wheat_stage_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/wheat_stage_0.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/wheat_stage_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/wheat_stage_1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/wheat_stage_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/wheat_stage_2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/wheat_stage_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/wheat_stage_3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/wheat_stage_4.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/wheat_stage_4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/wheat_stage_5.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/wheat_stage_5.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/wheat_stage_6.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/wheat_stage_6.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/wheat_stage_7.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/wheat_stage_7.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/cart.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/treelearn.py" beforeDir="false" afterPath="$PROJECT_DIR$/treelearn.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -196,6 +160,7 @@
       <workItem from="1622469549245" duration="1392000" />
       <workItem from="1622471028909" duration="34000" />
       <workItem from="1622471098158" duration="2320000" />
+      <workItem from="1622474297862" duration="2475000" />
     </task>
     <servers />
   </component>
@@ -207,34 +172,35 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="414" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1622365181713" />
-    <state x="628" y="343" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1621109431051">
+    <state x="628" y="343" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1622475063488">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
+    <state x="628" y="343" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1622475063488" />
     <state x="628" y="343" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1621109431051" />
     <state x="690" y="287" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1622413487618">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="690" y="287" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1622413487618" />
     <state x="690" y="287" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1621429221570" />
-    <state width="1879" height="295" key="GridCell.Tab.0.bottom" timestamp="1622473751037">
+    <state width="1879" height="295" key="GridCell.Tab.0.bottom" timestamp="1622477545943">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1879" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1622473751037" />
+    <state width="1879" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1622477545943" />
     <state width="1879" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1621429389327" />
-    <state width="1879" height="295" key="GridCell.Tab.0.center" timestamp="1622473751037">
+    <state width="1879" height="295" key="GridCell.Tab.0.center" timestamp="1622477545943">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1879" height="295" key="GridCell.Tab.0.center/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1622473751037" />
+    <state width="1879" height="295" key="GridCell.Tab.0.center/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1622477545943" />
     <state width="1879" height="295" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1621429389327" />
-    <state width="1879" height="295" key="GridCell.Tab.0.left" timestamp="1622473751037">
+    <state width="1879" height="295" key="GridCell.Tab.0.left" timestamp="1622477545943">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1879" height="295" key="GridCell.Tab.0.left/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1622473751037" />
+    <state width="1879" height="295" key="GridCell.Tab.0.left/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1622477545943" />
     <state width="1879" height="295" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1621429389326" />
-    <state width="1879" height="295" key="GridCell.Tab.0.right" timestamp="1622473751037">
+    <state width="1879" height="295" key="GridCell.Tab.0.right" timestamp="1622477545943">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1879" height="295" key="GridCell.Tab.0.right/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1622473751037" />
+    <state width="1879" height="295" key="GridCell.Tab.0.right/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1622477545943" />
     <state width="1879" height="295" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1621429389327" />
     <state width="1879" height="364" key="GridCell.Tab.1.bottom" timestamp="1619289752045">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -252,15 +218,15 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1879" height="364" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1619289752045" />
-    <state x="0" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1622471098618">
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1622474297784">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="0" y="0" key="com.intellij.ide.util.TipDialog/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1622471098618" />
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1622474297784" />
     <state x="0" y="0" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1621439087317" />
-    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1622472745109">
+    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1622475419309">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1622472745109" />
+    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1622475419309" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -275,6 +241,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/SmartTractor$py.coverage" NAME="py Coverage Results" MODIFIED="1622469837941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/SmartCart$py.coverage" NAME="py Coverage Results" MODIFIED="1622472631604" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SmartCart$py.coverage" NAME="py Coverage Results" MODIFIED="1622475876802" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

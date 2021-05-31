@@ -55,7 +55,7 @@ def create_neural_network():
         images_path = glob.glob(pred_path+'/*.jpg')
         pred_dict = {}
         for i in images_path:
-            pred_dict[i[i.rfind('/') + 1:]] = prediction1(i, transformer1, model, classes)
+            pred_dict[i[i.rfind('/') + 1:]] = prediction1(classes, i, model, transformer1)
         print(pred_dict)
     else:
         model = ConvNet(num_classes=6).to(device)
@@ -93,11 +93,11 @@ def create_neural_network():
                 _, prediction = torch.max(outputs.data, 1)
                 test_accuracy += int(torch.sum(prediction == labels.data))
             test_accuracy = test_accuracy / test_count
-            print('Epoch: ' + str(epoch) + ' Train Loss: ' + str(train_loss) + ' Train Accuracy: ' + str(train_accuracy) + ' Test Accuracy: ' + str(test_accuracy))
+            print('Epoch: ' + str(epoch + 1) + ' Train Loss: ' + str(train_loss) + ' Train Accuracy: ' + str(train_accuracy) + ' Test Accuracy: ' + str(test_accuracy))
             if test_accuracy > best_accuracy:
                 torch.save(model.state_dict(), 'resources/neural_network/checkpoint.model')
                 best_accuracy = test_accuracy
-def prediction1(img_path, transformer, model, classes):
+def prediction1(classes, img_path, model, transformer):
     image = Image.open(img_path)
     image_tensor = transformer(image).float()
     image_tensor = image_tensor.unsqueeze_(0)

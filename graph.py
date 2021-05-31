@@ -44,12 +44,12 @@ class Node: #wierzchołek grafu
         return self.y
     def set_y(self, y):
         self.y = y
-def goal_test(elem, goaltest): #funkcja sprawdzająca czy położenie wózka równa się położeniu punktu docelowego, jeśli tak zwraca prawdę, w przeciwnym wypadku fałsz
+def goal_test(goaltest, elem): #funkcja sprawdzająca czy położenie wózka równa się położeniu punktu docelowego, jeśli tak zwraca prawdę, w przeciwnym wypadku fałsz
     if elem.get_x() == goaltest[0] and elem.get_y() == goaltest[1]:
         return True
     else:
         return False
-def graphsearch(fringe, explored, istate, succ, goaltest): #przeszukiwanie grafu wszerz
+def graphsearch(explored, fringe, goaltest, istate, succ): #przeszukiwanie grafu wszerz
     node = Node(None, istate.get_direction(), None, istate.get_x(), istate.get_y()) #wierzchołek początkowy, stworzony ze stanu początkowego wózka
     fringe.append(node) #wierzchołki do odwiedzenia
     while True:
@@ -57,7 +57,7 @@ def graphsearch(fringe, explored, istate, succ, goaltest): #przeszukiwanie grafu
             return False
         elem = fringe.pop(0) #zdejmujemy wierzchołek z kolejki fringe i rozpatrujemy go
         temp = copy.copy(elem)
-        if goal_test(elem, goaltest) is True: #jeżeli osiągniemy cel w trakcie przeszukiwania grafu wszerz (wjedziemy na pole docelowe) : zwracamy listę ruchów, po których wykonaniu dotrzemy na miejsce
+        if goal_test(goaltest, elem) is True: #jeżeli osiągniemy cel w trakcie przeszukiwania grafu wszerz (wjedziemy na pole docelowe) : zwracamy listę ruchów, po których wykonaniu dotrzemy na miejsce
             return print_moves(elem)
         explored.append(elem) #dodajemy wierzchołek do listy wierzchołków odwiedzonych
         for (action, state) in succ(temp): #iterujemy po wszystkich możliwych akcjach i stanach otrzymanych dla danego wierzchołka grafu

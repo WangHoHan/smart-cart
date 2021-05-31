@@ -48,7 +48,7 @@ class Cart:
         return self.y
     def set_y(self, y):
         self.y = y
-    def do_work(self, map1, station1, cart_rect): #jaką pracę wózek ma wykonać na danym polu, na którym aktualnie przebywa (zmienia stan logiczny danego pola)
+    def do_work(self, cart_rect, map1, station1): #jaką pracę wózek ma wykonać na danym polu, na którym aktualnie przebywa (zmienia stan logiczny danego pola)
         loop = True
         if self.get_all_amount_of_seeds() == 0:
             loop = False
@@ -125,7 +125,7 @@ class Cart:
             field.get_soil().set_water_level(False)
             field.get_soil().set_state(False)
             self.set_collected_plants("wheat", self.get_collected_plants("wheat") + 1)
-    def handle_movement(self, move, cart_rect): #odpowiada za poruszanie się wózka po mapie
+    def handle_movement(self, cart_rect, move): #odpowiada za poruszanie się wózka po mapie
         if self.get_fuel() > 0:
             if move == "move":
                 self.move()
