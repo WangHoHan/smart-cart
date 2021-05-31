@@ -1,6 +1,6 @@
+import cart
 import copy
-import tractor
-class Istate: #stan początkowy traktora (strona, w którą patrzy, miejsce, w którym się on znajduje)
+class Istate: #stan początkowy wózka (strona, w którą patrzy, miejsce, w którym się on znajduje)
     def __init__(self, direction, x, y):
         self.direction = direction
         self.x = x
@@ -44,11 +44,32 @@ class Node: #wierzchołek grafu
         return self.y
     def set_y(self, y):
         self.y = y
-def goal_test(elem, goaltest): #funkcja sprawdzająca czy położenie traktora równa się położeniu punktu docelowego, jeśli tak zwraca prawdę, w przeciwnym wypadku fałsz
+def goal_test(elem, goaltest): #funkcja sprawdzająca czy położenie wózka równa się położeniu punktu docelowego, jeśli tak zwraca prawdę, w przeciwnym wypadku fałsz
     if elem.get_x() == goaltest[0] and elem.get_y() == goaltest[1]:
         return True
     else:
         return False
+def graphsearch(fringe, explored, istate, succ, goaltest): #przeszukiwanie grafu wszerz
+    node = Node(None, istate.get_direction(), None, istate.get_x(), istate.get_y()) #wierzchołek początkowy, stworzony ze stanu początkowego wózka
+    fringe.append(node) #wierzchołki do odwiedzenia
+    while True:
+        if not fringe:
+            return False
+        elem = fringe.pop(0) #zdejmujemy wierzchołek z kolejki fringe i rozpatrujemy go
+        temp = copy.copy(elem)
+        if goal_test(elem, goaltest) is True: #jeżeli osiągniemy cel w trakcie przeszukiwania grafu wszerz (wjedziemy na pole docelowe) : zwracamy listę ruchów, po których wykonaniu dotrzemy na miejsce
+            return print_moves(elem)
+        explored.append(elem) #dodajemy wierzchołek do listy wierzchołków odwiedzonych
+        for (action, state) in succ(temp): #iterujemy po wszystkich możliwych akcjach i stanach otrzymanych dla danego wierzchołka grafu
+            fringe_tuple = []
+            explored_tuple = []
+            for x in fringe:
+                fringe_tuple.append((x.get_direction(), x.get_x(), x.get_y()))
+            for x in explored:
+                explored_tuple.append((x.get_direction(), x.get_x(), x.get_y()))
+            if state not in fringe_tuple and state not in explored_tuple: #jeżeli stan nie znajduje się na fringe oraz nie znajduje się w liście wierzchołków odwiedzonych
+                x = Node(action, state[0], elem, state[1], state[2]) #stworzenie nowego wierzchołka, którego rodzicem jest elem
+                fringe.append(x) #dodanie wierzchołka na fringe
 def print_moves(elem): #zwraca listę ruchów jakie należy wykonać by dotrzeć do punktu docelowego
     moves_list = []
     while (elem.get_parent() != None):
@@ -74,33 +95,12 @@ def succ(elem): #funkcja następnika, przypisuje jakie akcje są możliwe do wyk
     temp_move_west = elem.get_x() - 1
     temp_move_east = elem.get_x() + 1
     temp_move_north = elem.get_y() - 1
-    if tractor.Tractor.is_move_allowed_succ(elem) == "x + 1":
+    if cart.Cart.is_move_allowed_succ(elem) == "x + 1":
         actions_list.append(("move", (elem.get_direction(), temp_move_east, elem.get_y())))
-    elif tractor.Tractor.is_move_allowed_succ(elem) == "y - 1":
+    elif cart.Cart.is_move_allowed_succ(elem) == "y - 1":
         actions_list.append(("move", (elem.get_direction(), elem.get_x(), temp_move_north)))
-    elif tractor.Tractor.is_move_allowed_succ(elem) == "y + 1":
+    elif cart.Cart.is_move_allowed_succ(elem) == "y + 1":
         actions_list.append(("move", (elem.get_direction(), elem.get_x(), temp_move_south)))
-    elif tractor.Tractor.is_move_allowed_succ(elem) == "x - 1":
+    elif cart.Cart.is_move_allowed_succ(elem) == "x - 1":
         actions_list.append(("move", (elem.get_direction(), temp_move_west, elem.get_y())))
     return actions_list
-def graphsearch(fringe, explored, istate, succ, goaltest): #przeszukiwanie grafu wszerz
-    node = Node(None, istate.get_direction(), None, istate.get_x(), istate.get_y()) #wierzchołek początkowy, stworzony ze stanu początkowego traktora
-    fringe.append(node) #wierzchołki do odwiedzenia
-    while True:
-        if not fringe:
-            return False
-        elem = fringe.pop(0) #zdejmujemy wierzchołek z kolejki fringe i rozpatrujemy go
-        temp = copy.copy(elem)
-        if goal_test(elem, goaltest) is True: #jeżeli osiągniemy cel w trakcie przeszukiwania grafu wszerz (wjedziemy na pole docelowe) : zwracamy listę ruchów, po których wykonaniu dotrzemy na miejsce
-            return print_moves(elem)
-        explored.append(elem) #dodajemy wierzchołek do listy wierzchołków odwiedzonych
-        for (action, state) in succ(temp): #iterujemy po wszystkich możliwych akcjach i stanach otrzymanych dla danego wierzchołka grafu
-            fringe_tuple = []
-            explored_tuple = []
-            for x in fringe:
-                fringe_tuple.append((x.get_direction(), x.get_x(), x.get_y()))
-            for x in explored:
-                explored_tuple.append((x.get_direction(), x.get_x(), x.get_y()))
-            if state not in fringe_tuple and state not in explored_tuple: #jeżeli stan nie znajduje się na fringe oraz nie znajduje się w liście wierzchołków odwiedzonych
-                x = Node(action, state[0], elem, state[1], state[2]) #stworzenie nowego wierzchołka, którego rodzicem jest elem
-                fringe.append(x) #dodanie wierzchołka na fringe

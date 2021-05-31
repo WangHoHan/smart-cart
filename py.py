@@ -1,47 +1,48 @@
 import astar
+import cart
 import definitions
 import graph
 import map
+import neuralnetwork
 import plant
 import pygame
 import station
 import treelearn
-import tractor
-pygame.display.set_caption("Smart Tractor")
+pygame.display.set_caption("Smart Cart")
 def main():
     #tworzenie podstawowych obiektów
     map1 = map.Map([])
     map1.create_base_map()
     move_list = []
-    amount_of_seeds_dict = {"beetroot": definitions.TRACTOR_AMOUNT_OF_SEEDS_EACH_TYPE, "carrot": definitions.TRACTOR_AMOUNT_OF_SEEDS_EACH_TYPE, "potato": definitions.TRACTOR_AMOUNT_OF_SEEDS_EACH_TYPE, "wheat": definitions.TRACTOR_AMOUNT_OF_SEEDS_EACH_TYPE}
+    amount_of_seeds_dict = {"beetroot": definitions.CART_AMOUNT_OF_SEEDS_EACH_TYPE, "carrot": definitions.CART_AMOUNT_OF_SEEDS_EACH_TYPE, "potato": definitions.CART_AMOUNT_OF_SEEDS_EACH_TYPE, "wheat": definitions.CART_AMOUNT_OF_SEEDS_EACH_TYPE}
     collected_plants_dict = {"beetroot": 0, "carrot": 0, "potato": 0, "wheat": 0}
-    fertilizer_dict = {"beetroot": definitions.TRACTOR_FERTILIZER, "carrot": definitions.TRACTOR_FERTILIZER, "potato": definitions.TRACTOR_FERTILIZER, "wheat": definitions.TRACTOR_FERTILIZER}
+    fertilizer_dict = {"beetroot": definitions.CART_FERTILIZER, "carrot": definitions.CART_FERTILIZER, "potato": definitions.CART_FERTILIZER, "wheat": definitions.CART_FERTILIZER}
     station1 = station.Station(collected_plants_dict)
-    tractor1 = tractor.Tractor(amount_of_seeds_dict, collected_plants_dict, definitions.TRACTOR_DIRECTION_NORTH, fertilizer_dict, definitions.TRACTOR_FUEL, definitions.TRACTOR_WATER_LEVEL, 0, 0)
-    tractor1_rect = pygame.Rect(tractor1.get_x(), tractor1.get_y(), definitions.BLOCK_SIZE, definitions.BLOCK_SIZE)
+    cart1 = cart.Cart(amount_of_seeds_dict, collected_plants_dict, definitions.CART_DIRECTION_NORTH, fertilizer_dict, definitions.CART_FUEL, definitions.CART_WATER_LEVEL, 0, 0)
+    cart1_rect = pygame.Rect(cart1.get_x(), cart1.get_y(), definitions.BLOCK_SIZE, definitions.BLOCK_SIZE)
     clock = pygame.time.Clock()
     tree = treelearn.treelearn() #tworzenie drzewa decyzyjnego
     decision = [0] #początkowa decyzja o braku powrotu do stacji (0)
+    #neuralnetwork.create_neural_network()
     run = True
     while run: #pętla główna programu
         clock.tick(definitions.FPS)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
-        map1.draw_window(tractor1, tractor1_rect)
+        map1.draw_window(cart1, cart1_rect)
         if not move_list and plant.Plant.if_any_mature_plant(map1) is True: #jeżeli są jakieś ruchy do wykonania w move_list oraz istnieje jakaś dojrzała roślina
-            istate = graph.Istate(tractor1.get_direction(), tractor1.get_x() / definitions.BLOCK_SIZE, tractor1.get_y() / definitions.BLOCK_SIZE) #stan początkowy traktora (jego orientacja oraz jego aktualne współrzędne)
-            #move_list = (graph.graphsearch([], [], istate, graph.succ, plant.Plant.get_closest_mature_plant(map1, tractor1))) #lista z ruchami, które należy po kolei wykonać, graph
+            istate = graph.Istate(cart1.get_direction(), cart1.get_x() / definitions.BLOCK_SIZE, cart1.get_y() / definitions.BLOCK_SIZE) #stan początkowy wózka (jego orientacja oraz jego aktualne współrzędne)
             if decision == [0]: #jeżeli decyzja jest 0 (brak powrotu do stacji) to uprawiaj pole
-                move_list = (astar.graphsearch([], [], istate, graph.succ, plant.Plant.get_closest_mature_plant(map1, istate), astar.f, map1))  #lista z ruchami, które należy po kolei wykonać, astar
+                move_list = (astar.graphsearch([], [], istate, graph.succ, plant.Plant.get_mature_plant(map1, istate), astar.f, map1))  #lista z ruchami, które należy po kolei wykonać, astar
             else:  #jeżeli decyzja jest 1 (powrót do stacji) to wróć do stacji uzupełnić zapasy
                 move_list = (graph.graphsearch([], [], istate, graph.succ, (0, 0))) #lista z ruchami, które należy po kolei wykonać, graphsearch
         elif move_list: #jeżeli move_list nie jest pusta
-            tractor1.handle_movement(move_list.pop(0), tractor1_rect) #wykonaj kolejny ruch oraz zdejmij ten ruch z początku listy
+            cart1.handle_movement(move_list.pop(0), cart1_rect) #wykonaj kolejny ruch oraz zdejmij ten ruch z początku listy
         else:
-            tractor1.handle_random_movement(tractor1_rect) #wykonuj losowe ruchy
-        tractor1.do_work(map1, station1, tractor1_rect) #wykonaj pracę na danym polu
-        decision = treelearn.make_decision(tree, tractor1.get_all_amount_of_seeds(), tractor1.get_all_collected_plants(), tractor1.get_all_fertilizer(), tractor1.get_fuel(), tractor1.get_water_level()) #podejmij decyzję czy wracać do stacji (0 : NIE, 1 : TAK)
+            cart1.handle_movement_random(cart1_rect) #wykonuj losowe ruchy
+        cart1.do_work(map1, station1, cart1_rect) #wykonaj pracę na danym polu
+        decision = treelearn.make_decision(tree, cart1.get_all_amount_of_seeds(), cart1.get_all_collected_plants(), cart1.get_all_fertilizer(), cart1.get_fuel(), cart1.get_water_level()) #podejmij decyzję czy wracać do stacji (0 : NIE, 1 : TAK)
         plant.Plant.grow_plants(map1) #zwiększ poziom dojrzałości roślin
     pygame.quit()
 if __name__ == "__main__":

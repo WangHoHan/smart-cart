@@ -1,7 +1,7 @@
 from operator import itemgetter
+import cart
 import copy
-import tractor
-class Istate: #stan początkowy traktora (strona, w którą patrzy, miejsce, w którym się on znajduje)
+class Istate: #stan początkowy wózka (strona, w którą patrzy, miejsce, w którym się on znajduje)
     def __init__(self, direction, x, y):
         self.direction = direction
         self.x = x
@@ -51,51 +51,15 @@ def cost(map, node): #funkcja kosztu : ile kosztuje przejechanie przez dane pole
         cost = cost + map.get_field_cost(int(node.get_x()), int(node.get_y())) + 1
         node = node.get_parent()
     return cost
-def heuristic(node, goaltest): #funkcja heurestyki : oszacowuje koszt osiągnięcia stanu końcowego (droga)
-    return abs(node.get_x() - goaltest[0]) + abs(node.get_y() - goaltest[1])
 def f(map, node, goaltest): #funkcja zwracająca sumę funkcji kosztu oraz heurestyki
     return cost(map, node) + heuristic(node, goaltest)
-def goal_test(elem, goaltest): #funkcja sprawdzająca czy położenie traktora równa się położeniu punktu docelowego, jeśli tak zwraca prawdę, w przeciwnym wypadku fałsz
+def goal_test(elem, goaltest): #funkcja sprawdzająca czy położenie wózka równa się położeniu punktu docelowego, jeśli tak zwraca prawdę, w przeciwnym wypadku fałsz
     if elem.get_x() == goaltest[0] and elem.get_y() == goaltest[1]:
         return True
     else:
         return False
-def print_moves(elem): #zwraca listę ruchów jakie należy wykonać by dotrzeć do punktu docelowego
-    moves_list = []
-    while (elem.get_parent() != None):
-        moves_list.append(elem.get_action())
-        elem = elem.get_parent()
-    moves_list.reverse()
-    return moves_list
-def succ(elem): #funkcja następnika, przypisuje jakie akcje są możliwe do wykonania na danym polu oraz jaki będzie stan (kierunek, położenie) po wykonaniu tej akcji
-    actions_list = []
-    temp = copy.copy(elem.get_direction())
-    if temp == 1:
-        temp = 4
-    else:
-        temp = temp - 1
-    actions_list.append(("rotate_left", (temp, elem.get_x(), elem.get_y())))
-    temp = copy.copy(elem.get_direction())
-    if temp == 4:
-        temp = 1
-    else:
-        temp = temp + 1
-    actions_list.append(("rotate_right", (temp, elem.get_x(), elem.get_y())))
-    temp_move_south = elem.get_y() + 1
-    temp_move_west = elem.get_x() - 1
-    temp_move_east = elem.get_x() + 1
-    temp_move_north = elem.get_y() - 1
-    if tractor.Tractor.is_move_allowed_succ(elem) == "x + 1":
-        actions_list.append(("move", (elem.get_direction(), temp_move_east, elem.get_y())))
-    elif tractor.Tractor.is_move_allowed_succ(elem) == "y - 1":
-        actions_list.append(("move", (elem.get_direction(), elem.get_x(), temp_move_north)))
-    elif tractor.Tractor.is_move_allowed_succ(elem) == "y + 1":
-        actions_list.append(("move", (elem.get_direction(), elem.get_x(), temp_move_south)))
-    elif tractor.Tractor.is_move_allowed_succ(elem) == "x - 1":
-        actions_list.append(("move", (elem.get_direction(), temp_move_west, elem.get_y())))
-    return actions_list
 def graphsearch(fringe, explored, istate, succ, goaltest, f, map): #przeszukiwanie grafu wszerz
-    node = Node(None, istate.get_direction(), None, istate.get_x(), istate.get_y()) #wierzchołek początkowy, stworzony ze stanu początkowego traktora
+    node = Node(None, istate.get_direction(), None, istate.get_x(), istate.get_y()) #wierzchołek początkowy, stworzony ze stanu początkowego wózka
     fringe.append((node, 0)) #wierzchołki do odwiedzenia z priorytetem
     while True:
         if not fringe:
@@ -129,3 +93,39 @@ def graphsearch(fringe, explored, istate, succ, goaltest, f, map): #przeszukiwan
                             fringe = sorted(fringe, key=itemgetter(1)) #sortowanie fringe'a według priorytetu
                             break
                     i = i + 1
+def heuristic(node, goaltest): #funkcja heurestyki : oszacowuje koszt osiągnięcia stanu końcowego (droga)
+    return abs(node.get_x() - goaltest[0]) + abs(node.get_y() - goaltest[1])
+def print_moves(elem): #zwraca listę ruchów jakie należy wykonać by dotrzeć do punktu docelowego
+    moves_list = []
+    while (elem.get_parent() != None):
+        moves_list.append(elem.get_action())
+        elem = elem.get_parent()
+    moves_list.reverse()
+    return moves_list
+def succ(elem): #funkcja następnika, przypisuje jakie akcje są możliwe do wykonania na danym polu oraz jaki będzie stan (kierunek, położenie) po wykonaniu tej akcji
+    actions_list = []
+    temp = copy.copy(elem.get_direction())
+    if temp == 1:
+        temp = 4
+    else:
+        temp = temp - 1
+    actions_list.append(("rotate_left", (temp, elem.get_x(), elem.get_y())))
+    temp = copy.copy(elem.get_direction())
+    if temp == 4:
+        temp = 1
+    else:
+        temp = temp + 1
+    actions_list.append(("rotate_right", (temp, elem.get_x(), elem.get_y())))
+    temp_move_south = elem.get_y() + 1
+    temp_move_west = elem.get_x() - 1
+    temp_move_east = elem.get_x() + 1
+    temp_move_north = elem.get_y() - 1
+    if cart.Cart.is_move_allowed_succ(elem) == "x + 1":
+        actions_list.append(("move", (elem.get_direction(), temp_move_east, elem.get_y())))
+    elif cart.Cart.is_move_allowed_succ(elem) == "y - 1":
+        actions_list.append(("move", (elem.get_direction(), elem.get_x(), temp_move_north)))
+    elif cart.Cart.is_move_allowed_succ(elem) == "y + 1":
+        actions_list.append(("move", (elem.get_direction(), elem.get_x(), temp_move_south)))
+    elif cart.Cart.is_move_allowed_succ(elem) == "x - 1":
+        actions_list.append(("move", (elem.get_direction(), temp_move_west, elem.get_y())))
+    return actions_list

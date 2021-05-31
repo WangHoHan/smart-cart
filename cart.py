@@ -1,6 +1,6 @@
 import definitions
 import random
-class Tractor:
+class Cart:
     def __init__(self, amount_of_seeds, collected_plants, direction, fertilizer, fuel, water_level, x, y):
         self.amount_of_seeds = amount_of_seeds #amount_of_seeds to słownik, przechowuje informacje o posiadanej ilości ziaren dla danej rośliny
         self.collected_plants = collected_plants #collected_plants to słownik, przechowuje informacje o zebranych plonach
@@ -48,50 +48,12 @@ class Tractor:
         return self.y
     def set_y(self, y):
         self.y = y
-    def move(self):
-        if self.direction == definitions.TRACTOR_DIRECTION_EAST:
-            self.x = self.x + definitions.BLOCK_SIZE
-        elif self.direction == definitions.TRACTOR_DIRECTION_NORTH:
-            self.y = self.y - definitions.BLOCK_SIZE
-        elif self.direction == definitions.TRACTOR_DIRECTION_SOUTH:
-            self.y = self.y + definitions.BLOCK_SIZE
-        elif self.direction == definitions.TRACTOR_DIRECTION_WEST:
-            self.x = self.x - definitions.BLOCK_SIZE
-    def rotate_left(self):
-        if self.direction == 1:
-            self.direction = 4
-        else:
-            self.direction = self.direction - 1
-    def rotate_right(self):
-        if self.direction == 4:
-            self.direction = 1
-        else:
-            self.direction = self.direction + 1
-    def station_restore(self, station1): #aktualizuje stan stacji pod względem oddanych plonów oraz uzupełnia zapasy traktora
-        station1.set_collected_plants("beetroot", station1.get_collected_plants("beetroot") + self.get_collected_plants("beetroot"))
-        self.set_collected_plants("beetroot", 0)
-        station1.set_collected_plants("carrot", station1.get_collected_plants("carrot") + self.get_collected_plants("carrot"))
-        self.set_collected_plants("carrot", 0)
-        station1.set_collected_plants("potato", station1.get_collected_plants("potato") + self.get_collected_plants("potato"))
-        self.set_collected_plants("potato", 0)
-        station1.set_collected_plants("wheat", station1.get_collected_plants("wheat") + self.get_collected_plants("wheat"))
-        self.set_collected_plants("wheat", 0)
-        self.set_amount_of_seeds("beetroot", definitions.TRACTOR_AMOUNT_OF_SEEDS_EACH_TYPE)
-        self.set_amount_of_seeds("carrot", definitions.TRACTOR_AMOUNT_OF_SEEDS_EACH_TYPE)
-        self.set_amount_of_seeds("potato", definitions.TRACTOR_AMOUNT_OF_SEEDS_EACH_TYPE)
-        self.set_amount_of_seeds("wheat", definitions.TRACTOR_AMOUNT_OF_SEEDS_EACH_TYPE)
-        self.set_fertilizer("beetroot", definitions.TRACTOR_FERTILIZER)
-        self.set_fertilizer("carrot", definitions.TRACTOR_FERTILIZER)
-        self.set_fertilizer("potato", definitions.TRACTOR_FERTILIZER)
-        self.set_fertilizer("wheat", definitions.TRACTOR_FERTILIZER)
-        self.set_fuel(definitions.TRACTOR_FUEL)
-        self.set_water_level(definitions.TRACTOR_WATER_LEVEL)
-    def do_work(self, map1, station1, tractor1_rect): #jaką pracę traktor ma wykonać na danym polu, na którym aktualnie przebywa (zmienia stan logiczny danego pola)
+    def do_work(self, map1, station1, cart_rect): #jaką pracę wózek ma wykonać na danym polu, na którym aktualnie przebywa (zmienia stan logiczny danego pola)
         loop = True
         if self.get_all_amount_of_seeds() == 0:
             loop = False
-        x = int(tractor1_rect.x / definitions.BLOCK_SIZE)
-        y = int(tractor1_rect.y / definitions.BLOCK_SIZE)
+        x = int(cart_rect.x / definitions.BLOCK_SIZE)
+        y = int(cart_rect.y / definitions.BLOCK_SIZE)
         field = map1.get_fields()[x][y]
         if x == 0 and y == 0:
             self.station_restore(station1)
@@ -139,54 +101,31 @@ class Tractor:
             self.set_fertilizer("wheat", (self.get_fertilizer("wheat") - 1))
             field.get_soil().set_is_fertilized(True)
             field.get_plant().set_state(field.get_plant().get_state() + definitions.WHEAT_GROW_TIME)
-        elif field.get_plant().get_name() == "beetroot" and field.get_plant().get_state() == definitions.BEETROOTS_MAXIMUM_STATE and self.get_all_collected_plants() < definitions.TRACTOR_MAXIMUM_COLLECTED_PLANTS:
+        elif field.get_plant().get_name() == "beetroot" and field.get_plant().get_state() == definitions.BEETROOTS_MAXIMUM_STATE and self.get_all_collected_plants() < definitions.CART_MAXIMUM_COLLECTED_PLANTS:
             field.get_plant().set_state(0)
             field.get_soil().set_is_fertilized(False)
             field.get_soil().set_water_level(False)
             field.get_soil().set_state(False)
             self.set_collected_plants("beetroot", self.get_collected_plants("beetroot") + 1)
-        elif field.get_plant().get_name() == "carrot" and field.get_plant().get_state() == definitions.CARROTS_MAXIMUM_STATE and self.get_all_collected_plants() < definitions.TRACTOR_MAXIMUM_COLLECTED_PLANTS:
+        elif field.get_plant().get_name() == "carrot" and field.get_plant().get_state() == definitions.CARROTS_MAXIMUM_STATE and self.get_all_collected_plants() < definitions.CART_MAXIMUM_COLLECTED_PLANTS:
             field.get_plant().set_state(0)
             field.get_soil().set_is_fertilized(False)
             field.get_soil().set_water_level(False)
             field.get_soil().set_state(False)
             self.set_collected_plants("carrot", self.get_collected_plants("carrot") + 1)
-        elif field.get_plant().get_name() == "potato" and field.get_plant().get_state() == definitions.POTATOES_MAXIMUM_STATE and self.get_all_collected_plants() < definitions.TRACTOR_MAXIMUM_COLLECTED_PLANTS:
+        elif field.get_plant().get_name() == "potato" and field.get_plant().get_state() == definitions.POTATOES_MAXIMUM_STATE and self.get_all_collected_plants() < definitions.CART_MAXIMUM_COLLECTED_PLANTS:
             field.get_plant().set_state(0)
             field.get_soil().set_is_fertilized(False)
             field.get_soil().set_water_level(False)
             field.get_soil().set_state(False)
             self.set_collected_plants("potato", self.get_collected_plants("potato") + 1)
-        elif field.get_plant().get_name() == "wheat" and field.get_plant().get_state() == definitions.WHEAT_MAXIMUM_STATE and self.get_all_collected_plants() < definitions.TRACTOR_MAXIMUM_COLLECTED_PLANTS:
+        elif field.get_plant().get_name() == "wheat" and field.get_plant().get_state() == definitions.WHEAT_MAXIMUM_STATE and self.get_all_collected_plants() < definitions.CART_MAXIMUM_COLLECTED_PLANTS:
             field.get_plant().set_state(0)
             field.get_soil().set_is_fertilized(False)
             field.get_soil().set_water_level(False)
             field.get_soil().set_state(False)
             self.set_collected_plants("wheat", self.get_collected_plants("wheat") + 1)
-    def is_move_allowed(self, tractor1_rect): #sprawdza czy dany ruch, który chce wykonać traktor jest możliwy, zwraca prawdę lub fałsz
-        if self.direction == definitions.TRACTOR_DIRECTION_EAST and tractor1_rect.x + definitions.BLOCK_SIZE < definitions.WIDTH:
-            return True
-        elif self.direction == definitions.TRACTOR_DIRECTION_NORTH and tractor1_rect.y - definitions.BLOCK_SIZE >= 0:
-            return True
-        elif self.direction == definitions.TRACTOR_DIRECTION_SOUTH and tractor1_rect.y + definitions.BLOCK_SIZE < definitions.HEIGHT:
-            return True
-        elif self.direction == definitions.TRACTOR_DIRECTION_WEST and tractor1_rect.x - definitions.BLOCK_SIZE >= 0:
-            return True
-        else:
-            return False
-    @staticmethod
-    def is_move_allowed_succ(node): #sprawdza czy dany ruch, który chce wykonać traktor jest możliwy, zwraca pozycje po wykonaniu ruchu, wersja node
-        if node.get_direction() == definitions.TRACTOR_DIRECTION_EAST and node.get_x() * definitions.BLOCK_SIZE + definitions.BLOCK_SIZE < definitions.WIDTH:
-            return "x + 1"
-        elif node.get_direction() == definitions.TRACTOR_DIRECTION_NORTH and node.get_y() * definitions.BLOCK_SIZE - definitions.BLOCK_SIZE >= 0:
-            return "y - 1"
-        elif node.get_direction() == definitions.TRACTOR_DIRECTION_SOUTH and node.get_y() * definitions.BLOCK_SIZE + definitions.BLOCK_SIZE < definitions.HEIGHT:
-            return "y + 1"
-        elif node.get_direction() == definitions.TRACTOR_DIRECTION_WEST and node.get_x() * definitions.BLOCK_SIZE - definitions.BLOCK_SIZE >= 0:
-            return "x - 1"
-        else:
-            return False
-    def handle_movement(self, move, tractor1_rect): #odpowiada za poruszanie się traktora po mapie
+    def handle_movement(self, move, cart_rect): #odpowiada za poruszanie się wózka po mapie
         if self.get_fuel() > 0:
             if move == "move":
                 self.move()
@@ -195,16 +134,16 @@ class Tractor:
             elif move == "rotate_right":
                 self.rotate_right()
             self.set_fuel(self.get_fuel() - 1)
-            tractor1_rect.x = self.get_x()
-            tractor1_rect.y = self.get_y()
-    def handle_random_movement(self, tractor1_rect): #odpowiada za losowe poruszanie się traktora po mapie
+            cart_rect.x = self.get_x()
+            cart_rect.y = self.get_y()
+    def handle_movement_random(self, cart_rect): #odpowiada za losowe poruszanie się wózka po mapie
         loop = True
         while loop and self.get_fuel() > 0:
             random1 = random.randint(1, 3)
-            if random1 == 1 and self.is_move_allowed(tractor1_rect) is True:
+            if random1 == 1 and self.is_move_allowed(cart_rect) is True:
                 self.move()
-                tractor1_rect.x = self.get_x()
-                tractor1_rect.y = self.get_y()
+                cart_rect.x = self.get_x()
+                cart_rect.y = self.get_y()
                 loop = False
             elif random1 == 2:
                 self.rotate_left()
@@ -213,3 +152,64 @@ class Tractor:
                 self.rotate_right()
                 loop = False
         self.set_fuel(self.get_fuel() - 1)
+    def is_move_allowed(self, cart_rect): #sprawdza czy dany ruch, który chce wykonać wózek jest możliwy, zwraca prawdę lub fałsz
+        if self.direction == definitions.CART_DIRECTION_EAST and cart_rect.x + definitions.BLOCK_SIZE < definitions.WIDTH:
+            return True
+        elif self.direction == definitions.CART_DIRECTION_NORTH and cart_rect.y - definitions.BLOCK_SIZE >= 0:
+            return True
+        elif self.direction == definitions.CART_DIRECTION_SOUTH and cart_rect.y + definitions.BLOCK_SIZE < definitions.HEIGHT:
+            return True
+        elif self.direction == definitions.CART_DIRECTION_WEST and cart_rect.x - definitions.BLOCK_SIZE >= 0:
+            return True
+        else:
+            return False
+    @staticmethod
+    def is_move_allowed_succ(node): #sprawdza czy dany ruch, który chce wykonać wózek jest możliwy, zwraca pozycje po wykonaniu ruchu, wersja node
+        if node.get_direction() == definitions.CART_DIRECTION_EAST and node.get_x() * definitions.BLOCK_SIZE + definitions.BLOCK_SIZE < definitions.WIDTH:
+            return "x + 1"
+        elif node.get_direction() == definitions.CART_DIRECTION_NORTH and node.get_y() * definitions.BLOCK_SIZE - definitions.BLOCK_SIZE >= 0:
+            return "y - 1"
+        elif node.get_direction() == definitions.CART_DIRECTION_SOUTH and node.get_y() * definitions.BLOCK_SIZE + definitions.BLOCK_SIZE < definitions.HEIGHT:
+            return "y + 1"
+        elif node.get_direction() == definitions.CART_DIRECTION_WEST and node.get_x() * definitions.BLOCK_SIZE - definitions.BLOCK_SIZE >= 0:
+            return "x - 1"
+        else:
+            return False
+    def move(self):
+        if self.direction == definitions.CART_DIRECTION_EAST:
+            self.x = self.x + definitions.BLOCK_SIZE
+        elif self.direction == definitions.CART_DIRECTION_NORTH:
+            self.y = self.y - definitions.BLOCK_SIZE
+        elif self.direction == definitions.CART_DIRECTION_SOUTH:
+            self.y = self.y + definitions.BLOCK_SIZE
+        elif self.direction == definitions.CART_DIRECTION_WEST:
+            self.x = self.x - definitions.BLOCK_SIZE
+    def rotate_left(self):
+        if self.direction == 1:
+            self.direction = 4
+        else:
+            self.direction = self.direction - 1
+    def rotate_right(self):
+        if self.direction == 4:
+            self.direction = 1
+        else:
+            self.direction = self.direction + 1
+    def station_restore(self, station1): #aktualizuje stan stacji pod względem oddanych plonów oraz uzupełnia zapasy wózka
+        station1.set_collected_plants("beetroot", station1.get_collected_plants("beetroot") + self.get_collected_plants("beetroot"))
+        self.set_collected_plants("beetroot", 0)
+        station1.set_collected_plants("carrot", station1.get_collected_plants("carrot") + self.get_collected_plants("carrot"))
+        self.set_collected_plants("carrot", 0)
+        station1.set_collected_plants("potato", station1.get_collected_plants("potato") + self.get_collected_plants("potato"))
+        self.set_collected_plants("potato", 0)
+        station1.set_collected_plants("wheat", station1.get_collected_plants("wheat") + self.get_collected_plants("wheat"))
+        self.set_collected_plants("wheat", 0)
+        self.set_amount_of_seeds("beetroot", definitions.CART_AMOUNT_OF_SEEDS_EACH_TYPE)
+        self.set_amount_of_seeds("carrot", definitions.CART_AMOUNT_OF_SEEDS_EACH_TYPE)
+        self.set_amount_of_seeds("potato", definitions.CART_AMOUNT_OF_SEEDS_EACH_TYPE)
+        self.set_amount_of_seeds("wheat", definitions.CART_AMOUNT_OF_SEEDS_EACH_TYPE)
+        self.set_fertilizer("beetroot", definitions.CART_FERTILIZER)
+        self.set_fertilizer("carrot", definitions.CART_FERTILIZER)
+        self.set_fertilizer("potato", definitions.CART_FERTILIZER)
+        self.set_fertilizer("wheat", definitions.CART_FERTILIZER)
+        self.set_fuel(definitions.CART_FUEL)
+        self.set_water_level(definitions.CART_WATER_LEVEL)

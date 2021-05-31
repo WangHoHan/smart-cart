@@ -23,6 +23,17 @@ class Map:
                 temp_field = field.Field(temp_plant, temp_rect, temp_soil)
                 temp_map_field.append(temp_field)
             self.fields.append(temp_map_field)
+    def draw_window(self, cart, cart_rect): #rysuje mapę
+        self.fill_map()
+        if cart.get_direction() == definitions.CART_DIRECTION_EAST:
+            definitions.WINDOW.blit(definitions.CART_DIRECTION_EAST_TEXTURE, (cart_rect.x, cart_rect.y))
+        elif cart.get_direction() == definitions.CART_DIRECTION_NORTH:
+            definitions.WINDOW.blit(definitions.CART_DIRECTION_NORTH_TEXTURE, (cart_rect.x, cart_rect.y))
+        elif cart.get_direction() == definitions.CART_DIRECTION_SOUTH:
+            definitions.WINDOW.blit(definitions.CART_DIRECTION_SOUTH_TEXTURE, (cart_rect.x, cart_rect.y))
+        elif cart.get_direction() == definitions.CART_DIRECTION_WEST:
+            definitions.WINDOW.blit(definitions.CART_DIRECTION_WEST_TEXTURE, (cart_rect.x, cart_rect.y))
+        pygame.display.update()
     def fill_map(self): #wypełnia mapę teksturami na podstawie logicznego stanu pól
         for i in range(definitions.WIDTH_AMOUNT):
             for j in range(definitions.HEIGHT_AMOUNT):
@@ -107,14 +118,3 @@ class Map:
             return definitions.FARMLAND_DRY_COST
         elif field.get_soil().get_state() is True and field.get_soil().get_water_level() is True:
             return definitions.FARMLAND_WET_COST
-    def draw_window(self, tractor1, tractor1_rect): #rysuje mapę
-        self.fill_map()
-        if tractor1.get_direction() == definitions.TRACTOR_DIRECTION_EAST:
-            definitions.WINDOW.blit(definitions.TRACTOR_DIRECTION_EAST_TEXTURE, (tractor1_rect.x, tractor1_rect.y))
-        elif tractor1.get_direction() == definitions.TRACTOR_DIRECTION_NORTH:
-            definitions.WINDOW.blit(definitions.TRACTOR_DIRECTION_NORTH_TEXTURE, (tractor1_rect.x, tractor1_rect.y))
-        elif tractor1.get_direction() == definitions.TRACTOR_DIRECTION_SOUTH:
-            definitions.WINDOW.blit(definitions.TRACTOR_DIRECTION_SOUTH_TEXTURE, (tractor1_rect.x, tractor1_rect.y))
-        elif tractor1.get_direction() == definitions.TRACTOR_DIRECTION_WEST:
-            definitions.WINDOW.blit(definitions.TRACTOR_DIRECTION_WEST_TEXTURE, (tractor1_rect.x, tractor1_rect.y))
-        pygame.display.update()
