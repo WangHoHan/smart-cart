@@ -2,8 +2,10 @@ import astar
 import cart
 import definitions
 import graph
+import image_slicer
 import map
 import neuralnetwork
+import os
 import plant
 import pygame
 import station
@@ -23,7 +25,7 @@ def main():
     clock = pygame.time.Clock()
     tree = treelearn.treelearn() #tworzenie drzewa decyzyjnego
     decision = [0] #początkowa decyzja o braku powrotu do stacji (0)
-    #neuralnetwork.create_neural_network()
+    classes, model = neuralnetwork.create_neural_network() #uczenie sieci neuronowej
     run = True
     while run: #pętla główna programu
         clock.tick(definitions.FPS)
@@ -31,10 +33,13 @@ def main():
             if event.type == pygame.QUIT:
                 run = False
         map1.draw_window(cart1, cart1_rect)
-        if not move_list and plant.Plant.if_any_mature_plant(map1) is True: #jeżeli są jakieś ruchy do wykonania w move_list oraz istnieje jakaś dojrzała roślina
-            istate = graph.Istate(cart1.get_direction(), cart1.get_x() / definitions.BLOCK_SIZE, cart1.get_y() / definitions.BLOCK_SIZE) #stan początkowy wózka (jego orientacja oraz jego aktualne współrzędne)
+        pygame.image.save(pygame.display.get_surface(), os.path.join('resources/neural_network/sliced/', 'screen.jpg')) #zrzut obecnego ekranu
+        image_slicer.slice(os.path.join('resources/neural_network/sliced/', 'screen.jpg'), 100) #pocięcie ekranu na sto części
+        os.remove('resources/neural_network/sliced/screen.jpg')
+        if not move_list and neuralnetwork.predfield(classes, model) is not False: #jeżeli są jakieś ruchy do wykonania w move_list oraz istnieje jakaś dojrzała roślina
+            istate = graph.Istate(cart1.get_direction(), cart1.get_x() / definitions.BLOCK_SIZE, cart1.get_y() / definitions.BLOCK_SIZE) #stan początkowy wózka (jego orientacja oraz jego aktualne miejsce)
             if decision == [0]: #jeżeli decyzja jest 0 (brak powrotu do stacji) to uprawiaj pole
-                move_list = (astar.graphsearch([], astar.f, [], plant.Plant.get_mature_plant(map1), istate, map1, graph.succ))  #lista z ruchami, które należy po kolei wykonać, astar
+                move_list = (astar.graphsearch([], astar.f, [], neuralnetwork.predfield(classes, model), istate, map1, graph.succ))  #lista z ruchami, które należy po kolei wykonać, astar
             else:  #jeżeli decyzja jest 1 (powrót do stacji) to wróć do stacji uzupełnić zapasy
                 move_list = (graph.graphsearch([], [], (0, 0), istate, graph.succ)) #lista z ruchami, które należy po kolei wykonać, graphsearch
         elif move_list: #jeżeli move_list nie jest pusta

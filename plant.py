@@ -12,30 +12,6 @@ class Plant:
     def set_state(self, state):
         self.state = state
     @staticmethod
-    def get_mature_plant(map):  #pobiera współrzędne jakiejś dojrzałej rośliny
-        x = -1
-        y = -1
-        for i in range(definitions.WIDTH_AMOUNT):
-            for j in range(definitions.HEIGHT_AMOUNT):
-                field = map.get_fields()[i][j]
-                if field.get_plant().get_name() == "beetroot" and field.get_plant().get_state() == definitions.BEETROOTS_MAXIMUM_STATE:
-                    x = i
-                    y = j
-                elif field.get_plant().get_name() == "carrot" and field.get_plant().get_state() == definitions.CARROTS_MAXIMUM_STATE:
-                    x = i
-                    y = j
-                elif field.get_plant().get_name() == "potato" and field.get_plant().get_state() == definitions.POTATOES_MAXIMUM_STATE:
-                    x = i
-                    y = j
-
-                elif field.get_plant().get_name() == "wheat" and field.get_plant().get_state() == definitions.WHEAT_MAXIMUM_STATE:
-                    x = i
-                    y = j
-        if x == -1 and y == -1:
-            return False
-        else:
-            return x, y
-    @staticmethod
     def grow_plants(map):  #metoda statyczna, która zwiększa pole state (etap rozwoju rośliny) dla danej rośliny na danym polu o 1
         for i in range(definitions.WIDTH_AMOUNT):
             for j in range(definitions.HEIGHT_AMOUNT):
@@ -48,17 +24,3 @@ class Plant:
                     field.get_plant().set_state(field.get_plant().get_state() + 1)
                 elif field.get_plant().get_name() == "wheat" and field.get_plant().get_state() > 0 and field.get_plant().get_state() < definitions.WHEAT_MAXIMUM_STATE:
                     field.get_plant().set_state(field.get_plant().get_state() + 1)
-    @staticmethod
-    def if_any_mature_plant(map): #sprawdza czy na polu występuje choć jedna dojrzała roślina, jeśli tak zwraca prawdę, w przeciwnym razie zwraca fałsz
-        for i in range(definitions.WIDTH_AMOUNT):
-            for j in range(definitions.HEIGHT_AMOUNT):
-                field = map.get_fields()[i][j]
-                if field.get_plant().get_name() == "beetroot" and field.get_plant().get_state() == definitions.BEETROOTS_MAXIMUM_STATE:
-                    return True
-                elif field.get_plant().get_name() == "carrot" and field.get_plant().get_state() == definitions.CARROTS_MAXIMUM_STATE:
-                    return True
-                elif field.get_plant().get_name() == "potato" and field.get_plant().get_state() == definitions.POTATOES_MAXIMUM_STATE:
-                    return True
-                elif field.get_plant().get_name() == "wheat" and field.get_plant().get_state() == definitions.WHEAT_MAXIMUM_STATE:
-                    return True
-        return False
