@@ -95,32 +95,57 @@ def create_neural_network(): #tworzenie sieci neuronowej
         model.load_state_dict(checkpoint)
         model.eval()
     return classes, model
-def predfield(classes, model): #zwraca miejsce pola z wyrośniętą rośliną na podstawie wykrywania obrazu
+def predfield(cart_direction, cart_x, cart_y, classes, model): #zwraca najbliższe miejsce pola z wyrośniętą rośliną na podstawie wykrywania obrazu
     pred_path = os.path.join('resources/neural_network/sliced/') #ścieżka do obrazków do sprawdzenia
     pred_dict = {}
     images_path = glob.glob(pred_path + '/*.png')
+    cart_x = int(cart_x) #x'owa wózka
+    cart_y = int(cart_y) #y'owa wózka
+    additional_rotate_moves = 0
     x = None #x'owa pola
     y = None#y'kowa  pola
+    min = None
     for i in images_path: #dodajemy pocięte obrazki do listy i ustawiamy im przewidywaną metkę
         pred_dict[i[i.rfind('/') + 1:]] = prediction1(classes, i, model, transformer1)
     for img_name, field in pred_dict.items():
         if field != "random": #jeżeli metka nie jest 'random' to przypisz do x'a i y'a miejsce wyrośniętej rośliny
-            x = img_name[15]
-            y = img_name[18]
-            x = int(x)
-            y = int(y)
-            if x == 0:
-                x = 9
+            if x is None and y is None:
+                x = img_name[18]
+                y = img_name[15]
+                x = int(x)
+                y = int(y)
+                if x == 0:
+                    x = 9
+                else:
+                    x = x - 1
+                if y == 0:
+                    y = 9
+                else:
+                    y = y - 1
+                min = abs(cart_x - x) + abs(cart_y - y) + additional_rotate_moves
             else:
-                x = x - 1
-            if y == 0:
-                y = 9
-            else:
-                y = y - 1
+                temp_x = img_name[18]
+                temp_y = img_name[15]
+                temp_x = int(temp_x)
+                temp_y = int(temp_y)
+                if temp_x == 0:
+                    temp_x = 9
+                else:
+                    temp_x = temp_x - 1
+                if temp_y == 0:
+                    temp_y = 9
+                else:
+                    temp_y = temp_y - 1
+                if abs(cart_x - temp_x) + abs(cart_y - temp_y) + additional_rotate_moves < min:
+                    x = temp_x
+                    y = temp_y
+                    min = abs(cart_x - x) + abs(cart_y - y) + additional_rotate_moves
     if x == None and y == None: #jeżeli nie ma wyrośniętej rośliny to zwróć False
         return False
     else:
-        return y, x
+        print(x, y)
+        print(min)
+        return x, y
 def prediction1(classes, img_path, model, transformer): #zwraca predykcję dla danego obrazka
     image = Image.open(img_path).convert('RGB')
     image_tensor = transformer(image).float()

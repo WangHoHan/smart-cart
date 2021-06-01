@@ -26,6 +26,7 @@ def main():
     tree = treelearn.treelearn() #tworzenie drzewa decyzyjnego
     decision = [0] #początkowa decyzja o braku powrotu do stacji (0)
     classes, model = neuralnetwork.create_neural_network() #uczenie sieci neuronowej
+    random_movement = False
     run = True
     while run: #pętla główna programu
         clock.tick(definitions.FPS)
@@ -33,18 +34,22 @@ def main():
             if event.type == pygame.QUIT:
                 run = False
         map1.draw_window(cart1, cart1_rect)
-        pygame.image.save(pygame.display.get_surface(), os.path.join('resources/neural_network/sliced/', 'screen.jpg')) #zrzut obecnego ekranu
-        image_slicer.slice(os.path.join('resources/neural_network/sliced/', 'screen.jpg'), 100) #pocięcie ekranu na sto części
-        os.remove('resources/neural_network/sliced/screen.jpg')
-        if not move_list and neuralnetwork.predfield(classes, model) is not False: #jeżeli są jakieś ruchy do wykonania w move_list oraz istnieje jakaś dojrzała roślina
-            istate = graph.Istate(cart1.get_direction(), cart1.get_x() / definitions.BLOCK_SIZE, cart1.get_y() / definitions.BLOCK_SIZE) #stan początkowy wózka (jego orientacja oraz jego aktualne miejsce)
-            if decision == [0]: #jeżeli decyzja jest 0 (brak powrotu do stacji) to uprawiaj pole
-                move_list = (astar.graphsearch([], astar.f, [], neuralnetwork.predfield(classes, model), istate, map1, graph.succ))  #lista z ruchami, które należy po kolei wykonać, astar
-            else:  #jeżeli decyzja jest 1 (powrót do stacji) to wróć do stacji uzupełnić zapasy
-                move_list = (graph.graphsearch([], [], (0, 0), istate, graph.succ)) #lista z ruchami, które należy po kolei wykonać, graphsearch
+        if not move_list: #jeżeli są jakieś ruchy do wykonania w move_list
+            pygame.image.save(pygame.display.get_surface(), os.path.join('resources/neural_network/sliced/', 'screen.jpg')) #zrzut obecnego ekranu
+            image_slicer.slice(os.path.join('resources/neural_network/sliced/', 'screen.jpg'), 100) #pocięcie ekranu na sto części
+            os.remove('resources/neural_network/sliced/screen.jpg')
+            if neuralnetwork.predfield(cart1.get_direction(), cart1.get_x() / definitions.BLOCK_SIZE, cart1.get_y() / definitions.BLOCK_SIZE, classes, model) is not False: #jeżeli istnieje jakaś dojrzała roślina
+                random_movement = False
+                istate = graph.Istate(cart1.get_direction(), cart1.get_x() / definitions.BLOCK_SIZE, cart1.get_y() / definitions.BLOCK_SIZE) #stan początkowy wózka (jego orientacja oraz jego aktualne miejsce)
+                if decision == [0]: #jeżeli decyzja jest 0 (brak powrotu do stacji) to uprawiaj pole
+                    move_list = (astar.graphsearch([], astar.f, [], neuralnetwork.predfield(cart1.get_direction(), cart1.get_x() / definitions.BLOCK_SIZE, cart1.get_y() / definitions.BLOCK_SIZE, classes, model), istate, map1, graph.succ))  #lista z ruchami, które należy po kolei wykonać, astar
+                else:  #jeżeli decyzja jest 1 (powrót do stacji) to wróć do stacji uzupełnić zapasy
+                    move_list = (graph.graphsearch([], [], (0, 0), istate, graph.succ)) #lista z ruchami, które należy po kolei wykonać, graphsearch
+            else:
+                random_movement = True
         elif move_list: #jeżeli move_list nie jest pusta
             cart1.handle_movement(cart1_rect, move_list.pop(0)) #wykonaj kolejny ruch oraz zdejmij ten ruch z początku listy
-        else:
+        if random_movement is not False:
             cart1.handle_movement_random(cart1_rect) #wykonuj losowe ruchy
         cart1.do_work(cart1_rect, map1, station1) #wykonaj pracę na danym polu
         decision = treelearn.make_decision(cart1.get_all_amount_of_seeds(), cart1.get_all_collected_plants(), cart1.get_all_fertilizer(), cart1.get_fuel(), tree, cart1.get_water_level()) #podejmij decyzję czy wracać do stacji (0 : NIE, 1 : TAK)
