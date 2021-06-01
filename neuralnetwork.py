@@ -121,7 +121,6 @@ def predfield(classes, istate, model): #zwraca najbliższe miejsce pola z wyroś
                 else:
                     y = y - 1
                 min = len((graph.graphsearch([], [], (x, y), istate, graph.succ)))
-                print(min)
             else:
                 temp_x = img_name[18]
                 temp_y = img_name[15]
