@@ -15,12 +15,12 @@ def main():
     #tworzenie podstawowych obiektów
     map1 = map.Map([])
     map1.create_base_map()
-    move_list = []
+    move_list = ["rotate_left", "move", "move", "move", "move", "move", "move", "rotate_left", "rotate_left", "move", "rotate_left", "rotate_left", "rotate_left", "rotate_left", "move", "rotate_left", "rotate_left", "rotate_left", "rotate_left", "move", "rotate_left", "rotate_left", "rotate_left", "move", "rotate_left", "rotate_left", "rotate_left", "rotate_left", "move", "rotate_left", "rotate_left", "rotate_left", "move", "rotate_left", "rotate_left", "rotate_left", "rotate_left", "move", "rotate_left", "rotate_left", "rotate_left", "move", "rotate_left", "rotate_left", "move", "rotate_left", "rotate_left", "rotate_left", "move", "rotate_left", "rotate_left", "rotate_left", "rotate_left", "rotate_left", "move", "move", "rotate_left", "rotate_left", "rotate_left", "rotate_left", "rotate_left", "move", "rotate_left", "rotate_left", "rotate_left", "move", "rotate_left", "move", "rotate_left", "rotate_left", "rotate_left", "rotate_left", "move", "rotate_left", "rotate_left", "move", "move", "move", "rotate_left", "rotate_left", "rotate_left", "rotate_left", "rotate_left", "move", "move", "rotate_left", "rotate_left", "rotate_left", "rotate_left", "rotate_left", "move", "rotate_left", "rotate_left", "rotate_left", "move", "rotate_left", "rotate_left", "rotate_left", "move", "rotate_left", "rotate_left", "rotate_left", "rotate_left", "rotate_left", "move", "rotate_left", "rotate_left", "rotate_left", "move"] #początkowe ruchy
     amount_of_seeds_dict = {"beetroot": definitions.CART_AMOUNT_OF_SEEDS_EACH_TYPE, "carrot": definitions.CART_AMOUNT_OF_SEEDS_EACH_TYPE, "potato": definitions.CART_AMOUNT_OF_SEEDS_EACH_TYPE, "wheat": definitions.CART_AMOUNT_OF_SEEDS_EACH_TYPE}
     collected_plants_dict = {"beetroot": 0, "carrot": 0, "potato": 0, "wheat": 0}
     fertilizer_dict = {"beetroot": definitions.CART_FERTILIZER, "carrot": definitions.CART_FERTILIZER, "potato": definitions.CART_FERTILIZER, "wheat": definitions.CART_FERTILIZER}
     station1 = station.Station(collected_plants_dict)
-    cart1 = cart.Cart(amount_of_seeds_dict, collected_plants_dict, definitions.CART_DIRECTION_NORTH, fertilizer_dict, definitions.CART_FUEL, definitions.CART_WATER_LEVEL, 0, 0)
+    cart1 = cart.Cart(amount_of_seeds_dict, collected_plants_dict, definitions.CART_DIRECTION_WEST, fertilizer_dict, definitions.CART_FUEL, definitions.CART_WATER_LEVEL, 0 * definitions.BLOCK_SIZE, 0 * definitions.BLOCK_SIZE)
     cart1_rect = pygame.Rect(cart1.get_x(), cart1.get_y(), definitions.BLOCK_SIZE, definitions.BLOCK_SIZE)
     clock = pygame.time.Clock()
     tree = treelearn.treelearn() #tworzenie drzewa decyzyjnego
