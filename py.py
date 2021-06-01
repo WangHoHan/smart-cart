@@ -38,11 +38,11 @@ def main():
             pygame.image.save(pygame.display.get_surface(), os.path.join('resources/neural_network/sliced/', 'screen.jpg')) #zrzut obecnego ekranu
             image_slicer.slice(os.path.join('resources/neural_network/sliced/', 'screen.jpg'), 100) #pocięcie ekranu na sto części
             os.remove('resources/neural_network/sliced/screen.jpg')
-            if neuralnetwork.predfield(cart1.get_direction(), cart1.get_x() / definitions.BLOCK_SIZE, cart1.get_y() / definitions.BLOCK_SIZE, classes, model) is not False: #jeżeli istnieje jakaś dojrzała roślina
+            istate = graph.Istate(cart1.get_direction(), cart1.get_x() / definitions.BLOCK_SIZE, cart1.get_y() / definitions.BLOCK_SIZE) #stan początkowy wózka (jego orientacja oraz jego aktualne miejsce)
+            if neuralnetwork.predfield(classes, istate, model) is not False: #jeżeli istnieje jakaś dojrzała roślina
                 random_movement = False
-                istate = graph.Istate(cart1.get_direction(), cart1.get_x() / definitions.BLOCK_SIZE, cart1.get_y() / definitions.BLOCK_SIZE) #stan początkowy wózka (jego orientacja oraz jego aktualne miejsce)
                 if decision == [0]: #jeżeli decyzja jest 0 (brak powrotu do stacji) to uprawiaj pole
-                    move_list = (astar.graphsearch([], astar.f, [], neuralnetwork.predfield(cart1.get_direction(), cart1.get_x() / definitions.BLOCK_SIZE, cart1.get_y() / definitions.BLOCK_SIZE, classes, model), istate, map1, graph.succ))  #lista z ruchami, które należy po kolei wykonać, astar
+                    move_list = (astar.graphsearch([], astar.f, [], neuralnetwork.predfield(classes, istate, model), istate, map1, graph.succ))  #lista z ruchami, które należy po kolei wykonać, astar
                 else:  #jeżeli decyzja jest 1 (powrót do stacji) to wróć do stacji uzupełnić zapasy
                     move_list = (graph.graphsearch([], [], (0, 0), istate, graph.succ)) #lista z ruchami, które należy po kolei wykonać, graphsearch
             else:

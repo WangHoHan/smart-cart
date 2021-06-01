@@ -4,6 +4,7 @@ from torch.optim import Adam
 from torch.utils.data import DataLoader
 from torchvision.transforms import transforms
 import glob
+import graph
 import os
 import pathlib
 import torch
@@ -95,15 +96,12 @@ def create_neural_network(): #tworzenie sieci neuronowej
         model.load_state_dict(checkpoint)
         model.eval()
     return classes, model
-def predfield(cart_direction, cart_x, cart_y, classes, model): #zwraca najbliższe miejsce pola z wyrośniętą rośliną na podstawie wykrywania obrazu
+def predfield(classes, istate, model): #zwraca najbliższe miejsce pola z wyrośniętą rośliną na podstawie wykrywania obrazu
     pred_path = os.path.join('resources/neural_network/sliced/') #ścieżka do obrazków do sprawdzenia
     pred_dict = {}
     images_path = glob.glob(pred_path + '/*.png')
-    cart_x = int(cart_x) #x'owa wózka
-    cart_y = int(cart_y) #y'owa wózka
-    additional_rotate_moves = 0
     x = None #x'owa pola
-    y = None#y'kowa  pola
+    y = None #y'kowa  pola
     min = None
     for i in images_path: #dodajemy pocięte obrazki do listy i ustawiamy im przewidywaną metkę
         pred_dict[i[i.rfind('/') + 1:]] = prediction1(classes, i, model, transformer1)
@@ -122,7 +120,8 @@ def predfield(cart_direction, cart_x, cart_y, classes, model): #zwraca najbliżs
                     y = 9
                 else:
                     y = y - 1
-                min = abs(cart_x - x) + abs(cart_y - y) + additional_rotate_moves
+                min = len((graph.graphsearch([], [], (x, y), istate, graph.succ)))
+                print(min)
             else:
                 temp_x = img_name[18]
                 temp_y = img_name[15]
@@ -136,15 +135,13 @@ def predfield(cart_direction, cart_x, cart_y, classes, model): #zwraca najbliżs
                     temp_y = 9
                 else:
                     temp_y = temp_y - 1
-                if abs(cart_x - temp_x) + abs(cart_y - temp_y) + additional_rotate_moves < min:
+                if len((graph.graphsearch([], [], (temp_x, temp_y), istate, graph.succ))) < min:
+                    min = len((graph.graphsearch([], [], (temp_x, temp_y), istate, graph.succ)))
                     x = temp_x
                     y = temp_y
-                    min = abs(cart_x - x) + abs(cart_y - y) + additional_rotate_moves
-    if x == None and y == None: #jeżeli nie ma wyrośniętej rośliny to zwróć False
+    if x == None and y == None: #jeżeli nie ma wyrośniętej rośliny to zwróć fałsz
         return False
     else:
-        print(x, y)
-        print(min)
         return x, y
 def prediction1(classes, img_path, model, transformer): #zwraca predykcję dla danego obrazka
     image = Image.open(img_path).convert('RGB')
