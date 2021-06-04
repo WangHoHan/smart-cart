@@ -3,53 +3,110 @@
   <component name="ChangeListManager">
     <list default="true" id="56453584-72bd-49f4-a39c-fccf91ab20c6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/definitions.py" beforeDir="false" afterPath="$PROJECT_DIR$/definitions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/neuralnetwork.py" beforeDir="false" afterPath="$PROJECT_DIR$/neuralnetwork.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_03_01.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_03_01.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_03_02.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_03_02.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_03_06.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_03_06.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_03_07.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_03_07.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_04_01.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_04_01.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_04_02.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_04_02.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_04_03.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_04_03.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_04_04.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_04_04.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_04_05.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_04_05.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_04_06.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_04_06.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_04_07.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_04_07.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_05_01.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_05_01.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_05_02.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_05_02.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_05_03.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_05_03.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_05_04.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_05_04.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_05_05.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_05_05.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_05_06.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_05_06.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_05_07.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_05_07.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_06_01.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_06_01.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_06_02.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_06_02.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_06_03.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_06_03.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_06_04.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_06_04.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_06_05.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_06_05.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_06_06.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_06_06.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_06_07.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_06_07.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_06_08.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_06_08.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_06_09.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_06_09.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_06_10.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_06_10.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_07_01.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_07_01.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_07_02.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_07_02.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_07_03.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_07_03.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_07_04.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_07_04.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_07_05.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_07_05.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_07_06.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_07_06.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_07_07.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_07_07.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_07_08.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_07_08.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_07_09.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_07_09.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_07_10.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_07_10.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_08_01.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_08_01.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_08_02.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_08_02.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_08_03.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_08_03.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_08_04.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_08_04.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_08_05.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_08_05.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_08_06.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_08_06.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_08_07.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_08_07.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_08_10.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/sliced/screen_08_10.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py.py" beforeDir="false" afterPath="$PROJECT_DIR$/py.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/checkpoint.model" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_01_01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_01_02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_01_03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_01_04.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_01_05.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_01_06.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_01_07.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_01_08.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_01_09.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_01_10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_02_01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_02_02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_02_03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_02_04.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_02_05.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_02_06.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_02_07.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_02_08.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_02_09.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_02_10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_03_01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_03_02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_03_03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_03_04.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_03_05.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_03_06.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_03_07.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_03_08.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_03_09.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_03_10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_04_01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_04_02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_04_03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_04_04.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_04_05.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_04_06.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_04_07.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_04_08.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_04_09.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_04_10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_05_01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_05_02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_05_03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_05_04.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_05_05.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_05_06.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_05_07.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_05_08.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_05_09.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_05_10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_06_01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_06_02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_06_03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_06_04.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_06_05.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_06_06.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_06_07.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_06_08.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_06_09.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_06_10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_07_01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_07_02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_07_03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_07_04.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_07_05.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_07_06.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_07_07.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_07_08.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_07_09.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_07_10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_08_01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_08_02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_08_03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_08_04.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_08_05.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_08_06.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_08_07.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_08_08.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_08_09.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_08_10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_09_01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_09_02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_09_03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_09_04.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_09_05.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_09_06.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_09_07.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_09_08.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_09_09.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_09_10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_10_01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_10_02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_10_03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_10_04.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_10_05.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_10_06.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_10_07.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_10_08.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_10_09.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/sliced/screen_10_10.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,6 +271,9 @@
       <workItem from="1622544012547" duration="1597000" />
       <workItem from="1622545712675" duration="82000" />
       <workItem from="1622546872446" duration="905000" />
+      <workItem from="1622548476938" duration="57000" />
+      <workItem from="1622755977663" duration="282000" />
+      <workItem from="1622801431771" duration="2057000" />
     </task>
     <servers />
   </component>
@@ -230,30 +290,30 @@
     </state>
     <state x="628" y="343" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1622475063488" />
     <state x="628" y="343" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1621109431051" />
-    <state x="690" y="287" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1622536049152">
+    <state x="690" y="287" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1622802726751">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="690" y="287" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1622536049152" />
+    <state x="690" y="287" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1622802726751" />
     <state x="690" y="287" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1621429221570" />
-    <state width="1879" height="295" key="GridCell.Tab.0.bottom" timestamp="1622548325392">
+    <state width="1879" height="295" key="GridCell.Tab.0.bottom" timestamp="1622803709514">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1879" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1622548325392" />
+    <state width="1879" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1622803709514" />
     <state width="1879" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1621429389327" />
-    <state width="1879" height="295" key="GridCell.Tab.0.center" timestamp="1622548325391">
+    <state width="1879" height="295" key="GridCell.Tab.0.center" timestamp="1622803709514">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1879" height="295" key="GridCell.Tab.0.center/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1622548325391" />
+    <state width="1879" height="295" key="GridCell.Tab.0.center/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1622803709514" />
     <state width="1879" height="295" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1621429389327" />
-    <state width="1879" height="295" key="GridCell.Tab.0.left" timestamp="1622548325391">
+    <state width="1879" height="295" key="GridCell.Tab.0.left" timestamp="1622803709514">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1879" height="295" key="GridCell.Tab.0.left/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1622548325391" />
+    <state width="1879" height="295" key="GridCell.Tab.0.left/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1622803709514" />
     <state width="1879" height="295" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1621429389326" />
-    <state width="1879" height="295" key="GridCell.Tab.0.right" timestamp="1622548325391">
+    <state width="1879" height="295" key="GridCell.Tab.0.right" timestamp="1622803709514">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1879" height="295" key="GridCell.Tab.0.right/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1622548325391" />
+    <state width="1879" height="295" key="GridCell.Tab.0.right/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1622803709514" />
     <state width="1879" height="295" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1621429389327" />
     <state width="1879" height="364" key="GridCell.Tab.1.bottom" timestamp="1622538962724">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -275,10 +335,10 @@
     </state>
     <state width="1879" height="364" key="GridCell.Tab.1.right/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1622538962724" />
     <state width="1879" height="364" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1619289752045" />
-    <state x="0" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1622546873603">
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1622801461112">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="0" y="0" key="com.intellij.ide.util.TipDialog/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1622546873603" />
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1622801461112" />
     <state x="0" y="0" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1621439087317" />
     <state x="623" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1622494466933">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -300,6 +360,6 @@
     <SUITE FILE_PATH="coverage/SmartCart$copy.coverage" NAME="copy Coverage Results" MODIFIED="1622503170538" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SmartCart$glue.coverage" NAME="glue Coverage Results" MODIFIED="1622501306368" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SmartTractor$py.coverage" NAME="py Coverage Results" MODIFIED="1622469837941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/SmartCart$py.coverage" NAME="py Coverage Results" MODIFIED="1622548262057" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SmartCart$py.coverage" NAME="py Coverage Results" MODIFIED="1622803709507" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

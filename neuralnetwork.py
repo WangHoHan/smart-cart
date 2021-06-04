@@ -3,6 +3,7 @@ from torch.autograd import Variable
 from torch.optim import Adam
 from torch.utils.data import DataLoader
 from torchvision.transforms import transforms
+import definitions
 import glob
 import graph
 import os
@@ -10,7 +11,7 @@ import pathlib
 import torch
 import torch.nn as nn
 import torchvision
-transformer1 = transforms.Compose([transforms.Resize((150, 150)), transforms.ToTensor(), transforms.Normalize([0.5, 0.5, 0.5], [0.5, 0.5, 0.5])])
+transformer1 = transforms.Compose([transforms.Resize((definitions.IMAGE_SIZE_NEURAL_NETWORK, definitions.IMAGE_SIZE_NEURAL_NETWORK)), transforms.ToTensor(), transforms.Normalize([0.5, 0.5, 0.5], [0.5, 0.5, 0.5])])
 class ConvNet(nn.Module):
     def __init__(self, num_classes=6):
         super(ConvNet, self).__init__()
@@ -23,7 +24,7 @@ class ConvNet(nn.Module):
         self.conv3 = nn.Conv2d(in_channels=20, out_channels=32, kernel_size=3, stride=1, padding=1)
         self.bn3 = nn.BatchNorm2d(num_features=32)
         self.relu3 = nn.ReLU()
-        self.fc = nn.Linear(in_features=75 * 75 * 32, out_features=num_classes)
+        self.fc = nn.Linear(in_features=int(definitions.IMAGE_SIZE_NEURAL_NETWORK / 2) * int(definitions.IMAGE_SIZE_NEURAL_NETWORK / 2) * 32, out_features=num_classes)
     def forward(self, input):
         output = self.conv1(input)
         output = self.bn1(output)
@@ -34,12 +35,12 @@ class ConvNet(nn.Module):
         output = self.conv3(output)
         output = self.bn3(output)
         output = self.relu3(output)
-        output = output.view(-1, 32 * 75 * 75)
+        output = output.view(-1, 32 * int(definitions.IMAGE_SIZE_NEURAL_NETWORK / 2) * int(definitions.IMAGE_SIZE_NEURAL_NETWORK / 2))
         output = self.fc(output)
         return output
 def create_neural_network(): #tworzenie sieci neuronowej
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu') #użyj cuda jeśli możliwe
-    transformer = transforms.Compose([transforms.Resize((150, 150)), transforms.RandomHorizontalFlip(), transforms.ToTensor(), transforms.Normalize([0.5, 0.5, 0.5], [0.5, 0.5, 0.5])])
+    transformer = transforms.Compose([transforms.Resize((definitions.IMAGE_SIZE_NEURAL_NETWORK, definitions.IMAGE_SIZE_NEURAL_NETWORK)), transforms.RandomHorizontalFlip(), transforms.ToTensor(), transforms.Normalize([0.5, 0.5, 0.5], [0.5, 0.5, 0.5])])
     train_path = os.path.join('resources/neural_network/train/') #ścieżka do obrazków do treningu
     test_path = os.path.join('resources/neural_network/test/') #ścieżka do obrazków do testu
     train_loader = DataLoader(torchvision.datasets.ImageFolder(train_path, transform=transformer), batch_size=64, shuffle=True)
@@ -97,19 +98,21 @@ def create_neural_network(): #tworzenie sieci neuronowej
         model.eval()
     return classes, model
 def predfield(classes, istate, model): #zwraca najbliższe miejsce pola z wyrośniętą rośliną na podstawie wykrywania obrazu
-    pred_path = os.path.join('resources/neural_network/sliced/') #ścieżka do obrazków do sprawdzenia
+    pred_path = os.path.join('resources/neural_network/tiles/') #ścieżka do obrazków do sprawdzenia
     pred_dict = {}
     images_path = glob.glob(pred_path + '/*.png')
     x = None #x'owa pola
     y = None #y'kowa  pola
+    x_position = 15
+    y_position = 12
     min = None
     for i in images_path: #dodajemy pocięte obrazki do listy i ustawiamy im przewidywaną metkę
         pred_dict[i[i.rfind('/') + 1:]] = prediction1(classes, i, model, transformer1)
     for img_name, field in pred_dict.items():
         if field != "random": #jeżeli metka nie jest 'random' to przypisz do x'a i y'a miejsce wyrośniętej rośliny
             if x is None and y is None:
-                x = img_name[18]
-                y = img_name[15]
+                x = img_name[x_position]
+                y = img_name[y_position]
                 x = int(x)
                 y = int(y)
                 if x == 0:
@@ -122,8 +125,8 @@ def predfield(classes, istate, model): #zwraca najbliższe miejsce pola z wyroś
                     y = y - 1
                 min = len((graph.graphsearch([], [], (x, y), istate, graph.succ)))
             else:
-                temp_x = img_name[18]
-                temp_y = img_name[15]
+                temp_x = img_name[x_position]
+                temp_y = img_name[y_position]
                 temp_x = int(temp_x)
                 temp_y = int(temp_y)
                 if temp_x == 0:

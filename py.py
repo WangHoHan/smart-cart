@@ -35,9 +35,10 @@ def main():
                 run = False
         map1.draw_window(cart1, cart1_rect)
         if not move_list: #jeżeli są jakieś ruchy do wykonania w move_list
-            pygame.image.save(pygame.display.get_surface(), os.path.join('resources/neural_network/sliced/', 'screen.jpg')) #zrzut obecnego ekranu
-            image_slicer.slice(os.path.join('resources/neural_network/sliced/', 'screen.jpg'), 100) #pocięcie ekranu na sto części
-            os.remove('resources/neural_network/sliced/screen.jpg')
+            pygame.image.save(pygame.display.get_surface(), os.path.join('resources/neural_network/tiles/', 'screen.jpg')) #zrzut obecnego ekranu
+            tiles = image_slicer.slice(os.path.join('resources/neural_network/tiles/', 'screen.jpg'), 100, save=False) #pocięcie ekranu na sto części
+            image_slicer.save_tiles(tiles, directory=os.path.join('resources/neural_network/tiles/'), prefix='tile', format='png') #zapisanie części do folderu tiles
+            os.remove('resources/neural_network/tiles/screen.jpg')
             istate = graph.Istate(cart1.get_direction(), cart1.get_x() / definitions.BLOCK_SIZE, cart1.get_y() / definitions.BLOCK_SIZE) #stan początkowy wózka (jego orientacja oraz jego aktualne miejsce)
             if neuralnetwork.predfield(classes, istate, model) is not False: #jeżeli istnieje jakaś dojrzała roślina
                 random_movement = False
