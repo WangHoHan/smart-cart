@@ -26,6 +26,7 @@ def main():
     tree = treelearn.treelearn() #tworzenie drzewa decyzyjnego
     decision = [0] #początkowa decyzja o braku powrotu do stacji (0)
     classes, model = neuralnetwork.create_neural_network() #uczenie sieci neuronowej
+    grow_flower_dandelion = False
     random_movement = False
     run = True
     while run: #pętla główna programu
@@ -35,6 +36,7 @@ def main():
                 run = False
         map1.draw_window(cart1, cart1_rect)
         if not move_list: #jeżeli są jakieś ruchy do wykonania w move_list
+            grow_flower_dandelion = True
             pygame.image.save(pygame.display.get_surface(), os.path.join('resources/neural_network/tiles/', 'screen.jpg')) #zrzut obecnego ekranu
             tiles = image_slicer.slice(os.path.join('resources/neural_network/tiles/', 'screen.jpg'), 100, save=False) #pocięcie ekranu na sto części
             image_slicer.save_tiles(tiles, directory=os.path.join('resources/neural_network/tiles/'), prefix='tile', format='png') #zapisanie części do folderu tiles
@@ -50,10 +52,12 @@ def main():
                 random_movement = True
         elif move_list: #jeżeli move_list nie jest pusta
             cart1.handle_movement(cart1_rect, move_list.pop(0)) #wykonaj kolejny ruch oraz zdejmij ten ruch z początku listy
-        if random_movement is not False:
+        if random_movement is True:
             cart1.handle_movement_random(cart1_rect) #wykonuj losowe ruchy
         cart1.do_work(cart1_rect, map1, station1) #wykonaj pracę na danym polu
         decision = treelearn.make_decision(cart1.get_all_amount_of_seeds(), cart1.get_all_collected_plants(), cart1.get_all_fertilizer(), cart1.get_fuel(), tree, cart1.get_water_level()) #podejmij decyzję czy wracać do stacji (0 : NIE, 1 : TAK)
+        if grow_flower_dandelion is True:
+            plant.Plant.grow_flower_dandelion(map1) #losuj urośnięcie kwiatka dandeliona
         plant.Plant.grow_plants(map1) #zwiększ poziom dojrzałości roślin
     pygame.quit()
 if __name__ == "__main__":

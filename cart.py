@@ -57,6 +57,11 @@ class Cart:
         field = map1.get_fields()[x][y]
         if x == 0 and y == 0:
             self.station_restore(station1)
+        elif field.get_plant().get_name() == "flower_dandelion":
+            field.get_plant().set_name("none")
+            field.get_plant().set_state(0)
+            field.get_soil().set_water_level(False)
+            field.get_soil().set_state(False)
         elif field.get_soil().get_state() is False:
             field.get_soil().set_state(True)
         elif field.get_soil().get_state() is True and field.get_soil().get_water_level() is False and self.get_water_level() > 0:
@@ -102,24 +107,28 @@ class Cart:
             field.get_soil().set_is_fertilized(True)
             field.get_plant().set_state(field.get_plant().get_state() + definitions.WHEAT_GROW_TIME)
         elif field.get_plant().get_name() == "beetroot" and field.get_plant().get_state() == definitions.BEETROOTS_MAXIMUM_STATE and self.get_all_collected_plants() < definitions.CART_MAXIMUM_COLLECTED_PLANTS:
+            field.get_plant().set_name("none")
             field.get_plant().set_state(0)
             field.get_soil().set_is_fertilized(False)
             field.get_soil().set_water_level(False)
             field.get_soil().set_state(False)
             self.set_collected_plants("beetroot", self.get_collected_plants("beetroot") + 1)
         elif field.get_plant().get_name() == "carrot" and field.get_plant().get_state() == definitions.CARROTS_MAXIMUM_STATE and self.get_all_collected_plants() < definitions.CART_MAXIMUM_COLLECTED_PLANTS:
+            field.get_plant().set_name("none")
             field.get_plant().set_state(0)
             field.get_soil().set_is_fertilized(False)
             field.get_soil().set_water_level(False)
             field.get_soil().set_state(False)
             self.set_collected_plants("carrot", self.get_collected_plants("carrot") + 1)
         elif field.get_plant().get_name() == "potato" and field.get_plant().get_state() == definitions.POTATOES_MAXIMUM_STATE and self.get_all_collected_plants() < definitions.CART_MAXIMUM_COLLECTED_PLANTS:
+            field.get_plant().set_name("none")
             field.get_plant().set_state(0)
             field.get_soil().set_is_fertilized(False)
             field.get_soil().set_water_level(False)
             field.get_soil().set_state(False)
             self.set_collected_plants("potato", self.get_collected_plants("potato") + 1)
         elif field.get_plant().get_name() == "wheat" and field.get_plant().get_state() == definitions.WHEAT_MAXIMUM_STATE and self.get_all_collected_plants() < definitions.CART_MAXIMUM_COLLECTED_PLANTS:
+            field.get_plant().set_name("none")
             field.get_plant().set_state(0)
             field.get_soil().set_is_fertilized(False)
             field.get_soil().set_water_level(False)

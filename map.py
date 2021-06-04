@@ -41,6 +41,8 @@ class Map:
                 rect = field.get_rect()
                 if field.get_plant().get_name() == "station" and field.get_plant().get_state() == -1:
                     block = definitions.STATION
+                elif field.get_plant().get_name() == "flower_dandelion" and field.get_plant().get_state() == 1:
+                    block = definitions.FLOWER_DANDELION
                 elif field.get_plant().get_name() == "beetroot" and field.get_plant().get_state() > 0 and field.get_plant().get_state() <= 1 * definitions.BEETROOTS_GROW_TIME:
                     block = definitions.BEETROOTS_STAGE_0
                 elif field.get_plant().get_name() == "beetroot" and field.get_plant().get_state() > 1 * definitions.BEETROOTS_GROW_TIME and field.get_plant().get_state() <= 2 * definitions.BEETROOTS_GROW_TIME:
@@ -89,6 +91,13 @@ class Map:
                     block = definitions.FARMLAND_WET
                 if block == definitions.STATION:
                     definitions.WINDOW.blit(definitions.SPONGE, (rect.x, rect.y))
+                elif block == definitions.FLOWER_DANDELION:
+                    if field.get_soil().get_state() is False:
+                        definitions.WINDOW.blit(definitions.DIRT, (rect.x, rect.y))
+                    elif field.get_soil().get_state() is True and field.get_soil().get_water_level() is False:
+                        definitions.WINDOW.blit(definitions.FARMLAND_DRY, (rect.x, rect.y))
+                    elif field.get_soil().get_state() is True and field.get_soil().get_water_level() is True:
+                        definitions.WINDOW.blit(definitions.FARMLAND_WET, (rect.x, rect.y))
                 elif block != definitions.DIRT or block != definitions.FARMLAND_DRY or block != definitions.FARMLAND_WET:
                     definitions.WINDOW.blit(definitions.FARMLAND_WET, (rect.x, rect.y))
                 definitions.WINDOW.blit(block, (rect.x, rect.y))
@@ -96,6 +105,8 @@ class Map:
         field = self.fields[x][y]
         if field.get_plant().get_name() == "station" and field.get_plant().get_state() == -1:
             return definitions.STATION_COST
+        elif field.get_plant().get_name() == "flower_dandelion" and field.get_plant().get_state() == 0:
+            return definitions.FLOWER_DANDELION_COST
         elif field.get_plant().get_name() == "beetroot" and field.get_plant().get_state() > 0 and field.get_plant().get_state() <= 3 * definitions.BEETROOTS_GROW_TIME:
             return definitions.BEETROOTS_GROW_COST
         elif field.get_plant().get_name() == "beetroot" and field.get_plant().get_state() == definitions.BEETROOTS_MAXIMUM_STATE:
