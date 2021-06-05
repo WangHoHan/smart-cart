@@ -10,17 +10,20 @@ import plant
 import pygame
 import station
 import treelearn
-pygame.display.set_caption("Smart Cart")
 def main():
+    #inicjowanie pygame'a
+    pygame.init()
+    pygame.display.set_caption("Smart Cart")
     #tworzenie podstawowych obiektów
     map1 = map.Map([])
     map1.create_base_map()
     move_list = ["rotate_left", "move", "move", "move", "move", "move", "move", "rotate_left", "rotate_left", "move", "rotate_left", "rotate_left", "rotate_left", "rotate_left", "move", "rotate_left", "rotate_left", "rotate_left", "rotate_left", "move", "rotate_left", "rotate_left", "rotate_left", "move", "rotate_left", "rotate_left", "rotate_left", "rotate_left", "move", "rotate_left", "rotate_left", "rotate_left", "move", "rotate_left", "rotate_left", "rotate_left", "rotate_left", "move", "rotate_left", "rotate_left", "rotate_left", "move", "rotate_left", "rotate_left", "move", "rotate_left", "rotate_left", "rotate_left", "move", "rotate_left", "rotate_left", "rotate_left", "rotate_left", "rotate_left", "move", "move", "rotate_left", "rotate_left", "rotate_left", "rotate_left", "rotate_left", "move", "rotate_left", "rotate_left", "rotate_left", "move", "rotate_left", "move", "rotate_left", "rotate_left", "rotate_left", "rotate_left", "move", "rotate_left", "rotate_left", "move", "move", "move", "rotate_left", "rotate_left", "rotate_left", "rotate_left", "rotate_left", "move", "move", "rotate_left", "rotate_left", "rotate_left", "rotate_left", "rotate_left", "move", "rotate_left", "rotate_left", "rotate_left", "move", "rotate_left", "rotate_left", "rotate_left", "move", "rotate_left", "rotate_left", "rotate_left", "rotate_left", "rotate_left", "move", "rotate_left", "rotate_left", "rotate_left", "move"] #początkowe ruchy
     amount_of_seeds_dict = {"beetroot": definitions.CART_AMOUNT_OF_SEEDS_EACH_TYPE, "carrot": definitions.CART_AMOUNT_OF_SEEDS_EACH_TYPE, "potato": definitions.CART_AMOUNT_OF_SEEDS_EACH_TYPE, "wheat": definitions.CART_AMOUNT_OF_SEEDS_EACH_TYPE}
-    collected_plants_dict = {"beetroot": 0, "carrot": 0, "potato": 0, "wheat": 0}
+    collected_plants_dict_cart = {"beetroot": 0, "carrot": 0, "potato": 0, "wheat": 0}
+    collected_plants_dict_station = {"beetroot": 0, "carrot": 0, "potato": 0, "wheat": 0}
     fertilizer_dict = {"beetroot": definitions.CART_FERTILIZER, "carrot": definitions.CART_FERTILIZER, "potato": definitions.CART_FERTILIZER, "wheat": definitions.CART_FERTILIZER}
-    station1 = station.Station(collected_plants_dict)
-    cart1 = cart.Cart(amount_of_seeds_dict, collected_plants_dict, definitions.CART_DIRECTION_WEST, fertilizer_dict, definitions.CART_FUEL, definitions.CART_WATER_LEVEL, 0 * definitions.BLOCK_SIZE, 0 * definitions.BLOCK_SIZE)
+    station1 = station.Station(collected_plants_dict_station)
+    cart1 = cart.Cart(amount_of_seeds_dict, collected_plants_dict_cart, definitions.CART_DIRECTION_WEST, fertilizer_dict, definitions.CART_FUEL, definitions.CART_WATER_LEVEL, 0 * definitions.BLOCK_SIZE, 0 * definitions.BLOCK_SIZE)
     cart1_rect = pygame.Rect(cart1.get_x(), cart1.get_y(), definitions.BLOCK_SIZE, definitions.BLOCK_SIZE)
     clock = pygame.time.Clock()
     tree = treelearn.treelearn() #tworzenie drzewa decyzyjnego
@@ -34,13 +37,18 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
-        map1.draw_window(cart1, cart1_rect)
+        map1.draw_window(cart1, cart1_rect, station1)
         if not move_list: #jeżeli są jakieś ruchy do wykonania w move_list
             grow_flower_dandelion = True
             pygame.image.save(pygame.display.get_surface(), os.path.join('resources/neural_network/tiles/', 'screen.jpg')) #zrzut obecnego ekranu
-            tiles = image_slicer.slice(os.path.join('resources/neural_network/tiles/', 'screen.jpg'), 100, save=False) #pocięcie ekranu na sto części
+            tiles = image_slicer.slice(os.path.join('resources/neural_network/tiles/', 'screen.jpg'), row=definitions.HEIGHT_AMOUNT + 1, col=definitions.WIDTH_AMOUNT, save=False) #pocięcie ekranu na sto części
             image_slicer.save_tiles(tiles, directory=os.path.join('resources/neural_network/tiles/'), prefix='tile', format='png') #zapisanie części do folderu tiles
             os.remove('resources/neural_network/tiles/screen.jpg')
+            for char in range(0, 10):
+                if str(char) == "0":
+                    os.remove('resources/neural_network/tiles/tile_11_10.png')
+                else:
+                    os.remove('resources/neural_network/tiles/tile_11_0' + str(char) + '.png')
             istate = graph.Istate(cart1.get_direction(), cart1.get_x() / definitions.BLOCK_SIZE, cart1.get_y() / definitions.BLOCK_SIZE) #stan początkowy wózka (jego orientacja oraz jego aktualne miejsce)
             if neuralnetwork.predfield(classes, istate, model) is not False: #jeżeli istnieje jakaś dojrzała roślina
                 random_movement = False

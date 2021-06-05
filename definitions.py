@@ -1,7 +1,10 @@
 #definicje
 import os
 import pygame
+pygame.init()
 BLOCK_SIZE = 60
+BEETROOT = pygame.image.load(os.path.join('resources/images', 'beetroot.png'))
+BEETROOT = pygame.transform.scale(BEETROOT, (BLOCK_SIZE, BLOCK_SIZE))
 BEETROOTS_ADULT_COST = 4
 BEETROOTS_GROW_COST = 10
 BEETROOTS_GROW_TIME = 5
@@ -14,6 +17,8 @@ BEETROOTS_STAGE_2 = pygame.image.load(os.path.join('resources/images', 'beetroot
 BEETROOTS_STAGE_2 = pygame.transform.scale(BEETROOTS_STAGE_2, (BLOCK_SIZE, BLOCK_SIZE))
 BEETROOTS_STAGE_3 = pygame.image.load(os.path.join('resources/images', 'beetroots_stage_3.png'))
 BEETROOTS_STAGE_3 = pygame.transform.scale(BEETROOTS_STAGE_3, (BLOCK_SIZE, BLOCK_SIZE))
+CARROT = pygame.image.load(os.path.join('resources/images', 'carrot.png'))
+CARROT = pygame.transform.scale(CARROT, (BLOCK_SIZE, BLOCK_SIZE))
 CARROTS_ADULT_COST = 4
 CARROTS_GROW_COST = 10
 CARROTS_GROW_TIME = 5
@@ -57,10 +62,16 @@ FLOWER_DANDELION = pygame.transform.scale(FLOWER_DANDELION, (BLOCK_SIZE, BLOCK_S
 FLOWER_DANDELION_COST = 5
 FLOWER_DANDELION_GROW_PROBABILITY = 0.01
 FLOWER_DANDELION_MAXIMUM_STATE = 1
+FONT_COLOR = (255, 255, 255)
+FONT_SIZE = 23
+FONT = pygame.font.Font(os.path.join('resources/font', 'Minecraft.ttf'), FONT_SIZE)
 FPS = 1
 HEIGHT_AMOUNT, WIDTH_AMOUNT = 10, 10
-HEIGHT,  WIDTH = BLOCK_SIZE * HEIGHT_AMOUNT, BLOCK_SIZE * WIDTH_AMOUNT
+HEIGHT_MAP, WIDTH_MAP = BLOCK_SIZE * HEIGHT_AMOUNT, BLOCK_SIZE * WIDTH_AMOUNT
+HEIGHT, WIDTH = HEIGHT_MAP + BLOCK_SIZE, WIDTH_MAP
 IMAGE_SIZE_NEURAL_NETWORK = 16
+POTATO = pygame.image.load(os.path.join('resources/images', 'potato.png'))
+POTATO = pygame.transform.scale(POTATO, (BLOCK_SIZE, BLOCK_SIZE))
 POTATOES_ADULT_COST = 4
 POTATOES_GROW_COST = 10
 POTATOES_GROW_TIME = 5
@@ -75,9 +86,13 @@ POTATOES_STAGE_3 = pygame.image.load(os.path.join('resources/images', 'potatoes_
 POTATOES_STAGE_3 = pygame.transform.scale(POTATOES_STAGE_3, (BLOCK_SIZE, BLOCK_SIZE))
 SPONGE = pygame.image.load(os.path.join('resources/images', 'sponge.png'))
 SPONGE = pygame.transform.scale(SPONGE, (BLOCK_SIZE, BLOCK_SIZE))
+SPONGE_WET = pygame.image.load(os.path.join('resources/images', 'sponge_wet.png'))
+SPONGE_WET = pygame.transform.scale(SPONGE_WET, (BLOCK_SIZE, BLOCK_SIZE))
 STATION = pygame.image.load(os.path.join('resources/images', 'rail_normal.png'))
 STATION = pygame.transform.scale(STATION, (BLOCK_SIZE, BLOCK_SIZE))
 STATION_COST = 6
+WHEAT = pygame.image.load(os.path.join('resources/images', 'wheat.png'))
+WHEAT = pygame.transform.scale(WHEAT, (BLOCK_SIZE, BLOCK_SIZE))
 WHEAT_ADULT_COST = 4
 WHEAT_GROW_COST = 10
 WHEAT_GROW_TIME = 5

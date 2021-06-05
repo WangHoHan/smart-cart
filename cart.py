@@ -162,11 +162,11 @@ class Cart:
                 loop = False
         self.set_fuel(self.get_fuel() - 1)
     def is_move_allowed(self, cart_rect): #sprawdza czy dany ruch, który chce wykonać wózek jest możliwy, zwraca prawdę lub fałsz
-        if self.direction == definitions.CART_DIRECTION_EAST and cart_rect.x + definitions.BLOCK_SIZE < definitions.WIDTH:
+        if self.direction == definitions.CART_DIRECTION_EAST and cart_rect.x + definitions.BLOCK_SIZE < definitions.WIDTH_MAP:
             return True
         elif self.direction == definitions.CART_DIRECTION_NORTH and cart_rect.y - definitions.BLOCK_SIZE >= 0:
             return True
-        elif self.direction == definitions.CART_DIRECTION_SOUTH and cart_rect.y + definitions.BLOCK_SIZE < definitions.HEIGHT:
+        elif self.direction == definitions.CART_DIRECTION_SOUTH and cart_rect.y + definitions.BLOCK_SIZE < definitions.HEIGHT_MAP:
             return True
         elif self.direction == definitions.CART_DIRECTION_WEST and cart_rect.x - definitions.BLOCK_SIZE >= 0:
             return True
@@ -174,11 +174,11 @@ class Cart:
             return False
     @staticmethod
     def is_move_allowed_succ(node): #sprawdza czy dany ruch, który chce wykonać wózek jest możliwy, zwraca pozycje po wykonaniu ruchu, wersja node
-        if node.get_direction() == definitions.CART_DIRECTION_EAST and node.get_x() * definitions.BLOCK_SIZE + definitions.BLOCK_SIZE < definitions.WIDTH:
+        if node.get_direction() == definitions.CART_DIRECTION_EAST and node.get_x() * definitions.BLOCK_SIZE + definitions.BLOCK_SIZE < definitions.WIDTH_MAP:
             return "x + 1"
         elif node.get_direction() == definitions.CART_DIRECTION_NORTH and node.get_y() * definitions.BLOCK_SIZE - definitions.BLOCK_SIZE >= 0:
             return "y - 1"
-        elif node.get_direction() == definitions.CART_DIRECTION_SOUTH and node.get_y() * definitions.BLOCK_SIZE + definitions.BLOCK_SIZE < definitions.HEIGHT:
+        elif node.get_direction() == definitions.CART_DIRECTION_SOUTH and node.get_y() * definitions.BLOCK_SIZE + definitions.BLOCK_SIZE < definitions.HEIGHT_MAP:
             return "y + 1"
         elif node.get_direction() == definitions.CART_DIRECTION_WEST and node.get_x() * definitions.BLOCK_SIZE - definitions.BLOCK_SIZE >= 0:
             return "x - 1"
