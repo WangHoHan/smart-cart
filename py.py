@@ -44,7 +44,7 @@ def main():
             tiles = image_slicer.slice(os.path.join('resources/neural_network/tiles/', 'screen.jpg'), row=definitions.HEIGHT_AMOUNT + 1, col=definitions.WIDTH_AMOUNT, save=False) #pocięcie ekranu na sto części
             image_slicer.save_tiles(tiles, directory=os.path.join('resources/neural_network/tiles/'), prefix='tile', format='png') #zapisanie części do folderu tiles
             os.remove('resources/neural_network/tiles/screen.jpg')
-            for char in range(0, 10):
+            for char in range(0, definitions.WIDTH_AMOUNT):
                 if str(char) == "0":
                     os.remove('resources/neural_network/tiles/tile_11_10.png')
                 else:
