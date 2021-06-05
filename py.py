@@ -54,7 +54,7 @@ def main():
                 random_movement = False
                 if decision == [0]: #jeżeli decyzja jest 0 (brak powrotu do stacji) to uprawiaj pole
                     move_list = (astar.graphsearch([], astar.f, [], neuralnetwork.predfield(classes, istate, model), istate, map1, graph.succ))  #lista z ruchami, które należy po kolei wykonać, astar
-                else:  #jeżeli decyzja jest 1 (powrót do stacji) to wróć do stacji uzupełnić zapasy
+                else: #jeżeli decyzja jest 1 (powrót do stacji) to wróć do stacji uzupełnić zapasy
                     move_list = (graph.graphsearch([], [], (0, 0), istate, graph.succ)) #lista z ruchami, które należy po kolei wykonać, graphsearch
             else:
                 random_movement = True
