@@ -1,6 +1,7 @@
 import astar
 import cart
 import definitions
+import geneticalgorithm
 import graph
 import image_slicer
 import map
@@ -28,6 +29,7 @@ def main():
     clock = pygame.time.Clock()
     tree = treelearn.treelearn() #tworzenie drzewa decyzyjnego
     decision = [0] #początkowa decyzja o braku powrotu do stacji (0)
+    geneticalgorithm.create_genetic_algorithm() #stworzenie algorytmu genetycznego
     classes, model = neuralnetwork.create_neural_network() #uczenie sieci neuronowej
     grow_flower_dandelion = False
     random_movement = False
