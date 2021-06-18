@@ -14,7 +14,7 @@ class Plant:
     def set_state(self, state):
         self.state = state
     @staticmethod
-    def get_closest_mature_plant(istate, map):  # TO DO, pobiera współrzędne najbliższej dojrzałej rośliny od miejsca, w którym znajduje się traktor
+    def get_closest_mature_plant(istate, map):  #pobiera miejsce najbliższej dojrzałej rośliny od miejsca, w którym znajduje się wózek
         x = None  #x'owa pola
         y = None  #y'kowa  pola
         min = None

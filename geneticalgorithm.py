@@ -11,8 +11,9 @@ import random
 import station
 import treelearn
 def create_genetic_algorithm():
-    if os.path.exists("resources/genetic_algorithm/optimal.pkl"): #jeżeli drzewo jest zapisane w pliku to odczytaj
-        astar_costs = pickle.load(open(os.path.join('resources/genetic_algorithm', "optimal.pkl"), "rb"))
+    if os.path.exists("resources/genetic_algorithm/optimalastar.pkl"): #jeżeli algorytm genetyczny utworzył plik wcześcniej to odczytaj
+        astar_costs = pickle.load(open(os.path.join('resources/genetic_algorithm', "optimalastar.pkl"), "rb"))
+        #kolejność alfabetyczna
         definitions.BEETROOTS_ADULT_COST = astar_costs[0]
         definitions.BEETROOTS_GROW_COST = astar_costs[1]
         definitions.CARROTS_ADULT_COST = astar_costs[2]
@@ -26,20 +27,58 @@ def create_genetic_algorithm():
         definitions.STATION_COST = astar_costs[10]
         definitions.WHEAT_ADULT_COST = astar_costs[11]
         definitions.WHEAT_GROW_COST = astar_costs[12]
-        print(definitions.BEETROOTS_ADULT_COST)
-        print(definitions.BEETROOTS_GROW_COST)
-    else:
-        astar_costs = [definitions.BEETROOTS_ADULT_COST, definitions.BEETROOTS_GROW_COST, definitions.CARROTS_ADULT_COST, definitions.CARROTS_GROW_COST, definitions.DIRT_COST, definitions.FARMLAND_DRY_COST, definitions.FARMLAND_WET_COST, definitions.FLOWER_DANDELION_COST, definitions.POTATOES_ADULT_COST, definitions.POTATOES_GROW_COST, definitions.STATION_COST, definitions.WHEAT_ADULT_COST, definitions.WHEAT_GROW_COST]
-        astar_costs = make_generations(astar_costs)
-        pickle.dump(astar_costs, open(os.path.join('resources/genetic_algorithm', "optimal.pkl"), "wb"))
-
-def fitness(astar_costs):
-    ans = solution(astar_costs)
-    if ans == 0:
+    else: #w przeciwnym razie ucz algorytmem genetycznym
+        astar_costs = [definitions.BEETROOTS_ADULT_COST, definitions.BEETROOTS_GROW_COST, definitions.CARROTS_ADULT_COST, definitions.CARROTS_GROW_COST, definitions.DIRT_COST, definitions.FARMLAND_DRY_COST, definitions.FARMLAND_WET_COST, definitions.FLOWER_DANDELION_COST, definitions.POTATOES_ADULT_COST, definitions.POTATOES_GROW_COST, definitions.STATION_COST, definitions.WHEAT_ADULT_COST, definitions.WHEAT_GROW_COST] #kolejność alfabetyczna
+        astar_costs = evolve(astar_costs)
+        pickle.dump(astar_costs, open(os.path.join('resources/genetic_algorithm', "optimalastar.pkl"), "wb"))
+def evolve(astar_costs):
+    first_generation = [] #pierwsza generacja
+    overall_solutions = [] #rozwiązania końcowe
+    solutions = [] #rozwiązania danej generacji
+    for individual in range(definitions.GENETIC_ALGORITHM_NUMBER_OF_INDIVIDUALS_ZERO): #liczba osobników pierwszej generacji
+        for _ in range(definitions.GENETIC_ALGORITHM_COSTS_AMOUNT):
+            first_generation.append(random.uniform(0, 10))
+        solutions.append(first_generation) #generowanie losowych kosztów pól dla pierwszej generacji
+    for gen in range(definitions.GENETIC_ALGORITHM_NUMBER_OF_GENERATIONS): #liczba generacji
+        print(f"=== Generation {gen + 1}  ===")
+        ranked_solutions = [] #rozwiązania z wynikiem
+        index = 0
+        for s in solutions: #przypisanie rozwiązaniom wyniku funkcji fitness
+            ranked_solutions.append((fitness(s, index), s))
+            index = index + 1
+        ranked_solutions.sort()
+        print(f"=== Gen {gen + 1} best solution ===")
+        print(ranked_solutions[0])
+        overall_solutions.append(ranked_solutions[0])
+        #TODO warunek stopu
+        best_solutions = ranked_solutions[:definitions.GENETIC_ALGORITHM_NUMBER_OF_BEST_INDIVIDUALS] #najlepsze osobniki w danej generacji
+        elements = []
+        for element in range(definitions.GENETIC_ALGORITHM_COSTS_AMOUNT):
+            elems = []
+            elements.append(elems)
+        for solution in best_solutions:
+            for element in range(definitions.GENETIC_ALGORITHM_COSTS_AMOUNT):
+                elements[element].append(solution[1][element])
+        next_generation = [] #nowa ganeracja
+        e = []
+        for individual in range(definitions.GENETIC_ALGORITHM_NUMBER_OF_INDIVIDUALS): #liczba osobników w kolejnej generacji
+            for el in range(definitions.GENETIC_ALGORITHM_COSTS_AMOUNT):
+                #mutacje
+                e.append(random.choice(elements[el]) * random.uniform(0.99, 1.01))
+            next_generation.append(e)
+        solutions = next_generation #zastąpnienie osobników nową generacją
+    overall_solutions.sort()
+    for _ in range(definitions.GENETIC_ALGORITHM_COSTS_AMOUNT): #przyspianie finalnych kosztów astara
+        astar_costs[_] = overall_solutions[0][1][_]
+    return astar_costs
+def fitness(astar_costs, index):
+    ans = harvest(astar_costs, index)
+    if ans == 0: #TODO
         return 0
     else:
         return 1 / ans
-def solution(astar_costs):
+def harvest(astar_costs, index):
+    #kolejność alfabetyczna
     definitions.BEETROOTS_ADULT_COST = astar_costs[0]
     definitions.BEETROOTS_GROW_COST = astar_costs[1]
     definitions.CARROTS_ADULT_COST = astar_costs[2]
@@ -68,7 +107,7 @@ def solution(astar_costs):
     decision = [0] #początkowa decyzja o braku powrotu do stacji (0)
     grow_flower_dandelion = False
     random_movement = False
-    for run in range(1000): #liczba ruchów wózka
+    for run in range(definitions.GENETIC_ALGORITHM_NUMBER_OF_CART_MOVES): #liczba ruchów wózka
         if not move_list: #jeżeli są jakieś ruchy do wykonania w move_list
             grow_flower_dandelion = True
             istate = graph.Istate(cart1.get_direction(), cart1.get_x() / definitions.BLOCK_SIZE, cart1.get_y() / definitions.BLOCK_SIZE) #stan początkowy wózka (jego orientacja oraz jego aktualne miejsce)
@@ -89,92 +128,5 @@ def solution(astar_costs):
         cart1.do_work(cart1_rect, map1, station1) #wykonaj pracę na danym polu
         decision = treelearn.make_decision(cart1.get_all_amount_of_seeds(), cart1.get_all_collected_plants(), cart1.get_all_fertilizer(), cart1.get_fuel(), tree, cart1.get_water_level()) #podejmij decyzję czy wracać do stacji (0 : NIE, 1 : TAK)
         plant.Plant.grow_plants(map1) #zwiększ poziom dojrzałości roślin
-
-
-
-    print("Ile zebrał: ", station1.get_collected_plants("beetroot") + station1.get_collected_plants("carrot") + station1.get_collected_plants("potato") + station1.get_collected_plants("wheat"))
-    return station1.get_collected_plants("beetroot") + station1.get_collected_plants("carrot") + station1.get_collected_plants("potato") + station1.get_collected_plants("wheat")
-
-
-
-def make_generations(astar_costs):
-    solutions = []
-    ans = []
-    for s in range(10): #liczba osobników zerowej generacji
-        solutions.append((random.uniform(0, 10), random.uniform(0, 10), random.uniform(0, 10), random.uniform(0, 10), random.uniform(0, 10), random.uniform(0, 10), random.uniform(0, 10), random.uniform(0, 10), random.uniform(0, 10), random.uniform(0, 10), random.uniform(0, 10), random.uniform(0, 10), random.uniform(0, 10)))
-    for i in range(10): #liczba generacji
-        ranked_solutions = []
-        for s in solutions:
-            ranked_solutions.append((fitness(s), s))
-        ranked_solutions.sort()
-        print(f"=== Gen {i + 1} best solution ===")
-        #print(f"=== Gen {i} best solutions ===")
-        print(ranked_solutions[0])
-        ans.append(ranked_solutions[0])
-        print(ans)
-
-        #można dodać warunek stopu
-
-        best_solutions = ranked_solutions[:4] #najlepsze 4 osobniki w danej generacji
-        elements1 = []
-        elements2 = []
-        elements3 = []
-        elements4 = []
-        elements5 = []
-        elements6 = []
-        elements7 = []
-        elements8 = []
-        elements9 = []
-        elements10 = []
-        elements11 = []
-        elements12 = []
-        elements13 = []
-        for s in best_solutions:
-            elements1.append(s[1][0])
-            elements2.append(s[1][1])
-            elements3.append(s[1][2])
-            elements4.append(s[1][3])
-            elements5.append(s[1][4])
-            elements6.append(s[1][5])
-            elements7.append(s[1][6])
-            elements8.append(s[1][7])
-            elements9.append(s[1][8])
-            elements10.append(s[1][9])
-            elements11.append(s[1][10])
-            elements12.append(s[1][11])
-            elements13.append(s[1][12])
-
-        new_gen = []
-        for i in range(10):            # liczba osobników w kolejnej generacji
-            e1 = random.choice(elements1) * random.uniform(0.99, 1.01)          # mutacje
-            e2 = random.choice(elements2) * random.uniform(0.99, 1.01)
-            e3 = random.choice(elements3) * random.uniform(0.99, 1.01)
-            e4 = random.choice(elements4) * random.uniform(0.99, 1.01)
-            e5 = random.choice(elements5) * random.uniform(0.99, 1.01)
-            e6 = random.choice(elements6) * random.uniform(0.99, 1.01)
-            e7 = random.choice(elements7) * random.uniform(0.99, 1.01)
-            e8 = random.choice(elements8) * random.uniform(0.99, 1.01)
-            e9 = random.choice(elements9) * random.uniform(0.99, 1.01)
-            e10 = random.choice(elements10) * random.uniform(0.99, 1.01)
-            e11 = random.choice(elements11) * random.uniform(0.99, 1.01)
-            e12 = random.choice(elements12) * random.uniform(0.99, 1.01)
-            e13 = random.choice(elements13) * random.uniform(0.99, 1.01)
-
-            new_gen.append((e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13))
-
-        solutions = new_gen
-    ans.sort()
-    astar_costs[0] = ans[0][1][0]
-    astar_costs[1] = ans[0][1][1]
-    astar_costs[2] = ans[0][1][2]
-    astar_costs[3] = ans[0][1][3]
-    astar_costs[4] = ans[0][1][4]
-    astar_costs[5] = ans[0][1][5]
-    astar_costs[6] = ans[0][1][6]
-    astar_costs[7] = ans[0][1][7]
-    astar_costs[8] = ans[0][1][8]
-    astar_costs[9] = ans[0][1][9]
-    astar_costs[10] = ans[0][1][10]
-    astar_costs[11] = ans[0][1][11]
-    astar_costs[12] = ans[0][1][12]
-    return astar_costs
+    print("individual no.", index + 1, "score:", station1.get_all_collected_plants())
+    return station1.get_all_collected_plants()
