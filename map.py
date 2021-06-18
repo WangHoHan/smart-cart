@@ -3,18 +3,24 @@ import field
 import plant
 import pygame
 import soil
+
+
 class Map:
     def __init__(self, fields):
-        self.fields = fields #przechowuje wszystkie pola (Field)
+        self.fields = fields  # przechowuje wszystkie pola (Field)
+
     def get_fields(self):
         return self.fields
+
     def set_fields(self, fields):
         self.fields = fields
-    def create_base_map(self): #wypełnia mapę polami z bazowymi logicznymi wartościami
+
+    def create_base_map(self):  # wypełnia mapę polami z bazowymi logicznymi wartościami
         for i in range(definitions.WIDTH_AMOUNT):
             temp_map_field = []
             for j in range(definitions.HEIGHT_AMOUNT):
-                temp_rect = pygame.Rect(i * definitions.BLOCK_SIZE, j * definitions.BLOCK_SIZE, definitions.BLOCK_SIZE, definitions.BLOCK_SIZE)
+                temp_rect = pygame.Rect(i * definitions.BLOCK_SIZE, j * definitions.BLOCK_SIZE, definitions.BLOCK_SIZE,
+                                        definitions.BLOCK_SIZE)
                 if i == 0 and j == 0:
                     temp_plant = plant.Plant("station", -1)
                 else:
@@ -23,7 +29,8 @@ class Map:
                 temp_field = field.Field(temp_plant, temp_rect, temp_soil)
                 temp_map_field.append(temp_field)
             self.fields.append(temp_map_field)
-    def draw_window(self, cart, cart_rect, station): #rysuje mapę
+
+    def draw_window(self, cart, cart_rect, station):  # rysuje mapę
         self.fill_map(station)
         if cart.get_direction() == definitions.CART_DIRECTION_EAST:
             definitions.WINDOW.blit(definitions.CART_DIRECTION_EAST_TEXTURE, (cart_rect.x, cart_rect.y))
@@ -34,7 +41,8 @@ class Map:
         elif cart.get_direction() == definitions.CART_DIRECTION_WEST:
             definitions.WINDOW.blit(definitions.CART_DIRECTION_WEST_TEXTURE, (cart_rect.x, cart_rect.y))
         pygame.display.update()
-    def fill_map(self, station): #wypełnia mapę teksturami na podstawie logicznego stanu pól
+
+    def fill_map(self, station):  # wypełnia mapę teksturami na podstawie logicznego stanu pól
         for i in range(definitions.WIDTH_AMOUNT):
             for j in range(definitions.HEIGHT_AMOUNT):
                 field = self.fields[i][j]
@@ -103,40 +111,53 @@ class Map:
                 definitions.WINDOW.blit(block, (rect.x, rect.y))
         for i in range(definitions.WIDTH_AMOUNT):
             block = definitions.SPONGE_WET
-            definitions.WINDOW.blit(block, (i * definitions.BLOCK_SIZE, definitions.HEIGHT_AMOUNT * definitions.BLOCK_SIZE))
+            definitions.WINDOW.blit(block,
+                                    (i * definitions.BLOCK_SIZE, definitions.HEIGHT_AMOUNT * definitions.BLOCK_SIZE))
             if i == 1:
                 block = definitions.BEETROOT
-                definitions.WINDOW.blit(block, (i * definitions.BLOCK_SIZE, definitions.HEIGHT_AMOUNT * definitions.BLOCK_SIZE))
+                definitions.WINDOW.blit(block, (
+                i * definitions.BLOCK_SIZE, definitions.HEIGHT_AMOUNT * definitions.BLOCK_SIZE))
             elif i == 2:
-                text = definitions.FONT.render(str(station.get_collected_plants("beetroot")), True, definitions.FONT_COLOR)
+                text = definitions.FONT.render(str(station.get_collected_plants("beetroot")), True,
+                                               definitions.FONT_COLOR)
                 text_rect = text.get_rect()
-                text_rect.center = (i * definitions.BLOCK_SIZE + definitions.BLOCK_SIZE / 2, definitions.HEIGHT_AMOUNT * definitions.BLOCK_SIZE + definitions.BLOCK_SIZE / 2)
+                text_rect.center = (i * definitions.BLOCK_SIZE + definitions.BLOCK_SIZE / 2,
+                                    definitions.HEIGHT_AMOUNT * definitions.BLOCK_SIZE + definitions.BLOCK_SIZE / 2)
                 definitions.WINDOW.blit(text, text_rect)
             elif i == 3:
                 block = definitions.CARROT
-                definitions.WINDOW.blit(block, (i * definitions.BLOCK_SIZE, definitions.HEIGHT_AMOUNT * definitions.BLOCK_SIZE))
+                definitions.WINDOW.blit(block, (
+                i * definitions.BLOCK_SIZE, definitions.HEIGHT_AMOUNT * definitions.BLOCK_SIZE))
             elif i == 4:
-                text = definitions.FONT.render(str(station.get_collected_plants("carrot")), True, definitions.FONT_COLOR)
+                text = definitions.FONT.render(str(station.get_collected_plants("carrot")), True,
+                                               definitions.FONT_COLOR)
                 text_rect = text.get_rect()
-                text_rect.center = (i * definitions.BLOCK_SIZE + definitions.BLOCK_SIZE / 2, definitions.HEIGHT_AMOUNT * definitions.BLOCK_SIZE + definitions.BLOCK_SIZE / 2)
+                text_rect.center = (i * definitions.BLOCK_SIZE + definitions.BLOCK_SIZE / 2,
+                                    definitions.HEIGHT_AMOUNT * definitions.BLOCK_SIZE + definitions.BLOCK_SIZE / 2)
                 definitions.WINDOW.blit(text, text_rect)
             elif i == 5:
                 block = definitions.POTATO
-                definitions.WINDOW.blit(block, (i * definitions.BLOCK_SIZE, definitions.HEIGHT_AMOUNT * definitions.BLOCK_SIZE))
+                definitions.WINDOW.blit(block, (
+                i * definitions.BLOCK_SIZE, definitions.HEIGHT_AMOUNT * definitions.BLOCK_SIZE))
             elif i == 6:
-                text = definitions.FONT.render(str(station.get_collected_plants("potato")), True, definitions.FONT_COLOR)
+                text = definitions.FONT.render(str(station.get_collected_plants("potato")), True,
+                                               definitions.FONT_COLOR)
                 text_rect = text.get_rect()
-                text_rect.center = (i * definitions.BLOCK_SIZE + definitions.BLOCK_SIZE / 2, definitions.HEIGHT_AMOUNT * definitions.BLOCK_SIZE + definitions.BLOCK_SIZE / 2)
+                text_rect.center = (i * definitions.BLOCK_SIZE + definitions.BLOCK_SIZE / 2,
+                                    definitions.HEIGHT_AMOUNT * definitions.BLOCK_SIZE + definitions.BLOCK_SIZE / 2)
                 definitions.WINDOW.blit(text, text_rect)
             elif i == 7:
                 block = definitions.WHEAT
-                definitions.WINDOW.blit(block, (i * definitions.BLOCK_SIZE, definitions.HEIGHT_AMOUNT * definitions.BLOCK_SIZE))
+                definitions.WINDOW.blit(block, (
+                i * definitions.BLOCK_SIZE, definitions.HEIGHT_AMOUNT * definitions.BLOCK_SIZE))
             elif i == 8:
                 text = definitions.FONT.render(str(station.get_collected_plants("wheat")), True, definitions.FONT_COLOR)
                 text_rect = text.get_rect()
-                text_rect.center = (i * definitions.BLOCK_SIZE + definitions.BLOCK_SIZE / 2, definitions.HEIGHT_AMOUNT * definitions.BLOCK_SIZE + definitions.BLOCK_SIZE / 2)
+                text_rect.center = (i * definitions.BLOCK_SIZE + definitions.BLOCK_SIZE / 2,
+                                    definitions.HEIGHT_AMOUNT * definitions.BLOCK_SIZE + definitions.BLOCK_SIZE / 2)
                 definitions.WINDOW.blit(text, text_rect)
-    def get_field_cost(self, x, y): #zwraca koszt  danego pola
+
+    def get_field_cost(self, x, y):  # zwraca koszt  danego pola
         field = self.fields[x][y]
         if field.get_plant().get_name() == "station" and field.get_plant().get_state() == -1:
             return definitions.STATION_COST

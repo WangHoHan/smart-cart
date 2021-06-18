@@ -1,6 +1,7 @@
-#definicje
+# definicje
 import os
 import pygame
+
 pygame.init()
 BLOCK_SIZE = 60
 BEETROOT = pygame.image.load(os.path.join('resources/images', 'beetroot.png'))
