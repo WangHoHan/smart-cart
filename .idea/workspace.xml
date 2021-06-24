@@ -3,19 +3,49 @@
   <component name="ChangeListManager">
     <list default="true" id="56453584-72bd-49f4-a39c-fccf91ab20c6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/astar.py" beforeDir="false" afterPath="$PROJECT_DIR$/astar.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart.py" beforeDir="false" afterPath="$PROJECT_DIR$/cart.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/definitions.py" beforeDir="false" afterPath="$PROJECT_DIR$/definitions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/field.py" beforeDir="false" afterPath="$PROJECT_DIR$/field.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geneticalgorithm.py" beforeDir="false" afterPath="$PROJECT_DIR$/geneticalgorithm.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graph.py" beforeDir="false" afterPath="$PROJECT_DIR$/graph.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map.py" beforeDir="false" afterPath="$PROJECT_DIR$/map.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neuralnetwork.py" beforeDir="false" afterPath="$PROJECT_DIR$/neuralnetwork.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plant.py" beforeDir="false" afterPath="$PROJECT_DIR$/plant.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/py.py" beforeDir="false" afterPath="$PROJECT_DIR$/py.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/soil.py" beforeDir="false" afterPath="$PROJECT_DIR$/soil.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/station.py" beforeDir="false" afterPath="$PROJECT_DIR$/station.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/treelearn.py" beforeDir="false" afterPath="$PROJECT_DIR$/treelearn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_04_01.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_04_01.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_04_02.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_04_02.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_04_03.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_04_03.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_04_04.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_04_04.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_04_05.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_04_05.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_04_06.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_04_06.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_04_07.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_04_07.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_05_01.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_05_01.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_05_02.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_05_02.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_05_03.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_05_03.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_05_04.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_05_04.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_05_05.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_05_05.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_05_06.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_05_06.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_05_07.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_05_07.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_06_01.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_06_01.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_06_02.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_06_02.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_06_03.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_06_03.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_06_04.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_06_04.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_06_05.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_06_05.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_06_06.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_06_06.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_06_07.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_06_07.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_06_08.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_06_08.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_06_09.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_06_09.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_07_01.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_07_01.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_07_02.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_07_02.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_07_03.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_07_03.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_07_04.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_07_04.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_07_05.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_07_05.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_07_06.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_07_06.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_07_07.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_07_07.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_07_08.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_07_08.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_07_09.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_07_09.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_07_10.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_07_10.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_08_01.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_08_01.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_08_02.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_08_02.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_08_03.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_08_03.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_08_04.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_08_04.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_08_05.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_08_05.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_08_06.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_08_06.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_08_07.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_08_07.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_08_08.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_08_08.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_08_09.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_08_09.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/neural_network/tiles/tile_08_10.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/neural_network/tiles/tile_08_10.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,6 +227,9 @@
       <workItem from="1624004901146" duration="4577000" />
       <workItem from="1624010934783" duration="16000" />
       <workItem from="1624011102769" duration="230000" />
+      <workItem from="1624460478292" duration="2540000" />
+      <workItem from="1624528358421" duration="132000" />
+      <workItem from="1624528503454" duration="881000" />
     </task>
     <servers />
   </component>
@@ -208,35 +241,35 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="414" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1622503192333" />
-    <state x="628" y="343" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1623590970552">
+    <state x="628" y="343" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1624463106043">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="628" y="343" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1623590970552" />
+    <state x="628" y="343" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1624463106043" />
     <state x="628" y="343" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1621109431051" />
     <state x="690" y="287" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1623946080134">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="690" y="287" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1623946080134" />
     <state x="690" y="287" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1621429221570" />
-    <state width="1879" height="295" key="GridCell.Tab.0.bottom" timestamp="1624009514436">
+    <state width="1879" height="295" key="GridCell.Tab.0.bottom" timestamp="1624529391350">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1879" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1624009514436" />
+    <state width="1879" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1624529391350" />
     <state width="1879" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1621429389327" />
-    <state width="1879" height="295" key="GridCell.Tab.0.center" timestamp="1624009514436">
+    <state width="1879" height="295" key="GridCell.Tab.0.center" timestamp="1624529391350">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1879" height="295" key="GridCell.Tab.0.center/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1624009514436" />
+    <state width="1879" height="295" key="GridCell.Tab.0.center/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1624529391350" />
     <state width="1879" height="295" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1621429389327" />
-    <state width="1879" height="295" key="GridCell.Tab.0.left" timestamp="1624009514435">
+    <state width="1879" height="295" key="GridCell.Tab.0.left" timestamp="1624529391350">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1879" height="295" key="GridCell.Tab.0.left/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1624009514435" />
+    <state width="1879" height="295" key="GridCell.Tab.0.left/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1624529391350" />
     <state width="1879" height="295" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1621429389326" />
-    <state width="1879" height="295" key="GridCell.Tab.0.right" timestamp="1624009514436">
+    <state width="1879" height="295" key="GridCell.Tab.0.right" timestamp="1624529391350">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1879" height="295" key="GridCell.Tab.0.right/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1624009514436" />
+    <state width="1879" height="295" key="GridCell.Tab.0.right/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1624529391350" />
     <state width="1879" height="295" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1621429389327" />
     <state width="1879" height="364" key="GridCell.Tab.1.bottom" timestamp="1622903620068">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -258,10 +291,10 @@
     </state>
     <state width="1879" height="364" key="GridCell.Tab.1.right/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1622903620068" />
     <state width="1879" height="364" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1619289752045" />
-    <state x="0" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1624011102185">
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1624528358692">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="0" y="0" key="com.intellij.ide.util.TipDialog/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1624011102185" />
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1624528358692" />
     <state x="0" y="0" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1621439087317" />
     <state x="615" y="209" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1623589256933">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -287,6 +320,6 @@
     <SUITE FILE_PATH="coverage/SmartCart$copy.coverage" NAME="copy Coverage Results" MODIFIED="1622503170538" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SmartCart$glue.coverage" NAME="glue Coverage Results" MODIFIED="1622501306368" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SmartTractor$py.coverage" NAME="py Coverage Results" MODIFIED="1622469837941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/SmartCart$py.coverage" NAME="py Coverage Results" MODIFIED="1624009365702" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SmartCart$py.coverage" NAME="py Coverage Results" MODIFIED="1624529258594" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
